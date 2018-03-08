@@ -17,7 +17,6 @@
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.js"></script>
-
     <![endif]-->
 </head>
 
@@ -60,21 +59,6 @@
             <ul class="sidebar-menu" id="nav-accordion">
                 <p class="centered"><img src="WEB-INF/assets/img/product.jpg" class="img-circle" width="60"></p>
                 <h5 class="centered">${user.name}</h5>
-            <!--显示代理商管理-->
-              <c:if test="${user.role.authorityList.authority_agwnt != null}">
-                   <li class="sub-menu">
-                       <a href="javascript:;" >
-                           <span>${user.role.authorityList.authority_agwnt}</span>
-                       </a>
-                       <ul class="sub">
-                           <li><a  href="keyword">${user.role.authorityList.agwnt_1}${id}</a></li>
-                           <li><a  href="GatewayList">${user.role.authorityList.agwnt_2}</a></li>
-                           <li><a  href="FinancialStatementsList">${user.role.authorityList.agwnt_3}</a></li>
-                           <li><a  href="keywordList">${user.role.authorityList.agwnt_4}</a></li>
-                           <li><a  href="personalDataUpdate.html">${user.role.authorityList.agwnt_5}</a></li>
-                       </ul>
-                   </li>
-              </c:if>
 
                 <!--显示代理商管理-->
                 <c:if test="${user.role.authorityList.authority_agwnt != null}">
@@ -109,7 +93,6 @@
                 <c:if test="${user.role.authorityList.authority_report != null}">
                     <li class="sub-menu">
                         <a href="javascript:;" >
-
                             <span>${user.role.authorityList.authority_report}</span>
                         </a>
                         <ul class="sub">
@@ -140,7 +123,6 @@
                 <c:if test="${user.role.authorityList.authority_configuration != null}">
                     <li class="sub-menu">
                         <a href="javascript:;" >
-
                             <span>${user.role.authorityList.authority_configuration}</span>
                         </a>
                         <ul class="sub">
