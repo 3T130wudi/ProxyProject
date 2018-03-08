@@ -24,9 +24,11 @@
 <div>
     <h3 style="margin-left: 300px">功能列表</h3>
     <hr/>
-    <button type="button" class="btn btn-secondary" >保存</button>
+    <form action="/" method="post">
+    <button type="submit" class="btn btn-secondary" >保存</button>
     <button type="button" class="btn btn-secondary" >取消</button>
-<table class="table table-advance table-hover">
+    <input name="roleId" type="hidden"  value="${authorityList.roleId}">
+    <table class="table table-advance table-hover">
     <thead>
     <tr>
         <td><input type="checkbox" onclick="swapCheck()" />全选</td>
@@ -36,152 +38,153 @@
     </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>
-                <c:if test="${authorityList.type !=0}">
-                    <input checked="checked" type="checkbox" />
-                </c:if>
-                <c:if test="${authorityList.type ==0}">
-                    <input  type="checkbox" />
-                </c:if>
-            </td>
-            <td>
-                ${authorityList.agwnt_1}
-            </td>
-            <td>
-                <fmt:formatDate value="${authorityList.dateTime}" pattern="yyyy-MM-dd"/>
-            </td>
-            <td>
-              <c:if test="${authorityList.type ==1}" >
-                  启用
-              </c:if>
-                <c:if test="${authorityList.type ==0}" >
-                    不启用
-                </c:if>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <c:if test="${authorityList.type !=0}">
-                    <input checked="checked" type="checkbox" />
-                </c:if>
-                <c:if test="${authorityList.type ==0}">
-                    <input  type="checkbox" />
-                </c:if>
-            </td>
-            <td>
-                ${authorityList.agwnt_2}
-            </td>
-            <td>
-                <fmt:formatDate value="${authorityList.dateTime}" pattern="yyyy-MM-dd"/>
-            </td>
-            <td>
-                <c:if test="${authorityList.type ==1}" >
-                    启用
-                </c:if>
-                <c:if test="${authorityList.type ==0}" >
-                    不启用
-                </c:if>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <c:if test="${authorityList.type !=0}">
-                    <input checked="checked" type="checkbox" />
-                </c:if>
-                <c:if test="${authorityList.type ==0}">
-                    <input  type="checkbox" />
-                </c:if>
-            </td>
-            <td>
-                ${authorityList.agwnt_3}
-            </td>
-            <td>
-                <fmt:formatDate value="${authorityList.dateTime}" pattern="yyyy-MM-dd"/>
-            </td>
-            <td>
-                <c:if test="${authorityList.type ==1}" >
-                    启用
-                </c:if>
-                <c:if test="${authorityList.type ==0}" >
-                    不启用
-                </c:if>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <c:if test="${authorityList.type !=0}">
-                    <input checked="checked" type="checkbox" />
-                </c:if>
-                <c:if test="${authorityList.type ==0}">
-                    <input  type="checkbox" />
-                </c:if>
-            </td>
-            <td>
-                ${authorityList.agwnt_4}
-            </td>
-            <td>
-                <fmt:formatDate value="${authorityList.dateTime}" pattern="yyyy-MM-dd"/>
-            </td>
-            <td>
-                <c:if test="${authorityList.type ==1}" >
-                    启用
-                </c:if>
-                <c:if test="${authorityList.type ==0}" >
-                    不启用
-                </c:if>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <c:if test="${authorityList.type !=0}">
-                    <input checked="checked" type="checkbox" />
-                </c:if>
-                <c:if test="${authorityList.type ==0}">
-                    <input  type="checkbox" />
-                </c:if>
-            </td>
-            <td>
-                ${authorityList.agwnt_5}
-            </td>
-            <td>
-                <fmt:formatDate value="${authorityList.dateTime}" pattern="yyyy-MM-dd"/>
-            </td>
-            <td>
-                <c:if test="${authorityList.type ==1}" >
-                    启用
-                </c:if>
-                <c:if test="${authorityList.type ==0}" >
-                    不启用
-                </c:if>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <c:if test="${authorityList.type !=0}">
-                    <input checked="checked" type="checkbox" />
-                </c:if>
-                <c:if test="${authorityList.type ==0}">
-                    <input  type="checkbox" />
-                </c:if>
-            </td>
-            <td>
-                ${authorityList.gateway_1}
-            </td>
-            <td>
-                <fmt:formatDate value="${authorityList.dateTime}" pattern="yyyy-MM-dd"/>
-            </td>
-            <td>
-                <c:if test="${authorityList.type ==1}" >
-                    启用
-                </c:if>
-                <c:if test="${authorityList.type ==0}" >
-                    不启用
-                </c:if>
-            </td>
-        </tr>
+    <tr>
+        <td>
+            <c:if test="${authorityList.type !=0}">
+                <input name="agwnt_1" value="${authorityList.agwnt_1}" checked="checked" type="checkbox" />
+            </c:if>
+            <c:if test="${authorityList.type ==0}">
+                <input name="agwnt_1" value="${authorityList.agwnt_1}" type="checkbox" />
+            </c:if>
+        </td>
+        <td>
+            ${authorityList.agwnt_1}
+        </td>
+        <td>
+            <fmt:formatDate value="${authorityList.dateTime}" pattern="yyyy-MM-dd"/>
+        </td>
+        <td>
+            <c:if test="${authorityList.type ==1}" >
+                启用
+            </c:if>
+            <c:if test="${authorityList.type ==0}" >
+                不启用
+            </c:if>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <c:if test="${authorityList.type !=0}">
+                <input name="agwnt_2" value="${authorityList.agwnt_2}" checked="checked" type="checkbox" />
+            </c:if>
+            <c:if test="${authorityList.type ==0}">
+                <input name="agwnt_2" value="${authorityList.agwnt_2}"  type="checkbox" />
+            </c:if>
+        </td>
+        <td>
+            ${authorityList.agwnt_2}
+        </td>
+        <td>
+            <fmt:formatDate value="${authorityList.dateTime}" pattern="yyyy-MM-dd"/>
+        </td>
+        <td>
+            <c:if test="${authorityList.type ==1}" >
+                启用
+            </c:if>
+            <c:if test="${authorityList.type ==0}" >
+                不启用
+            </c:if>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <c:if test="${authorityList.type !=0}">
+                <input name="agwnt_3" value="${authorityList.agwnt_3}" checked="checked" type="checkbox" />
+            </c:if>
+            <c:if test="${authorityList.type ==0}">
+                <input name="agwnt_3" value="${authorityList.agwnt_3}"  type="checkbox" />
+            </c:if>
+        </td>
+        <td>
+            ${authorityList.agwnt_3}
+        </td>
+        <td>
+            <fmt:formatDate value="${authorityList.dateTime}" pattern="yyyy-MM-dd"/>
+        </td>
+        <td>
+            <c:if test="${authorityList.type ==1}" >
+                启用
+            </c:if>
+            <c:if test="${authorityList.type ==0}" >
+                不启用
+            </c:if>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <c:if test="${authorityList.type !=0}">
+                <input name="agwnt_4" value="${authorityList.agwnt_4}" checked="checked" type="checkbox" />
+            </c:if>
+            <c:if test="${authorityList.type ==0}">
+                <input name="agwnt_4" value="${authorityList.agwnt_4}" type="checkbox" />
+            </c:if>
+        </td>
+        <td>
+            ${authorityList.agwnt_4}
+        </td>
+        <td>
+            <fmt:formatDate value="${authorityList.dateTime}" pattern="yyyy-MM-dd"/>
+        </td>
+        <td>
+            <c:if test="${authorityList.type ==1}" >
+                启用
+            </c:if>
+            <c:if test="${authorityList.type ==0}" >
+                不启用
+            </c:if>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <c:if test="${authorityList.type !=0}">
+                <input name="agwnt_5" value="${authorityList.agwnt_5}" checked="checked" type="checkbox" />
+            </c:if>
+            <c:if test="${authorityList.type ==0}">
+                <input name="agwnt_5" value="${authorityList.agwnt_5}"  type="checkbox" />
+            </c:if>
+        </td>
+        <td>
+            ${authorityList.agwnt_5}
+        </td>
+        <td>
+            <fmt:formatDate value="${authorityList.dateTime}" pattern="yyyy-MM-dd"/>
+        </td>
+        <td>
+            <c:if test="${authorityList.type ==1}" >
+                启用
+            </c:if>
+            <c:if test="${authorityList.type ==0}" >
+                不启用
+            </c:if>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <c:if test="${authorityList.type !=0}">
+                <input name="gateway_1" value="${authorityList.gateway_1}" checked="checked" type="checkbox" />
+            </c:if>
+            <c:if test="${authorityList.type ==0}">
+                <input name="gateway_1" value="${authorityList.gateway_1}"  type="checkbox" />
+            </c:if>
+        </td>
+        <td>
+            ${authorityList.gateway_1}
+        </td>
+        <td>
+            <fmt:formatDate value="${authorityList.dateTime}" pattern="yyyy-MM-dd"/>
+        </td>
+        <td>
+            <c:if test="${authorityList.type ==1}" >
+                启用
+            </c:if>
+            <c:if test="${authorityList.type ==0}" >
+                不启用
+            </c:if>
+        </td>
+    </tr>
     </tbody>
 </table>
+    </form>
 </div>
 
 <script src="js/jquery-1.12.4.js"></script>

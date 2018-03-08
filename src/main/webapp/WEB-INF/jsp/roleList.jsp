@@ -41,6 +41,38 @@
             </div>
 
         </div>
+
+         <div class="container">
+                    <!-- 模态框 -->
+                    <div class="modal fade" id="myModal1">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">修改角色信息</h4>
+                                </div>
+                                <form action="/updateRole" method="post" >
+                                    <!-- 模态框主体 -->
+                                    <div class="modal-body">
+                                        名字名称：<input name="name" type="text" value=""><br/>
+                                        <p></p>
+                                        是否启用：<select name="type">
+                                        <option value="启用">启用</option>
+                                        <option value="不启用">不启用</option>
+                                    </select>
+                                    </div>
+
+                                    <!-- 模态框底部 -->
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-secondary" >确定</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
         <table class="table table-advance table-hover">
             <thead>
             <tr>
@@ -69,7 +101,7 @@
                     </td>
                     <td>
 
-                        <button  class="btn btn-primary" type="button" data-toggle="modal" data-target="#myModal" >
+                        <button  class="btn btn-primary" type="button" data-toggle="modal" data-target="#myModal1" >
                             修改
                         </button>
                         <a href="/deleteRole?id=${r.id}" class="btn btn-primary">删除</a>

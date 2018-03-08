@@ -23,8 +23,10 @@
 <div>
     <h3 style="margin-left: 300px">功能列表</h3>
     <hr/>
-    <button type="button" class="btn btn-secondary" >保存</button>
+    <form action="/" method="post">
+    <button type="submit" class="btn btn-secondary" >保存</button>
     <button type="button" class="btn btn-secondary" >取消</button>
+    <input name="roleId" type="hidden"  value="${authorityList.roleId}">
 <table class="table table-advance table-hover">
     <thead>
     <tr>
@@ -38,10 +40,10 @@
         <tr>
             <td>
                 <c:if test="${authorityList.type !=0}">
-                    <input checked="checked" type="checkbox" />
+                    <input name="agwnt_1" value="${authorityList.agwnt_1}" checked="checked" type="checkbox" />
                 </c:if>
                 <c:if test="${authorityList.type ==0}">
-                    <input  type="checkbox" />
+                    <input name="agwnt_1" value="${authorityList.agwnt_1}" type="checkbox" />
                 </c:if>
             </td>
             <td>
@@ -62,10 +64,10 @@
         <tr>
             <td>
                 <c:if test="${authorityList.type !=0}">
-                    <input checked="checked" type="checkbox" />
+                    <input name="agwnt_2" value="${authorityList.agwnt_2}" checked="checked" type="checkbox" />
                 </c:if>
                 <c:if test="${authorityList.type ==0}">
-                    <input  type="checkbox" />
+                    <input name="agwnt_2" value="${authorityList.agwnt_2}"  type="checkbox" />
                 </c:if>
             </td>
             <td>
@@ -86,10 +88,10 @@
         <tr>
             <td>
                 <c:if test="${authorityList.type !=0}">
-                    <input checked="checked" type="checkbox" />
+                    <input name="agwnt_3" value="${authorityList.agwnt_3}" checked="checked" type="checkbox" />
                 </c:if>
                 <c:if test="${authorityList.type ==0}">
-                    <input  type="checkbox" />
+                    <input name="agwnt_3" value="${authorityList.agwnt_3}"  type="checkbox" />
                 </c:if>
             </td>
             <td>
@@ -110,10 +112,10 @@
         <tr>
             <td>
                 <c:if test="${authorityList.type !=0}">
-                    <input checked="checked" type="checkbox" />
+                    <input name="agwnt_4" value="${authorityList.agwnt_4}" checked="checked" type="checkbox" />
                 </c:if>
                 <c:if test="${authorityList.type ==0}">
-                    <input  type="checkbox" />
+                    <input name="agwnt_4" value="${authorityList.agwnt_4}" type="checkbox" />
                 </c:if>
             </td>
             <td>
@@ -134,10 +136,10 @@
         <tr>
             <td>
                 <c:if test="${authorityList.type !=0}">
-                    <input checked="checked" type="checkbox" />
+                    <input name="agwnt_5" value="${authorityList.agwnt_5}" checked="checked" type="checkbox" />
                 </c:if>
                 <c:if test="${authorityList.type ==0}">
-                    <input  type="checkbox" />
+                    <input name="agwnt_5" value="${authorityList.agwnt_5}"  type="checkbox" />
                 </c:if>
             </td>
             <td>
@@ -158,10 +160,10 @@
         <tr>
             <td>
                 <c:if test="${authorityList.type !=0}">
-                    <input checked="checked" type="checkbox" />
+                    <input name="gateway_1" value="${authorityList.gateway_1}" checked="checked" type="checkbox" />
                 </c:if>
                 <c:if test="${authorityList.type ==0}">
-                    <input  type="checkbox" />
+                    <input name="gateway_1" value="${authorityList.gateway_1}"  type="checkbox" />
                 </c:if>
             </td>
             <td>
@@ -182,10 +184,10 @@
         <tr>
             <td>
                 <c:if test="${authorityList.type !=0}">
-                    <input checked="checked" type="checkbox" />
+                    <input name="report_1" value="${authorityList.report_1}" checked="checked" type="checkbox" />
                 </c:if>
                 <c:if test="${authorityList.type ==0}">
-                    <input  type="checkbox" />
+                    <input name="report_1" value="${authorityList.report_1}"  type="checkbox" />
                 </c:if>
             </td>
             <td>
@@ -206,10 +208,10 @@
         <tr>
             <td>
                 <c:if test="${authorityList.type !=0}">
-                    <input checked="checked" type="checkbox" />
+                    <input name="system_1" value="${authorityList.system_1}"   checked="checked" type="checkbox" />
                 </c:if>
                 <c:if test="${authorityList.type ==0}">
-                    <input  type="checkbox" />
+                    <input name="system_1" value="${authorityList.system_1}"    type="checkbox" />
                 </c:if>
             </td>
             <td>
@@ -230,10 +232,10 @@
         <tr>
             <td>
                 <c:if test="${authorityList.type !=0}">
-                    <input checked="checked" type="checkbox" />
+                    <input  name="system_2" value="${authorityList.system_2}" checked="checked" type="checkbox" />
                 </c:if>
                 <c:if test="${authorityList.type ==0}">
-                    <input  type="checkbox" />
+                    <input  name="system_2" value="${authorityList.system_2}" type="checkbox" />
                 </c:if>
             </td>
             <td>
@@ -254,10 +256,10 @@
         <tr>
             <td>
                 <c:if test="${authorityList.type !=0}">
-                    <input checked="checked" type="checkbox" />
+                    <input  name="system_3" value="${authorityList.system_3}" checked="checked" type="checkbox" />
                 </c:if>
                 <c:if test="${authorityList.type ==0}">
-                    <input  type="checkbox" />
+                    <input  name="system_3" value="${authorityList.system_3}" type="checkbox" />
                 </c:if>
             </td>
             <td>
@@ -278,10 +280,10 @@
         <tr>
             <td>
                 <c:if test="${authorityList.type !=0}">
-                    <input checked="checked" type="checkbox" />
+                    <input  name="system_4" value="${authorityList.system_4}" checked="checked" type="checkbox" />
                 </c:if>
                 <c:if test="${authorityList.type ==0}">
-                    <input  type="checkbox" />
+                    <input  name="system_4" value="${authorityList.system_4}" type="checkbox" />
                 </c:if>
             </td>
             <td>
@@ -302,10 +304,10 @@
         <tr>
             <td>
                 <c:if test="${authorityList.type !=0}">
-                    <input checked="checked" type="checkbox" />
+                    <input  name="system_5" value="${authorityList.system_5}" checked="checked" type="checkbox" />
                 </c:if>
                 <c:if test="${authorityList.type ==0}">
-                    <input  type="checkbox" />
+                    <input  name="system_5" value="${authorityList.system_5}" type="checkbox" />
                 </c:if>
             </td>
             <td>
@@ -326,10 +328,10 @@
         <tr>
             <td>
                 <c:if test="${authorityList.type !=0}">
-                    <input checked="checked" type="checkbox" />
+                    <input  name="configuration_1" value="${authorityList.configuration_1}" checked="checked" type="checkbox" />
                 </c:if>
                 <c:if test="${authorityList.type ==0}">
-                    <input  type="checkbox" />
+                    <input  name="configuration_1" value="${authorityList.configuration_1}" type="checkbox" />
                 </c:if>
             </td>
             <td>
@@ -350,10 +352,10 @@
         <tr>
             <td>
                 <c:if test="${authorityList.type !=0}">
-                    <input checked="checked" type="checkbox" />
+                    <input name="configuration_2" value="${authorityList.configuration_2}" checked="checked" type="checkbox" />
                 </c:if>
                 <c:if test="${authorityList.type ==0}">
-                    <input  type="checkbox" />
+                    <input name="configuration_2" value="${authorityList.configuration_2}"  type="checkbox" />
                 </c:if>
             </td>
             <td>
@@ -374,10 +376,10 @@
         <tr>
             <td>
                 <c:if test="${authorityList.type !=0}">
-                    <input checked="checked" type="checkbox" />
+                    <input  name="configuration_3" value="${authorityList.configuration_3}" checked="checked" type="checkbox" />
                 </c:if>
                 <c:if test="${authorityList.type ==0}">
-                    <input  type="checkbox" />
+                    <input  name="configuration_3" value="${authorityList.configuration_3}" type="checkbox" />
                 </c:if>
             </td>
             <td>
@@ -398,10 +400,10 @@
         <tr>
             <td>
                 <c:if test="${authorityList.type !=0}">
-                    <input checked="checked" type="checkbox" />
+                    <input  name="configuration_4" value="${authorityList.configuration_4}" checked="checked" type="checkbox" />
                 </c:if>
                 <c:if test="${authorityList.type ==0}">
-                    <input  type="checkbox" />
+                    <input  name="configuration_4" value="${authorityList.configuration_4}" type="checkbox" />
                 </c:if>
             </td>
             <td>
@@ -422,10 +424,10 @@
         <tr>
             <td>
                 <c:if test="${authorityList.type !=0}">
-                    <input checked="checked" type="checkbox" />
+                    <input  name="configuration_5" value="${authorityList.configuration_5}" checked="checked" type="checkbox" />
                 </c:if>
                 <c:if test="${authorityList.type ==0}">
-                    <input  type="checkbox" />
+                    <input  name="configuration_5" value="${authorityList.configuration_5}" type="checkbox" />
                 </c:if>
             </td>
             <td>
@@ -446,10 +448,10 @@
         <tr>
             <td>
                 <c:if test="${authorityList.type !=0}">
-                    <input checked="checked" type="checkbox" />
+                    <input name="configuration_6" value="${authorityList.configuration_6}" checked="checked" type="checkbox" />
                 </c:if>
                 <c:if test="${authorityList.type ==0}">
-                    <input  type="checkbox" />
+                    <input name="configuration_6" value="${authorityList.configuration_6}"  type="checkbox" />
                 </c:if>
             </td>
             <td>
@@ -470,10 +472,10 @@
         <tr>
             <td>
                 <c:if test="${authorityList.type !=0}">
-                    <input checked="checked" type="checkbox" />
+                    <input name="configuration_7" value="${authorityList.configuration_7}" checked="checked" type="checkbox" />
                 </c:if>
                 <c:if test="${authorityList.type ==0}">
-                    <input  type="checkbox" />
+                    <input name="configuration_7" value="${authorityList.configuration_7}" type="checkbox" />
                 </c:if>
             </td>
             <td>
@@ -494,6 +496,7 @@
 
     </tbody>
 </table>
+    </form>
 </div>
 
 <script src="js/jquery-1.12.4.js"></script>

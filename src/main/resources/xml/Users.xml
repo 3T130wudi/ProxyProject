@@ -15,7 +15,7 @@
             <result column="id" property="id"/>
             <result column="role.name" property="name"/>
             <association property="authorityList" javaType="entity.AuthorityList">
-                <result column="id" property="id"/>
+                <result column="roleId" property="roleId"/>
                 <result column="authority_agwnt" property="authority_agwnt"/>
                 <result column="authority_gateway" property="authority_gateway"/>
                 <result column="authority_report" property="authority_report"/>

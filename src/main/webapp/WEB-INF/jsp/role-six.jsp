@@ -24,9 +24,11 @@
 <div>
     <h3 style="margin-left: 300px">功能列表</h3>
     <hr/>
-    <button type="button" class="btn btn-secondary" >保存</button>
+    <form action="/" method="post">
+    <button type="submit" class="btn btn-secondary" >保存</button>
     <button type="button" class="btn btn-secondary" >取消</button>
-<table class="table table-advance table-hover">
+    <input name="roleId" type="hidden"  value="${authorityList.roleId}">
+    <table class="table table-advance table-hover">
     <thead>
     <tr>
         <td><input type="checkbox" onclick="swapCheck()" />全选</td>
@@ -37,34 +39,33 @@
     </thead>
     <tbody>
 
-        <tr>
-            <td>
-                <c:if test="${authorityList.type !=0}">
-                    <input checked="checked" type="checkbox" />
-                </c:if>
-                <c:if test="${authorityList.type ==0}">
-                    <input  type="checkbox" />
-                </c:if>
-            </td>
-            <td>
-                ${authorityList.report_1}
-            </td>
-            <td>
-                <fmt:formatDate value="${authorityList.dateTime}" pattern="yyyy-MM-dd"/>
-            </td>
-            <td>
-                <c:if test="${authorityList.type ==1}" >
-                    启用
-                </c:if>
-                <c:if test="${authorityList.type ==0}" >
-                    不启用
-                </c:if>
-            </td>
-        </tr>
-
-
+    <tr>
+        <td>
+            <c:if test="${authorityList.type !=0}">
+                <input name="report_1" value="${authorityList.report_1}" checked="checked" type="checkbox" />
+            </c:if>
+            <c:if test="${authorityList.type ==0}">
+                <input name="report_1" value="${authorityList.report_1}"  type="checkbox" />
+            </c:if>
+        </td>
+        <td>
+            ${authorityList.report_1}
+        </td>
+        <td>
+            <fmt:formatDate value="${authorityList.dateTime}" pattern="yyyy-MM-dd"/>
+        </td>
+        <td>
+            <c:if test="${authorityList.type ==1}" >
+                启用
+            </c:if>
+            <c:if test="${authorityList.type ==0}" >
+                不启用
+            </c:if>
+        </td>
+    </tr>
     </tbody>
 </table>
+    </form>
 </div>
 
 <script src="js/jquery-1.12.4.js"></script>

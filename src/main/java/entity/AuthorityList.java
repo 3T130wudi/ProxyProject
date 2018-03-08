@@ -5,7 +5,16 @@ import java.util.Date;
 
 
 public class AuthorityList {
-    private int id ;
+    private int roleId ;
+
+    public int getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
+    }
+
     private String authority_agwnt ;
     private String authority_gateway ;
     private String authority_report ;
@@ -50,13 +59,7 @@ public class AuthorityList {
         this.type = type;
     }
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getAuthority_agwnt() {
         return authority_agwnt;

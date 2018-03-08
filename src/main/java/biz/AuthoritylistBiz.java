@@ -5,4 +5,5 @@ import org.apache.ibatis.annotations.Param;
 
 public interface AuthoritylistBiz {
     AuthorityList selectList(int roleId);
+    boolean updateList(AuthorityList authorityList);
 }

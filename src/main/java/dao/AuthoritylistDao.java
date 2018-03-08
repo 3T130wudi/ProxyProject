@@ -5,4 +5,5 @@ import org.apache.ibatis.annotations.Param;
 
 public interface AuthoritylistDao {
     AuthorityList selectList(@Param("roleId") int roleId);
+    int updateList(AuthorityList authorityList);
 }

@@ -7,4 +7,14 @@
         SELECT * FROM authoritylist WHERE roleId=#{roleId}
     </select>
 
+    <update id="updateList">
+        UPDATE authoritylist SET
+        agwnt_1=#{agwnt_1},agwnt_2=#{agwnt_2},agwnt_3=#{agwnt_3},agwnt_4=#{agwnt_4},agwnt_5=#{agwnt_5}
+        ,gateway_1=#{gateway_1},report_1=#{report_1},system_1=#{system_1},system_2=#{system_2},system_3=#{system_3}
+        ,system_4=#{system_4},system_5=#{system_5},configuration_1=#{configuration_1},configuration_2=#{configuration_2}
+        ,configuration_3=#{configuration_3},configuration_4=#{configuration_4}
+        ,configuration_5=#{configuration_5},configuration_6=#{configuration_6},configuration_7=#{configuration_7}
+          WHERE roleId=#{roleId}
+    </update>
+
 </mapper>

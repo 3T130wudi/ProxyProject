@@ -2,6 +2,7 @@ package controller;
 
 import biz.RoleBiz;
 import biz.AuthoritylistBiz;
+import entity.AuthorityList;
 import entity.Role;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -161,5 +162,11 @@ public class SystemController {
         return "/role-seven";
     }
 
-
+    public String updateAList(AuthorityList authorityList){
+        if (authoritylistBiz.updateList(authorityList)){
+            return "";
+        }else {
+            return  "";
+        }
+    }
 }

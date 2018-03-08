@@ -16,4 +16,8 @@ public class AuthoritylistBizImpl implements AuthoritylistBiz {
     public AuthorityList selectList(int roleId) {
         return authoritylistDao.selectList(roleId);
     }
+
+    public boolean updateList(AuthorityList authorityList) {
+        return authoritylistDao.updateList(authorityList)>0;
+    }
 }
