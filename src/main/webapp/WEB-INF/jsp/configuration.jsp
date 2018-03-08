@@ -52,7 +52,7 @@
         <form action="/Financeselect">
             <table class="table table-striped table-advance table-hover">
 
-                <tr>
+                <tr >
                     <td>序号<td/>
                     <td>配置类型<td/>
                     <td>是否启用<td/>
@@ -60,14 +60,14 @@
                 <tr/>
                 <c:forEach items="${finance}" var="f">
                 <input type="hidden"  id="financeId" name="financeId" value="${f.finance_id}">
-                <tr>
+                <tr id="coifn">
                     <td>${f.finance_id}<td/>
                     <td>${f.finance_type}<td/>
                     <td>
                         <c:if test="${f.finance_enable==0}">启用</c:if>
                         <c:if test="${f.finance_enable==1}">不启用</c:if>
                     <td/>
-                    <td><a id="finanId"  data-toggle="modal" data-target="#Myomoal">修改|</a><a id="configId" onclick="deleteConfig(${f.finance_id})" name="configId"> 删除</a><td/>
+                    <td><a id="finanId" name="finanId" onclick="selectfanace(${f.finance_id})" href="/updatafinance?finanId=${f.finance_id}"  data-toggle="modal" data-target="#Myomoal">修改|</a><a id="configId" href="/deletefinance?configId=${f.finance_id}" name="configId"> 删除</a><td/>
                 <tr/>
 
                 </c:forEach>
@@ -88,12 +88,12 @@
                     <div class="modal-header">
                         <h4 class="modal-title">您正在进行修改操作</h4>
                     </div>
-                    <form action="" method="post" >
+                    <form action="updatafinance" method="post" >
                         <!-- 模态框主体 -->
                         <div class="modal-body">
-                            类型名称：<input name="finance_type" type="text" value="${financel.finance_type}"><br/>
+                            类型名称：<input id="financetype" name="financetype" type="text"><br/>
                             <p></p>
-                            是否启用：<select name="finance_enable">
+                            是否启用：<select id="financeenable" name="financeenable">
                             <option value="0">启用</option>
                             <option value="1">不启用</option>
 
