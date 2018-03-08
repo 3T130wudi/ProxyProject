@@ -345,7 +345,7 @@ insert  into `keywords`(`id`,`keyword`,`user_id`,`service_Type_id`,`price`,`veri
 /*Table structure for table `role` */
 
 DROP TABLE IF EXISTS `role`;
-;
+
 CREATE TABLE `role` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `NAME` varchar(20) NOT NULL,
