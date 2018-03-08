@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.financeDao">
+    <select id="financeselect" resultType="entity.finance">
+        SELECT * FROM `finance`
+    </select>
+
+    <insert id="insertfinance">
+
+        INSERT INTO `finance` VALUES(DEFAULT,#{finance_type},#{finance_enable})
+    </insert>
+
+    <update id="updatafinance"></update>
+
+
+    <delete id="deletefinance">
+        DELETE FROM finance WHERE finance_id=#{financeId}
+    </delete>
+
+
+</mapper>

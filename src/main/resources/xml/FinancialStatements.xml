@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.FinancialStatementsDao">
+    <resultMap id="FinancialStatements" type="entity.FinancialStatements">
+        <result property="id" column="id"/>
+        <result property="capital" column="capital"/>
+        <result property="apply_date" column="apply_date"/>
+        <result property="pass_date" column="pass_date"/>
+        <result property="disburse_income" column="disburse_income"/>
+        <result property="verifier_id" column="verifier_id"/>
+        <result property="accountBalance" column="accountBalance"/>
+        <result property="remark" column="remark"/>
+        <association property="users_id" javaType="entity.Users">
+            <result property="id" column="id"/>
+            <result property="userId" column="userId"/>
+            <result property="name" column="name"/>
+            <result property="password" column="password"/>
+        </association>
+        <association property="approach_id" javaType="entity.CapitalSource">
+            <result property="id" column="id"/>
+            <result property="approach" column="approach"/>
+        </association>
+    </resultMap>
+    <select id="selectFinancialStatementsList" resultMap="FinancialStatements">
+        SELECT *FROM FinancialStatements f,Users u,CapitalSource c WHERE f.user_id=u.id AND f.approach_id=c.id
+        <if test="approach_id>0">
+            AND f.approach_id=#{approach_id}
+        </if>
+        <if test="apply_date!=null and apply_date!=''">
+            AND f.apply_date=#{apply_date}
+        </if>
+        <if test="pass_date!=null and pass_date!=''">
+            AND f.pass_date=#{pass_date}
+        </if>
+        <if test="apply_date!=null and apply_date!='' and pass_date!=null and pass_date!=''">
+            and f.apply_date BETWEEN #{apply_date} AND #{pass_date}
+        </if>
+    </select>
+</mapper>

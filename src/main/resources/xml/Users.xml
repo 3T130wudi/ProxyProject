@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.UsersDao">
+
+    <resultMap type="entity.Users" id="usersBen" autoMapping="true">
+        <!--column指向数据库列名   property指向pojo对象中字段名-->
+        <result column="id" property="id"/>
+        <result column="userId" property="userId"/>
+        <result column="name" property="name"/>
+        <result column="password" property="password"/>
+        <!-- property指的是在bean中字段名 ofType类的全定向名 -->
+        <collection property="role" ofType="entity.Role">
+            <result column="id" property="id"/>
+            <result column="role.name" property="name"/>
+            <association property="authorityList" javaType="entity.AuthorityList">
+                <result column="id" property="id"/>
+                <result column="authority_agwnt" property="authority_agwnt"/>
+                <result column="authority_gateway" property="authority_gateway"/>
+                <result column="authority_report" property="authority_report"/>
+                <result column="authority_system" property="authority_system"/>
+                <result column="authority_configuration" property="authority_configuration"/>
+                <result column="agwnt_1" property="agwnt_1"/>
+                <result column="agwnt_2" property="agwnt_2"/>
+                <result column="agwnt_3" property="agwnt_3"/>
+                <result column="agwnt_4" property="agwnt_4"/>
+                <result column="agwnt_5" property="agwnt_5"/>
+                <result column="gateway_1" property="gateway_1"/>
+                <result column="report_1" property="report_1"/>
+                <result column="system_1" property="system_1"/>
+                <result column="system_2" property="system_2"/>
+                <result column="system_3" property="system_3"/>
+                <result column="system_4" property="system_4"/>
+                <result column="system_5" property="system_5"/>
+                <result column="configuration_1" property="configuration_1"/>
+                <result column="configuration_2" property="configuration_2"/>
+                <result column="configuration_3" property="configuration_3"/>
+                <result column="configuration_4" property="configuration_4"/>
+                <result column="configuration_5" property="configuration_5"/>
+                <result column="configuration_6" property="configuration_6"/>
+                <result column="configuration_7" property="configuration_7"/>
+            </association>
+        </collection>
+    </resultMap>
+
+    <select id="login" resultMap="usersBen">
+        SELECT * from users u,role r,authoritylist a where
+         u.roleId=r.id AND r.uthorityId=a.roleId and u.userId=#{userId} AND u.password=#{password}
+
+    </select>
+
+    <select id="selectList" resultType="Users">
+        SELECT * from users
+    </select>
+
+</mapper>

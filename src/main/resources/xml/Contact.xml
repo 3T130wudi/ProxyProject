@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.ContactDao">
+    <insert id="insertContact">
+        insert into contact VALUES(DEFAULT,#{contact_name},#{contact_phone},#{contact_fax},#{contact_mobile},#{contact_email},#{contact_post},#{enterprise_id.id})
+    </insert>
+    <select id="selectContact" resultType="entity.Contact">
+        SELECT * from contact where contact_name=#{name}
+    </select>
+    <update id="updateContact">
+        update contact set
+        contact_name=#{contact_name},
+        contact_phone=#{contact_phone},
+        contact_fax=#{contact_fax},
+        contact_mobile=#{contact_mobile},
+        contact_email=#{contact_email},
+        contact_post=#{contact_post} where id=#{id}
+    </update>
+</mapper>

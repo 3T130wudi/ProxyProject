@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.KeywordDao">
+    <resultMap id="keyword" type="entity.keyword">
+        <result property="id" column="id"/>
+        <result property="keyword" column="keyword"/>
+        <result property="service_Type_id" column="service_Type_id"/>
+        <result property="price" column="price"/>
+        <result property="verifier" column="verifier"/>
+        <result property="user_mode" column="user_mode"/>
+        <result property="Application" column="Application"/>
+        <result property="keywordDate" column="keywordDate"/>
+        <result property="keywordsOverdue" column="keywordsOverdue"/>
+        <result property="ageLimit" column="ageLimit"/>
+        <collection property="APP_id" ofType="entity.APP">
+            <result property="id" column="id"/>
+            <result property="app_name" column="app_name"/>
+            <result property="app_id" column="app_id"/>
+            <result property="app_pwd" column="app_pwd"/>
+            <result property="app_price" column="app_price"/>
+            <result property="appDate" column="appDate"/>
+            <result property="app_service_type" column="app_service_type"/>
+            <result property="application" column="application"/>
+            <collection property="user_id" ofType="entity.Users">
+                <result property="id" column="id"/>
+                <result property="userId" column="userId"/>
+                <result property="name" column="name"/>
+                <result property="password" column="password"/>
+            </collection>
+        </collection>
+        <collection property="user_id" ofType="entity.Users">
+            <result property="id" column="id"/>
+            <result property="userId" column="userId"/>
+            <result property="name" column="name"/>
+            <result property="password" column="password"/>
+        </collection>
+        <collection property="agent_id" ofType="entity.AgentCustomer">
+            <result property="id" column="id"/>
+            <result property="date" column="date"/>
+            <result property="type" column="type"/>
+            <result property="state" column="state"/>
+            <collection property="user_id" ofType="entity.Users">
+                <result property="id" column="id"/>
+                <result property="userId" column="userId"/>
+                <result property="name" column="name"/>
+                <result property="password" column="password"/>
+            </collection>
+        </collection>
+    </resultMap>
+    <insert id="insertKeyword">
+        INSERT INTO keywords
+        VALUES(DEFAULT,#{keyword},#{user_id.id},#{service_Type_id},
+        #{price},#{verifier},#{user_mode},#{Application},#{agent_id.id},#{keywordDate},
+        #{keywordsOverdue},#{APP_id.id},#{ageLimit})
+    </insert>
+    <select id="keywordList" resultMap="keyword">
+        SELECT * FROM keywords k,APP a,Users u,AgentCustomer ac where k.user_id=u.id and a.id=k.APP_id and  k.agent_id=ac.id
+        <if test="name!=null and name!=''">
+            AND k.keyword LIKE concat ('%',#{name},'%')
+        </if>
+    </select>
+</mapper>

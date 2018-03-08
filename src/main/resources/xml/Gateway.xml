@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.GatewayDao">
+    <resultMap id="AgentCustomer" type="entity.AgentCustomer">
+        <result property="id" column="aid"/>
+        <result property="date" column="date"/>
+        <result property="type" column="type"/>
+        <result property="state" column="state"/>
+        <association property="user_id" javaType="entity.Users">
+            <result property="id" column="uid"/>
+            <result property="userId" column="userId"/>
+            <result property="name" column="name"/>
+            <result property="password" column="password"/>
+        </association>
+        <association property="contact_id" javaType="entity.Contact">
+            <result property="id" column="cid"/>
+            <result property="contact_name" column="contact_name"/>
+            <result property="contact_phone" column="contact_phone"/>
+            <result property="contact_fax" column="contact_fax"/>
+            <result property="contact_mobile" column="contact_mobile"/>
+            <result property="contact_email" column="contact_email"/>
+            <result property="contact_post" column="contact_post"/>
+            <association property="enterprise_id" javaType="entity.Enterprise">
+                <result property="id" column="eid"/>
+                <result property="enterprise_name" column="enterprise_name"/>
+                <result property="enterprise_type" column="enterprise_type"/>
+                <result property="enterprise_home" column="enterprise_home"/>
+                <result property="enterprise_state" column="enterprise_state"/>
+                <association property="gateway_id" javaType="entity.Gateway">
+                    <result property="id" column="gid"/>
+                    <result property="gateway_representative" column="gateway_representative"/>
+                    <result property="gateway_type" column="gateway_type"/>
+                    <result property="gateway_certificates" column="gateway_certificates"/>
+                    <result property="gateway_phone" column="gateway_phone"/>
+                    <result property="gateway_fax" column="gateway_fax"/>
+                    <result property="gateway_date" column="gateway_date"/>
+                    <result property="gateway_country" column="gateway_country"/>
+                    <result property="gateway_region" column="gateway_region"/>
+                    <result property="gateway_city" column="gateway_city"/>
+                    <result property="gateway_area" column="gateway_area"/>
+                    <result property="gateway_address" column="gateway_address"/>
+                    <result property="gateway_remarks" column="gateway_remarks"/>
+                </association>
+            </association>
+        </association>
+    </resultMap>
+    <select id="AgentCustomerList" resultMap="AgentCustomer">
+        SELECT *,g.id as gid,a.id as aid,c.id as cid,e.id as eid,u.id as uid
+        FROM Gateway g,Enterprise e,Contact c,AgentCustomer a,Users u
+        WHERE a.contact_id=c.id AND c.enterprise_id=e.id AND e.gateway_id=g.id AND a.user_id=u.id
+        <if test="name!=null and name!=''">
+            and u.name LIKE concat ('%',#{name},'%')
+        </if>
+    </select>
+    <select id="AgentCustomerById" resultMap="AgentCustomer">
+        SELECT *,g.id as gid,a.id as aid,c.id as cid,e.id as eid,u.id as uid
+        FROM Gateway g,Enterprise e,Contact c,AgentCustomer a,Users u
+        WHERE a.contact_id=c.id AND c.enterprise_id=e.id AND e.gateway_id=g.id AND a.user_id=u.id and a.id=#{id}
+    </select>
+    <insert id="GatewayInsert">
+        insert into Gateway VALUES(DEFAULT,#{gateway_representative},#{gateway_type},#{gateway_certificates},#{gateway_phone},#{gateway_fax},#{gateway_date},#{gateway_country},#{gateway_region},#{gateway_city},#{gateway_area},#{gateway_address},#{gateway_remarks})
+    </insert>
+    <select id="GatewaySelect" resultType="entity.Gateway">
+        SELECT * from Gateway where gateway_phone=#{phone}
+    </select>
+    <update id="updateGateway">
+        UPDATE gateway set
+        gateway_representative=#{gateway_representative},
+        gateway_type=#{gateway_type},
+        gateway_certificates=#{gateway_certificates},
+        gateway_phone=#{gateway_phone},
+        gateway_fax=#{gateway_fax},
+        gateway_date=#{gateway_date},
+        gateway_country=#{gateway_country},
+        gateway_region=#{gateway_region},
+        gateway_city=#{gateway_city},
+        gateway_area=#{gateway_area},
+        gateway_address=#{gateway_address},
+        gateway_remarks=#{gateway_remarks} where id=#{id}
+    </update>
+</mapper>

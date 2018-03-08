@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.APPDao">
+    <resultMap id="APP" type="entity.APP">
+        <result property="id" column="id"/>
+        <result property="app_name" column="app_name"/>
+        <result property="app_id" column="app_id"/>
+        <result property="app_pwd" column="app_pwd"/>
+        <result property="app_price" column="app_price"/>
+        <result property="appDate" column="appDate"/>
+        <result property="app_service_type" column="app_service_type"/>
+        <result property="application" column="application"/>
+        <collection property="user_id" ofType="entity.Users">
+            <result property="id" column="id"/>
+            <result property="userId" column="userId"/>
+            <result property="name" column="name"/>
+            <result property="password" column="id"/>
+        </collection>
+    </resultMap>
+    <select id="selectAPP" resultMap="APP">
+        SELECT * FROM APP,Users WHERE app.user_id=users.id AND Users.name=#{name}
+    </select>
+</mapper>
