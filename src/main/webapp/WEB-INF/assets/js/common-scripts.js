@@ -25,42 +25,41 @@ var Script = function () {
         else
             $("#sidebar").scrollTo("+="+Math.abs(diff),500);
     });
-$(function () {
-    $("#kehu").on("mouseout",function () {
-        var a=$("#kehu").val()
-        $.ajax({
-            type:"POST",
-            url:"/selectName?name="+a,
-            dataType:"json",
-            success:function (date) {
-                if(date!=null){
-                    $("#xinming").attr("value",date.user_id.name);
-                }else{
-                    $("#kehu").append("搜索的客户不存在");
+
+    $(function () {
+        $("#kehu").on("mouseout",function () {
+            var a=$("#kehu").val()
+            $.ajax({
+                type:"POST",
+                url:"/selectName?name="+a,
+                dataType:"json",
+                success:function (date) {
+                    if(date!=null){
+                        $("#xinming").attr("value",date.user_id.name);
+                    }else{
+                        $("#kehu").append("搜索的客户不存在");
+                    }
+                },
+                error:function () {
+                    $("#kehu").append("对不起内部服务器错误");
                 }
-            },
-            error:function () {
-                $("#kehu").append("对不起内部服务器错误");
-            }
+            });
+        });
+        $("#ass").on("click",function () {
+            $("tbody tr:last").append("<tr><td><input type=\"text\"></td>‘" +
+                "<td><input type=\"text\"></td>" +
+                "<td><input type=\"text\"></td>" +
+                "<td><input type=\"text\"></td>" +
+                "<td><input type=\"text\"></td>" +
+                "<td><input type=\"text\"></td>" +
+                "<td><input type=\"text\"></td>" +
+                "</tr>");
+        });
+        $("#del").on("click",function () {
+            var $del = $("#del");
+            $del.parentNode.parentNode.removeChild($del);
         });
     });
-
-
-    $("#ass").on("click",function () {
-        $("tbody tr:last").append("<tr><td><input type=\"text\"></td>‘" +
-            "<td><input type=\"text\"></td>" +
-            "<td><input type=\"text\"></td>" +
-            "<td><input type=\"text\"></td>" +
-            "<td><input type=\"text\"></td>" +
-            "<td><input type=\"text\"></td>" +
-            "<td><input type=\"text\"></td>" +
-            "</tr>");
-    });
-    $("#del").on("click",function () {
-        var $del = $("#del");
-        $del.parentNode.parentNode.removeChild($del);
-    });
-});
 //    sidebar toggle
 
     $(function() {
@@ -148,5 +147,4 @@ $(function () {
     }
 
 
-}()
-}
+}();
