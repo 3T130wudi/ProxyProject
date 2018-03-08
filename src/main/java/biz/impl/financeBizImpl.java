@@ -31,5 +31,9 @@ public class financeBizImpl implements financeBiz {
         return financeDao.deletefinance(financeId)>0;
     }
 
+    public finance selectfnance(int id) {
+        return financeDao.selectfnance(id);
+    }
+
 
 }
