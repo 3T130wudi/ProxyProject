@@ -32,6 +32,8 @@ public class configuration {
         String finance_type= req.getParameter("finance_type");
         if(finance_type!=null&&finance_type!=""){
             financeBiz.insertfinance(finance);
+
+
         }
         return financeselect(m);
     }
@@ -41,16 +43,43 @@ public class configuration {
 
 
     @RequestMapping("/deletefinance")
-    public void deletefinance(@RequestParam("id") int id,HttpServletResponse resp) throws IOException {
-        boolean config=financeBiz.deletefinance(id);
+    public String deletefinance(Model m,@RequestParam("configId") int configId,HttpServletResponse resp) throws IOException {
+        boolean config=financeBiz.deletefinance(configId);
+        PrintWriter out = resp.getWriter();
         if(config){
+            out.print("<script>alert('删除成功！')</script>");
+        }else {
+            out.print("<script>alert('删除失败！')</script>");
+        }
+       return financeselect(m);
+
+    }
+    @RequestMapping("/selectfnance")
+    public void selectfnance(@RequestParam("fid") int fid,HttpServletResponse resp) throws IOException {
+        finance finid= financeBiz.selectfnance(fid);
+        if(finid!=null){
             resp.setContentType("text/html;charset=utf-8");
             resp.setCharacterEncoding("UTF-8");
             PrintWriter writer = resp.getWriter();
-            String s = JSON.toJSONString(config);
+            String s = JSON.toJSONString(finid);
             writer.print(s);
             writer.flush();
             writer.close();
         }
+    }
+
+    @RequestMapping("/updatafinance")
+    public String updatafinance(Model m,finance finance,@RequestParam(value = "finanId",required = false) int finanId){
+
+
+
+
+        finance.setFinance_id(finanId);
+
+
+        if(financeBiz.updatafinance(finance)>0){
+
+        }
+        return  financeselect(m);
     }
 }

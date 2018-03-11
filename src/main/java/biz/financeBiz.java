@@ -9,8 +9,12 @@ public interface financeBiz {
 
     int insertfinance(finance finance);
     List<finance> financeselect();
+
     int updatafinance(finance finance);
+
     boolean deletefinance(int financeId);
+    finance selectfnance(int id);
+
 
 
 }
