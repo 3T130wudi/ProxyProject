@@ -17,5 +17,17 @@
 
 </script>
 
+<SCRIPT LANGUAGE="JavaScript">
+    function sub(btn,a){
+        var tds = btn.parentElement.parentElement.children;
+        var td = (tds[0]).innerHTML ;
+        var td1 = (tds[1]).innerHTML ;
+        var td2 = (tds[3]).innerHTML ;
+        document.getElementById('id1').value=td;
+        document.getElementById('name1').value=td1;
+        document.getElementById('type1').value=td2;
+    }
+</SCRIPT>
+
 </body>
 </html>

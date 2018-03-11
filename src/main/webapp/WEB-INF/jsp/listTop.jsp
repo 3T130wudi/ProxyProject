@@ -112,7 +112,6 @@
                             <li><a  href="commissionList.html">${user.role.authorityList.system_1}</a></li>
                             <li><a  href="/selectList">${user.role.authorityList.system_2}</a></li>
                             <li><a  href="/showSystem">${user.role.authorityList.system_3}</a></li>
-                            <li><a  href="/#">${user.role.authorityList.system_3}</a></li>
                             <li><a  href="personalDataUpdate.html">${user.role.authorityList.system_4}</a></li>
                             <li><a  href="personalDataUpdate.html">${user.role.authorityList.system_5}</a></li>
                         </ul>

@@ -29,7 +29,6 @@
                                 <option value="不启用">不启用</option>
                             </select>
                             </div>
-
                             <!-- 模态框底部 -->
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-secondary" >确定</button>
@@ -39,9 +38,7 @@
                     </div>
                 </div>
             </div>
-
         </div>
-
          <div class="container">
                     <!-- 模态框 -->
                     <div class="modal fade" id="myModal1">
@@ -53,14 +50,14 @@
                                 <form action="/updateRole" method="post" >
                                     <!-- 模态框主体 -->
                                     <div class="modal-body">
-                                        名字名称：<input name="name" type="text" value=""><br/>
-                                        <p></p>
-                                        是否启用：<select name="type">
+                                        <input type="hidden" name="id" id="id1" value="">
+                                        名字名称：
+                                        <input id="name1" name="name" type="text" value="" ><br/>
+                                        <p></p>是否启用：<select id="type" name="type">
                                         <option value="启用">启用</option>
                                         <option value="不启用">不启用</option>
                                     </select>
                                     </div>
-
                                     <!-- 模态框底部 -->
                                     <div class="modal-footer">
                                         <button type="submit" class="btn btn-secondary" >确定</button>
@@ -70,9 +67,7 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
-
         <table class="table table-advance table-hover">
             <thead>
             <tr>
@@ -84,24 +79,16 @@
             </tr>
             </thead>
             <tbody>
-
             <c:forEach items="${roleList}" var="r">
                 <tr>
-                    <td>
-                            ${r.id}
-                    </td>
-                    <td>
-                            ${r.name}
-                    </td>
+                    <td>${r.id}</td>
+                    <td>${r.name}</td>
                     <td>
                         <fmt:formatDate value="${r.fristDate}" pattern="yyyy-MM-dd"/>
                     </td>
+                    <td>${r.type}</td>
                     <td>
-                            ${r.type}
-                    </td>
-                    <td>
-
-                        <button  class="btn btn-primary" type="button" data-toggle="modal" data-target="#myModal1" >
+                        <button onclick="javascript:sub(this);"class="btn btn-primary" type="button" data-toggle="modal" data-target="#myModal1" >
                             修改
                         </button>
                         <a href="/deleteRole?id=${r.id}" class="btn btn-primary">删除</a>
@@ -111,7 +98,8 @@
             </tbody>
         </table>
 
-            </tr></thead></table>   </div><!-- /col-md-12 -->
+            </tr>
+            </thead></table>   </div><!-- /col-md-12 -->
 </div>
 <%@include file="listBottom.jsp"%>
 

@@ -162,11 +162,12 @@ public class SystemController {
         return "/role-seven";
     }
 
+    @RequestMapping("/updateAList")
     public String updateAList(AuthorityList authorityList){
         if (authoritylistBiz.updateList(authorityList)){
-            return "";
+            return this.showSystem();
         }else {
-            return  "";
+            return  this.showSystem();
         }
     }
 }

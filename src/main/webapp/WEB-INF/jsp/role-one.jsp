@@ -23,7 +23,7 @@
 <div>
     <h3 style="margin-left: 300px">功能列表</h3>
     <hr/>
-    <form action="/" method="post">
+    <form action="/updateAList" method="post">
     <button type="submit" class="btn btn-secondary" >保存</button>
     <button type="button" class="btn btn-secondary" >取消</button>
     <input name="roleId" type="hidden"  value="${authorityList.roleId}">
