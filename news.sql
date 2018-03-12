@@ -367,6 +367,25 @@ insert  into `role`(`id`,`NAME`,`uthorityId`,`type`,`fristDate`) values
 (5,'市场',5,'启用','2018-03-01'),
 (6,'大区经理',6,'启用','2018-03-01'),
 (7,'客服人员',7,'启用','2018-03-01');
+/*Table structure for table `service` */
+
+DROP TABLE IF EXISTS `service`;
+
+CREATE TABLE `service` (
+  `service_id` int(11) NOT NULL AUTO_INCREMENT,
+  `service_type` varchar(50) NOT NULL,
+  `service_tow` int(11) NOT NULL,
+  `service_enable` int(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`service_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+/*Data for the table `service` */
+
+insert  into `service`(`service_id`,`service_type`,`service_tow`,`service_enable`) values
+(1,'上传苹果商城',26000,0),
+(2,'OPPO商城',18000,0),
+(3,'ddd',20000,1),
+(4,'aaaa',2000,1);
 
 /*Table structure for table `users` */
 
