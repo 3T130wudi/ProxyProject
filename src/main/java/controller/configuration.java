@@ -1,8 +1,10 @@
 package controller;
 
+import biz.ServiceBiz;
 import biz.financeBiz;
 import com.alibaba.fastjson.JSON;
 
+import entity.Service;
 import entity.finance;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,18 +17,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
-@Controller("Configurations")
+@Controller("Configuration")
 public class configuration {
     @Resource
     private financeBiz financeBiz;
+    @Resource
+    private ServiceBiz serviceBiz;
 
+    //财务类型集合查询
     @RequestMapping("/Financeselect")
     public  String financeselect(Model m){
         m.addAttribute("finance",financeBiz.financeselect());
         return "configuration";
     }
 
+    //财务类型增加
     @RequestMapping("/insertfinance")
     public String insertfinance(Model m, finance finance, HttpServletRequest req){
         String finance_type= req.getParameter("finance_type");
@@ -41,7 +48,7 @@ public class configuration {
 
 
 
-
+    //财务类型删除
     @RequestMapping("/deletefinance")
     public String deletefinance(Model m,@RequestParam("configId") int configId,HttpServletResponse resp) throws IOException {
         boolean config=financeBiz.deletefinance(configId);
@@ -54,6 +61,7 @@ public class configuration {
        return financeselect(m);
 
     }
+    //财务类型ajax查看
     @RequestMapping("/selectfnance")
     public void selectfnance(@RequestParam("fid") int fid,HttpServletResponse resp) throws IOException {
         finance finid= financeBiz.selectfnance(fid);
@@ -67,19 +75,62 @@ public class configuration {
             writer.close();
         }
     }
-
+    //财务类型修改
     @RequestMapping("/updatafinance")
-    public String updatafinance(Model m,finance finance,@RequestParam(value = "finanId",required = false) int finanId){
+    public void updatafinance(Model m,@RequestParam(value = "fid") int fid ,HttpServletRequest req,HttpServletResponse resp) throws IOException {
+
+        finance finance=new finance();
+        finance.setFinance_id(fid);
+       boolean fnan= financeBiz.updatafinance(finance);
+        if (fnan) {
+            resp.setContentType("text/html;charset=utf-8");
+            resp.setCharacterEncoding("UTF-8");
+            PrintWriter writer = resp.getWriter();
+            String s = JSON.toJSONString(fnan);
+            writer.print(s);
+            writer.flush();
+            writer.close();
+        }
+
+    }
+    //服务类型集合查询
+    @RequestMapping("/selectService")
+    private String selectService(Model m){
+        m.addAttribute("service",serviceBiz.selectService());
+        return "configuration-service";
+    }
+
+    @RequestMapping("/selectname")
+    private void selectname(Model m,Service service,HttpServletResponse resp) throws IOException {
+
+       List<Service> ser=serviceBiz.selectname(service);
+
+        if (ser!=null) {
+            resp.setContentType("text/html;charset=utf-8");
+            resp.setCharacterEncoding("UTF-8");
+            PrintWriter writer = resp.getWriter();
+            String s = JSON.toJSONString(ser);
+            writer.print(s);
+            writer.flush();
+            writer.close();
+        }
+    }
 
 
+    //服务类型增加
+    @RequestMapping("/insertselect")
+    private  String insertselect(Model m, Service service,HttpServletRequest req){
+       String servicetype =req.getParameter("service_type");
+        String servicetow =req.getParameter("service_tow");
 
-
-        finance.setFinance_id(finanId);
-
-
-        if(financeBiz.updatafinance(finance)>0){
+        if( serviceBiz.insertselect(service)){
 
         }
-        return  financeselect(m);
+
+        return selectService(m);
+         }
+
+
+
     }
-}
+
