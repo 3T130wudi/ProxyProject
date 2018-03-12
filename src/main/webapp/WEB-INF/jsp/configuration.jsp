@@ -59,7 +59,7 @@
                     <td>操作<td/>
                 <tr/>
                 <c:forEach items="${finance}" var="f">
-                <input type="hidden"  id="financeId" name="financeId" value="${f.finance_id}">
+
                 <tr id="coifn">
                     <td>${f.finance_id}<td/>
                     <td>${f.finance_type}<td/>
@@ -67,7 +67,7 @@
                         <c:if test="${f.finance_enable==0}">启用</c:if>
                         <c:if test="${f.finance_enable==1}">不启用</c:if>
                     <td/>
-                    <td><a id="finanId" name="finanId" onclick="selectfanace(${f.finance_id})" href="/updatafinance?finanId=${f.finance_id}"  data-toggle="modal" data-target="#Myomoal">修改|</a><a id="configId" href="/deletefinance?configId=${f.finance_id}" name="configId"> 删除</a><td/>
+                    <td><a id="finanId" name="finanId" onclick="selectfanace(${f.finance_id})"   data-toggle="modal" data-target="#Myomoal">修改|</a><a id="configId" href="/deletefinance?configId=${f.finance_id}" name="configId"> 删除</a><td/>
                 <tr/>
 
                 </c:forEach>
@@ -77,7 +77,7 @@
         </form>
     </div>
 
-    <div class="container">
+    <div class="containert">
 
 
         <div class="modal fade" id="Myomoal">
@@ -88,7 +88,7 @@
                     <div class="modal-header">
                         <h4 class="modal-title">您正在进行修改操作</h4>
                     </div>
-                    <form action="updatafinance" method="post" >
+                    <form action="/updatafinance" method="post" >
                         <!-- 模态框主体 -->
                         <div class="modal-body">
                             类型名称：<input id="financetype" name="financetype" type="text"><br/>

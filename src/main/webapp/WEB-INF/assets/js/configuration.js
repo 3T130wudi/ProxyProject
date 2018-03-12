@@ -1,3 +1,73 @@
+
+//用户名
+$(function () {
+  $("#service_type").blur(function () {
+      var name=$("#service_type").val();
+      if(name==""){
+          alert("配置类型不能为空！");
+
+      };
+
+      $("#service_tow").blur(function () {
+          var tow=$("#service_tow").val();
+          if(tow==""){
+              alert("配置数值不能为空！");
+
+          }
+      });
+
+  });
+
+
+
+});
+function selectname() {
+    $("#service_type").val();
+    $.ajax({
+        type: "POST",
+        url: "/selectname",
+        dataType: "json",
+        success: function (date) {
+            if (date!=null) {
+                alert(date);
+                alert(date.service_type);
+                $("#service_type").append(date.service_type);
+
+
+            }
+        },
+
+        error: function () {
+            alert("对不起内部服务器错误");
+        }
+    });
+
+}
+
+function selectfanace(id){
+    $.ajax({
+        type: "POST",
+        url: "/selectfnance",
+        data: {fid: id},
+        dataType: "json",
+        success: function (date) {
+            if (date!=null) {
+                $("#financetype").val(date.finance_type);
+                $("#financeenable").val(date.finance_enable);
+
+
+            }
+        },
+
+        error: function () {
+            alert("对不起内部服务器错误");
+        }
+    });
+
+
+
+}
+
 // $(function (){
 //     $("#configId").on("click",function () {
 //         var a=$("#configId").val();
@@ -18,6 +88,7 @@
 //         });
 //     });
 // });
+
 
 
 /*
@@ -48,24 +119,3 @@ function deleteConfig(id) {
 
 }
 */
-function selectfanace(id){
-
-    $.ajax({
-        type: "POST",
-        url: "/selectfnance",
-        data: {fid: id},
-        dataType: "json",
-        success: function (date) {
-            if (date!=null) {
-            $("#financetype").val(date.finance_type);
-            $("#financeenable").val(date.finance_enable);
-            } else {
-
-            }
-        },
-        error: function () {
-            alert("对不起内部服务器错误");
-        }
-    });
-
-}
