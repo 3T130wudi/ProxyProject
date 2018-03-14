@@ -1,5 +1,6 @@
 package controller;
 
+import biz.RoleBiz;
 import biz.UsersBiz;
 import entity.Users;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,9 @@ public class UsersController {
 
     @Resource(name = "usersBiz")
     private UsersBiz usersBiz;
+
+    @Resource(name = "roleBiz")
+    private RoleBiz roleBiz;
 
     /**
      * 显示初始页面
@@ -39,5 +43,13 @@ public class UsersController {
         }
         return this.showLogin();
     }
+
+    @RequestMapping("/showUserList")
+    public String showUserList(Model m,Users users){
+        m.addAttribute("roleList",roleBiz.selectList());
+        m.addAttribute("userList",usersBiz.selectUser(users));
+        return "userList";
+    }
+
 
 }

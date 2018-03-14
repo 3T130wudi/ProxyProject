@@ -1,5 +1,7 @@
 package entity;
 
+import java.util.Date;
+
 public class Users {
     private int id;
     private String userId;
@@ -7,8 +9,27 @@ public class Users {
     private String password;
     private Role role;
     private int isDelete;
+    private int roleId;
+
+    public int getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
+    }
+
     private String type;
     private String phone;
+    private Date fristDate;
+
+    public Date getFristDate() {
+        return fristDate;
+    }
+
+    public void setFristDate(Date fristDate) {
+        this.fristDate = fristDate;
+    }
 
     public String getPhone() {
         return phone;

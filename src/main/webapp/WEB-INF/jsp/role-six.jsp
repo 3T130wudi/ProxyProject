@@ -27,7 +27,7 @@
     <form action="/" method="post">
     <button type="submit" class="btn btn-secondary" >保存</button>
     <button type="button" class="btn btn-secondary" >取消</button>
-    <input name="roleId" type="hidden"  value="${authorityList.roleId}">
+        <input name="id" type="hidden"  value="${authorityList.id}">
     <table class="table table-advance table-hover">
     <thead>
     <tr>

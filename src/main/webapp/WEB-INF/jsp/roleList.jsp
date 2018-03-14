@@ -97,9 +97,10 @@
             </c:forEach>
             </tbody>
         </table>
-
             </tr>
-            </thead></table>   </div><!-- /col-md-12 -->
+            </thead>
+        </table>
+    </div><!-- /col-md-12 -->
 </div>
 <%@include file="listBottom.jsp"%>
 
