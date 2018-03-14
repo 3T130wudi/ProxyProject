@@ -21,28 +21,6 @@ $(function () {
 
 
 });
-function selectname() {
-    $("#service_type").val();
-    $.ajax({
-        type: "POST",
-        url: "/selectname",
-        dataType: "json",
-        success: function (date) {
-            if (date!=null) {
-                alert(date);
-                alert(date.service_type);
-                $("#service_type").append(date.service_type);
-
-
-            }
-        },
-
-        error: function () {
-            alert("对不起内部服务器错误");
-        }
-    });
-
-}
 
 function selectfanace(id){
     $.ajax({
@@ -60,7 +38,7 @@ function selectfanace(id){
         },
 
         error: function () {
-            alert("对不起内部服务器错误");
+            alert("455555");
         }
     });
 
@@ -68,54 +46,4 @@ function selectfanace(id){
 
 }
 
-// $(function (){
-//     $("#configId").on("click",function () {
-//         var a=$("#configId").val();
-//         $.ajax({
-//             type:"POST",
-//             url:"/deletefinance?financeId="+a,
-//             dataType:"json",
-//             success:function (date) {
-//                 if(date>0){
-//                    alert('删除成功')
-//                 }else{
-//                     alert('删除失败')
-//                 }
-//             },
-//             error:function () {
-//                 alert("对不起内部服务器错误");
-//             }
-//         });
-//     });
-// });
 
-
-
-/*
-function deleteConfig(id) {
-
-    var Name = $("#configId").val();
-    var flag = confirm("确定要删除" + Name + "的信息吗?");
-    if(flag) {
-        $.ajax({
-            type: "POST",
-            url: "/deletefinance",
-            data: {id: id},
-            dataType: "json",
-            success: function (date) {
-                if (date) {
-
-                    window.location.reload();
-
-                } else {
-                    alert('删除失败')
-                }
-            },
-            error: function () {
-                alert("对不起内部服务器错误");
-            }
-        });
-    }
-
-}
-*/

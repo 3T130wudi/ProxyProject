@@ -101,19 +101,21 @@ public class configuration {
     }
 
     @RequestMapping("/selectname")
-    private void selectname(Model m,Service service,HttpServletResponse resp) throws IOException {
-
+    private void selectname(Model m,HttpServletResponse resp,HttpServletRequest req,@RequestParam("service_type") String service_type) throws IOException {
+        Service service=new Service();
+        service.setService_type(service_type);
        List<Service> ser=serviceBiz.selectname(service);
-
-        if (ser!=null) {
-            resp.setContentType("text/html;charset=utf-8");
-            resp.setCharacterEncoding("UTF-8");
-            PrintWriter writer = resp.getWriter();
-            String s = JSON.toJSONString(ser);
-            writer.print(s);
-            writer.flush();
-            writer.close();
-        }
+        for (Service x:ser) {
+            if(x!=null)  {
+                    resp.setContentType("text/html;charset=utf-8");
+                    resp.setCharacterEncoding("UTF-8");
+                    PrintWriter writer = resp.getWriter();
+                        String s = JSON.toJSONString(x.getService_type().equals(service_type));
+                        writer.print(s);
+                        writer.flush();
+                        writer.close();
+                    }
+            }
     }
 
 
@@ -121,12 +123,14 @@ public class configuration {
     @RequestMapping("/insertselect")
     private  String insertselect(Model m, Service service,HttpServletRequest req){
        String servicetype =req.getParameter("service_type");
-        String servicetow =req.getParameter("service_tow");
-
-        if( serviceBiz.insertselect(service)){
+        List<Service> ser=serviceBiz.selectname(service);
+        for (Service x:ser) {
+            if(x.getService_type().equals(servicetype)){
+                return selectService(m);
+            }
 
         }
-
+        serviceBiz.insertselect(service);
         return selectService(m);
          }
 

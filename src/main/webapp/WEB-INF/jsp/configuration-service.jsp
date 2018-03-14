@@ -23,7 +23,25 @@
                     <form action="/insertselect" id="regisetForm" method="post" >
                         <!-- 模态框主体 -->
                         <div class="modal-body">
-                            配置类型：<input id="service_type" onblur="selectname()" name="service_type" type="text"><br/>
+                            配置类型：<input id="service_type" onblur="
+                            $.ajax({
+                            type: 'POST',
+                            url: '/selectname?service_type='+$('#service_type').val(),
+                            dataType: 'json',
+                            success: function (date) {
+                            var name= $('#service_type').val();
+                            if(name!=''&& name!=null){
+                            if (date==true) {
+
+                            alert('不能添加重复的配置类型');
+
+                            }
+                            }
+                            },
+                            error: function () {
+
+                            }
+                            });" name="service_type" type="text">&nbsp<span id="ser"></span><br/>
                             <p></p>
                             配置数值：<input id="service_tow" name="service_tow" type="text"><br/>
                             <p></p>

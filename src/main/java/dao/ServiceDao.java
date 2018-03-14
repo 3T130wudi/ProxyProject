@@ -13,7 +13,4 @@ public interface ServiceDao {
 
 
     List<Service> selectname(Service service);
-
-
-
 }

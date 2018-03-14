@@ -13,6 +13,6 @@
     </insert>
 
     <select id="selectname" resultType="entity.Service">
-        SELECT * FROM `service`
+        SELECT * FROM `service` where service_type=#{service_type}
     </select>
 </mapper>
