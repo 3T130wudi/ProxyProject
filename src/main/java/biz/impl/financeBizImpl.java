@@ -21,8 +21,8 @@ public class financeBizImpl implements financeBiz {
         return financeDao.financeselect();
     }
 
-    public int updatafinance(finance finance) {
-        return financeDao.updatafinance(finance);
+    public boolean updatafinance(finance finance) {
+        return financeDao.updatafinance(finance)>0;
     }
 
 
