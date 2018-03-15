@@ -155,6 +155,7 @@ public class configuration {
 
     @RequestMapping("/selectcurrency")
     private String selectcurrency(Model m){
+
        m.addAttribute("currency",customerBiz.selectcurrency());
        return "configuration-customer";
 
