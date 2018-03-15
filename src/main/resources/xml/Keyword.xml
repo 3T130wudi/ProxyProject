@@ -61,4 +61,8 @@
             AND k.keyword LIKE concat ('%',#{name},'%')
         </if>
     </select>
+    <select id="selectKeyword" resultMap="keyword">
+        SELECT * FROM keywords k,APP a,Users u,AgentCustomer ac where k.user_id=u.id and a.id=k.APP_id and  k.agent_id=ac.id
+        AND k.id = #{id}
+    </select>
 </mapper>
