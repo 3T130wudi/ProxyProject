@@ -13,9 +13,9 @@ public class LifeBizImpl implements LifeBiz {
 
     @Resource
     private LifeDao lifeDao;
-
     public Life selectlife(Life life) {
         return lifeDao.selectlife(life);
+
     }
 }
 

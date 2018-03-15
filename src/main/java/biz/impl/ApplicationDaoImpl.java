@@ -13,8 +13,8 @@ public class ApplicationDaoImpl implements ApplicationBiz {
 
     @Resource
     private ApplicationDao applicationDao;
-
     public Application selectapplication(Application application) {
+
         return applicationDao.selectapplication(application);
     }
 }

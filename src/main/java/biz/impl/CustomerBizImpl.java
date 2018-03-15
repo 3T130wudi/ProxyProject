@@ -11,6 +11,7 @@ import java.util.List;
 public class CustomerBizImpl implements CustomerBiz {
     @Resource
     private CustomerDao customerDao;
+
     public List<Currency> selectcurrency() {
         return customerDao.selectcurrency();
     }

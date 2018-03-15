@@ -11,6 +11,7 @@ import java.util.List;
 public class ServiceBizImpl implements ServiceBiz{
     @Resource
     private ServiceDao serviceDao;
+
     public List<Service> selectService() {
         return serviceDao.selectService();
     }
