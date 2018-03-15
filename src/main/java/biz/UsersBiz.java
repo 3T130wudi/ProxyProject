@@ -8,4 +8,7 @@ public interface UsersBiz {
     Users login(Users users);
     Users selectList();
     List<Users> selectUser(Users users);
+    boolean addUser(Users users);
+    boolean delectUser(Users users);
+    boolean updateUser(Users users);
 }

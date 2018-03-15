@@ -32,6 +32,7 @@
     <bean name="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="mapperLocations" value="classpath:xml/*.xml" />
         <property name="typeAliasesPackage" value="entity" />
+        <property name="configLocation" value="classpath:mybatis/mybatis-config.xml"/>
     </bean>
 
     <!--声明式事务-->

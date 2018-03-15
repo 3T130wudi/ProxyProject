@@ -29,5 +29,19 @@ document.getElementById('type1').value=td2;
 }
 </SCRIPT>
 
+<SCRIPT LANGUAGE="JavaScript">
+    function subs(btn){
+        var tds = btn.parentElement.parentElement.children;
+        var td = (tds[0]).innerHTML ;
+        var td1 = (tds[1]).innerHTML ;
+        var td2 = (tds[2]).innerHTML ;
+        var td4 = (tds[4]).innerHTML ;
+        document.getElementById('userid1').value=td;
+        document.getElementById('name1').value=td1;
+        document.getElementById('roleId1').value=td2;
+        document.getElementById('type1').value=td4;
+    }
+</SCRIPT>
+
 </body>
 </html>

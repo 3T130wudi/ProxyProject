@@ -48,8 +48,16 @@ public class UsersController {
     public String showUserList(Model m,Users users){
         m.addAttribute("roleList",roleBiz.selectList());
         m.addAttribute("userList",usersBiz.selectUser(users));
+        m.addAttribute("user1",usersBiz.selectUser(users));
         return "userList";
     }
 
-
+    @RequestMapping("/addUser")
+    public String addUser(Model m,Users users){
+        if (usersBiz.addUser(users)){
+           return this.showUserList(m,new Users());
+        }else {
+           return this.showUserList(m,new Users());
+        }
+    }
 }

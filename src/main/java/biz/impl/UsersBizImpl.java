@@ -26,4 +26,16 @@ public class UsersBizImpl implements UsersBiz {
         return usersDao.selectUser(users);
     }
 
+    public boolean addUser(Users users) {
+        return usersDao.addUser(users)>0;
+    }
+
+    public boolean delectUser(Users users) {
+        return usersDao.delectUser(users)>0;
+    }
+
+    public boolean updateUser(Users users) {
+        return usersDao.updateUser(users)>0;
+    }
+
 }

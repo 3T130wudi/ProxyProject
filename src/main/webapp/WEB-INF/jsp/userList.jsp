@@ -15,14 +15,66 @@
                                 <div class="modal-header">
                                     <h4 class="modal-title">添加角色信息</h4>
                                 </div>
-                                <form action="/addRole" method="post" >
+                                <form action="/addUser" method="post" >
                                     <!-- 模态框主体 -->
                                     <div class="modal-body">
-                                        名字名称：<input name="name" type="text" value=""><br/>
+                                        登陆账号：<input name="userId" type="text" value=""><br/>
+                                        <p></p>
+                                        用户名称：<input name="name" type="text" value=""><br/>
+                                        <p></p>
+                                        登陆密码：<input type="password" name="password"><br/>
+                                        <p></p>
+                                        角色：
+                                        <select name="roleId">
+                                            <option value="0">-请选择-</option>
+                                            <c:forEach items="${roleList}" var="rl">
+                                                <option value="${rl.id}">${rl.name}</option>
+                                            </c:forEach>
+                                        </select>
                                         <p></p>
                                         是否启用：<select name="type">
                                         <option value="启用">启用</option>
-                                        <option value="不启用">不启用</option>
+                                        <option value="未启用">未启用</option>
+                                    </select>
+                                    </div>
+                                    <!-- 模态框底部 -->
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-secondary" >确定</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <!-- 模态框 -->
+                    <div class="modal fade" id="myModa2">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">修改角色信息</h4>
+                                </div>
+                                <form action="/updateUser" method="post" >
+                                    <!-- 模态框主体 -->
+                                    <div class="modal-body">
+                                        登陆账号：<input id="userid1" name="userId" type="text" value=""><br/>
+                                        <p></p>
+                                        用户名称：<input id="name1"  name="name" type="text" value=""><br/>
+                                        <p></p>
+                                        登陆密码：<input  type="password" name="password" value="******"><br/>
+                                        <p></p>
+                                        角色：
+                                        <select id="roleId1"  name="roleId">
+                                            <c:forEach items="${roleList}" var="rl">
+                                                <option value="${rl.id}"
+                                                        ${rl.name}</option>
+                                            </c:forEach>
+                                        </select>
+                                        <p></p>
+                                        是否启用：<select id="type1" name="type">
+                                        <option value="启用">启用</option>
+                                        <option value="未启用">未启用</option>
                                     </select>
                                     </div>
                                     <!-- 模态框底部 -->
@@ -44,7 +96,7 @@
                         <input name="name" type="text"/>
                         角色：
                         <select name="roleId">
-                            <option value="0">请选择</option>
+                            <option value="0">-请选择-</option>
                             <c:forEach items="${roleList}" var="rl">
                                 <option value="${rl.id}">${rl.name}</option>
                             </c:forEach>
@@ -77,7 +129,7 @@
                     <tbody>
                     <c:forEach items="${userList}" var="ul">
                         <tr>
-                            <td>${ul.id}</td>
+                            <td>${ul.userId}</td>
                             <td>${ul.name}</td>
                             <td>${ul.role.name}</td>
                             <td>
@@ -85,7 +137,7 @@
                             </td>
                             <td>${ul.type}</td>
                             <td>
-                                <button onclick="javascript:sub(this);"class="btn btn-primary" type="button" data-toggle="modal" data-target="#myModal1" >
+                                <button onclick="javascript:subs(this);"class="btn btn-primary" type="button" data-toggle="modal" data-target="#myModa2" >
                                     修改
                                 </button>
                                 <a href="/deleteRole?id=${r.id}" class="btn btn-primary">删除</a>

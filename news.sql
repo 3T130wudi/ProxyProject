@@ -105,6 +105,7 @@ insert  into `application`(`application_id`,`application_name`,`application_nume
 
 DROP TABLE IF EXISTS `authoritylist`;
 
+
 CREATE TABLE `authoritylist` (
   `roleId` int(11) NOT NULL,
   `authority_agwnt` varchar(20) DEFAULT NULL,
@@ -131,19 +132,23 @@ CREATE TABLE `authoritylist` (
   `configuration_5` varchar(20) DEFAULT NULL,
   `configuration_6` varchar(20) DEFAULT NULL,
   `configuration_7` varchar(20) DEFAULT NULL,
+  `dateTime` date,
+  `type` int not NULL,
   UNIQUE KEY `roleId` (`roleId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `authoritylist` */
 
-insert  into `authoritylist`(`roleId`,`authority_agwnt`,`authority_gateway`,`authority_report`,`authority_system`,`authority_configuration`,`agwnt_1`,`agwnt_2`,`agwnt_3`,`agwnt_4`,`agwnt_5`,`gateway_1`,`report_1`,`system_1`,`system_2`,`system_3`,`system_4`,`system_5`,`configuration_1`,`configuration_2`,`configuration_3`,`configuration_4`,`configuration_5`,`configuration_6`,`configuration_7`) values
-(1,'代理商管理','门户管理','报表管理','系统管理','系统配置管理','关键词申请','代理商客户管理','代理商预付款','关键词申请管理','操作日志','门户管理','报表管理','财务管理','角色管理','角色权限配置','用户管理','关键词审核','财务类型','服务类型','服务年限','APP地址','客户类型','证件类型','优惠类型'),
-(2,'代理商管理','门户管理',NULL,NULL,NULL,'关键词申请','代理商客户管理','代理商预付款','关键词申请管理','操作日志','门户管理',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(3,NULL,NULL,'报表管理','系统管理',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'报表管理','财务管理',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(4,NULL,NULL,'报表管理',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'报表管理',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(5,NULL,NULL,'报表管理',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'报表管理',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(6,NULL,NULL,'报表管理',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'报表管理',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(7,NULL,NULL,'报表管理','系统管理','',NULL,NULL,NULL,NULL,NULL,NULL,'报表管理',NULL,'角色管理','角色权限配置','用户管理','关键词审核',NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+insert  into `authoritylist`(`roleId`,`authority_agwnt`,`authority_gateway`,`authority_report`,`authority_system`,`authority_configuration`,`agwnt_1`,`agwnt_2`,`agwnt_3`,`agwnt_4`,`agwnt_5`,`gateway_1`,`report_1`,`system_1`,`system_2`,`system_3`,`system_4`,`system_5`,`configuration_1`,`configuration_2`,`configuration_3`,`configuration_4`,`configuration_5`,`configuration_6`,`configuration_7`,`dateTime`,`type`) values
+(1,'代理商管理','门户管理','报表管理','系统管理','系统配置管理','关键词申请','代理商客户管理','代理商预付款','关键词申请管理','操作日志','门户管理','报表管理','财务管理','角色管理','角色权限配置','用户管理','关键词审核','财务类型','服务类型','服务年限','APP地址','客户类型','证件类型','优惠类型',now(),1),
+(2,'代理商管理','门户管理',NULL,NULL,NULL,'关键词申请','代理商客户管理','代理商预付款','关键词申请管理','操作日志','门户管理',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NOW(),1),
+(3,NULL,NULL,'报表管理','系统管理',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'报表管理','财务管理',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NOW(),1),
+(4,NULL,NULL,'报表管理',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'报表管理',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NOW(),1),
+(5,NULL,NULL,'报表管理',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'报表管理',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NOW(),1),
+(6,NULL,NULL,'报表管理',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'报表管理',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NOW(),1),
+(7,NULL,NULL,'报表管理','系统管理','',NULL,NULL,NULL,NULL,NULL,NULL,'报表管理',NULL,'角色管理','角色权限配置','用户管理','关键词审核',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NOW(),1),
+
+(8,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NOW(),1);
 
 /*Table structure for table `capitalsource` */
 
@@ -424,8 +429,8 @@ CREATE TABLE `role` (
   `fristDate` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `uthorityId` (`uthorityId`),
-  CONSTRAINT `role_ibfk_1` FOREIGN KEY (`uthorityId`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+  CONSTRAINT `role_ibfk_1` FOREIGN KEY (`uthorityId`) REFERENCES `authoritylist` (`roleId`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 /*Data for the table `role` */
 
@@ -435,7 +440,8 @@ insert  into `role`(`id`,`NAME`,`uthorityId`,`type`,`fristDate`) values
 (3,'财务用户',3,'启用','2018-03-01'),
 (4,'渠道经理',4,'启用','2018-03-01'),
 (5,'市场',5,'启用','2018-03-01'),
-(6,'大区经理',6,'启用','2018-03-01');
+(6,'大区经理',6,'启用','2018-03-01'),
+(7,'客服人员',7,'启用','2018-03-01');
 
 /*Table structure for table `service` */
 
@@ -488,7 +494,6 @@ insert  into `users`(`id`,`userId`,`NAME`,`PASSWORD`,`roleId`,`isDelete`,`type`,
 (5,'tianqi','田七','tianqi',5,0,'启用','2018-03-01',NULL),
 (6,'wangba','王八','wangba',6,0,'启用','2018-03-01',NULL),
 (7,'jiumei','九妹','jiumei',7,0,'启用','2018-03-01',NULL);
-
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
