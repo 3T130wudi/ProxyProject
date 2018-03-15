@@ -5,14 +5,14 @@ import java.util.Date;
 
 
 public class AuthorityList {
-    private int roleId ;
+    private int id ;
 
-    public int getRoleId() {
-        return roleId;
+    public int getId() {
+        return id;
     }
 
-    public void setRoleId(int roleId) {
-        this.roleId = roleId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     private String authority_agwnt ;
@@ -41,7 +41,7 @@ public class AuthorityList {
     private String configuration_7;
 
     private Date dateTime;
-    private int type;
+    private String type;
 
     public Date getDateTime() {
         return dateTime;
@@ -51,15 +51,13 @@ public class AuthorityList {
         this.dateTime = dateTime;
     }
 
-    public int getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(int type) {
+    public void setType(String type) {
         this.type = type;
     }
-
-
 
     public String getAuthority_agwnt() {
         return authority_agwnt;

@@ -6,6 +6,7 @@ import entity.Users;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service("usersBiz")
 public class UsersBizImpl implements UsersBiz {
@@ -19,6 +20,10 @@ public class UsersBizImpl implements UsersBiz {
 
     public Users selectList() {
         return usersDao.selectList();
+    }
+
+    public List<Users> selectUser(Users users) {
+        return usersDao.selectUser(users);
     }
 
 }

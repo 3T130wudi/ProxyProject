@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.AuthoritylistDao">
     <select id="selectList" resultType="Authoritylist">
-        SELECT * FROM authoritylist WHERE roleId=#{roleId}
+        SELECT * FROM authoritylist WHERE id=#{id}
     </select>
 
     <update id="updateList">
@@ -14,7 +14,7 @@
         ,system_4=#{system_4},system_5=#{system_5},configuration_1=#{configuration_1},configuration_2=#{configuration_2}
         ,configuration_3=#{configuration_3},configuration_4=#{configuration_4}
         ,configuration_5=#{configuration_5},configuration_6=#{configuration_6},configuration_7=#{configuration_7}
-          WHERE roleId=#{roleId}
+          WHERE id=#{id}
     </update>
 
 </mapper>

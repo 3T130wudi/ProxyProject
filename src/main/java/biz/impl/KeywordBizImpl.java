@@ -20,4 +20,8 @@ public class KeywordBizImpl implements KeywordBiz {
     public List<keyword> keywordList(String name) {
         return keywordDao.keywordList(name);
     }
+
+    public List<keyword> selectKeyword(int id) {
+        return keywordDao.selectKeyword(id);
+    }
 }

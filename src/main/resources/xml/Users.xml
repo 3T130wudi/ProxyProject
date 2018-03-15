@@ -10,12 +10,18 @@
         <result column="userId" property="userId"/>
         <result column="name" property="name"/>
         <result column="password" property="password"/>
+        <result column="isDelete" property="isDelete"/>
+        <result column="type" property="type"/>
+        <result column="fristDate" property="fristDate"/>
+        <result column="phone" property="phone"/>
         <!-- property指的是在bean中字段名 ofType类的全定向名 -->
         <collection property="role" ofType="entity.Role">
-            <result column="id" property="id"/>
+            <result column="role.id" property="id"/>
             <result column="role.name" property="name"/>
+            <result column="role.type" property="type"/>
+            <result column="role.fristDate" property="fristDate"/>
             <association property="authorityList" javaType="entity.AuthorityList">
-                <result column="roleId" property="roleId"/>
+                <result column="id" property="id"/>
                 <result column="authority_agwnt" property="authority_agwnt"/>
                 <result column="authority_gateway" property="authority_gateway"/>
                 <result column="authority_report" property="authority_report"/>
@@ -40,18 +46,38 @@
                 <result column="configuration_5" property="configuration_5"/>
                 <result column="configuration_6" property="configuration_6"/>
                 <result column="configuration_7" property="configuration_7"/>
+                <result column="dateTime" property="dateTime"/>
+                <result column="type" property="type"/>
             </association>
         </collection>
     </resultMap>
 
     <select id="login" resultMap="usersBen">
-        SELECT * from users u,role r,authoritylist a where
-         u.roleId=r.id AND r.uthorityId=a.roleId and u.userId=#{userId} AND u.password=#{password}
+        SELECT u.*,a.*,r.id 'role.id',r.name 'role.name',r.type 'role.type',r.fristDate 'role.fristDate'
+         from users u,role r,authoritylist a where
+         u.roleId=r.id AND r.uthorityId=a.id AND u.userId=#{userId} AND u.password=#{password}
 
     </select>
 
     <select id="selectList" resultType="Users">
         SELECT * from users
+    </select>
+
+    <select id="selectUser" resultType="Users">
+          SELECT u.*,r.name 'role.name' FROM users u,role r
+          <where>
+              <if test="name !=null and name!=''">
+                      u.name LIKE CONCAT ('%',#{name},'%')
+              </if>
+              <if test="roleId >0">
+                    AND u.roleId=#{roleId}
+              </if>
+              <if test="type != null and type !=''">
+                     AND u.type=#{type}
+              </if>
+                    AND    u.roleId=r.id
+          </where>
+
     </select>
 
 </mapper>

@@ -13,8 +13,8 @@ public class AuthoritylistBizImpl implements AuthoritylistBiz {
     @Resource
     private AuthoritylistDao authoritylistDao;
 
-    public AuthorityList selectList(int roleId) {
-        return authoritylistDao.selectList(roleId);
+    public AuthorityList selectList(int id) {
+        return authoritylistDao.selectList(id);
     }
 
     public boolean updateList(AuthorityList authorityList) {
