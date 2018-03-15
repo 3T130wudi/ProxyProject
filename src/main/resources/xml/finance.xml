@@ -15,7 +15,6 @@
     <select id="selectfnance" resultType="entity.finance">
           SELECT * FROM `finance` WHERE finance_id=#{id}
     </select>
-
     <update id="updatafinance">
         UPDATE finance SET finance_type=#{finance_type},finance_enable=#{finance_enable} WHERE finance_id=#{finance_id}
     </update>

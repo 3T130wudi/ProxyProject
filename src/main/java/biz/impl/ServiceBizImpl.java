@@ -23,5 +23,9 @@ public class ServiceBizImpl implements ServiceBiz{
         return serviceDao.selectname(service);
     }
 
+    public boolean updateservice(Service service) {
+        return serviceDao.updateservice(service)>0;
+    }
+
 
 }

@@ -35,6 +35,7 @@ var Script = function () {
                 dataType:"json",
                 success:function (date) {
                     if(date!=null){
+
                         $("#xinming").attr("value",date.user_id.name);
                     }else{
                         $("#kehu").append("搜索的客户不存在");
