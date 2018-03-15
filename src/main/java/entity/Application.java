@@ -4,7 +4,6 @@ public class Application {
     private  int application_id;
     private  String application_name;
     private  String application_numer;
-
     public Application() {
     }
 

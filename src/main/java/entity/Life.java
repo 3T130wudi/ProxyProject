@@ -4,7 +4,6 @@ public class Life {
     private int life_id;
     private String life_name;
     private int life_numer;
-
     public Life() {
     }
 

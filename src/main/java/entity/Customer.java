@@ -4,7 +4,6 @@ public class Customer {
     private int customer_id;
     private String customer_type;
     private int customer_enable;
-
     public int getCustomer_id() {
         return customer_id;
     }
