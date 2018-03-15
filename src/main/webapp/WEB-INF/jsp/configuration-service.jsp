@@ -48,7 +48,6 @@
                             是否启用：<select name="service_enable">
                             <option value="0">启用</option>
                             <option value="1">不启用</option>
-
                         </select>
                         </div>
 

@@ -65,7 +65,6 @@
                     <td/>
                     <td><a id="finanId" name="finanId"   data-toggle="modal" data-target="#Myomoal">修改|</a><a id="configId" href="/deletefinance?configId=${f.finance_id}" name="configId"> 删除</a><td/>
                 <tr/>
-
                 </c:forEach>
 
                 <table/>

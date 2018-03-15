@@ -20,6 +20,7 @@
             <td>配置数值：<input id="servicetow" name="service_tow" type="text" value="${application.application_numer}"><br/></td>
         </tr>
     </table>
+
 </div>
 
 
