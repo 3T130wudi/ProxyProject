@@ -7,4 +7,5 @@
     <select id="selectapplication" resultType="entity.Application">
         SELECT * FROM `application`
     </select>
+
 </mapper>

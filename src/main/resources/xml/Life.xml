@@ -6,4 +6,5 @@
     <select id="selectlife" resultType="entity.Life">
        SELECT * FROM `life`
     </select>
+
 </mapper>

@@ -6,4 +6,5 @@
     <select id="selectcurrency" resultType="entity.Customer">
             SELECT * FROM customer
     </select>
+
 </mapper>
