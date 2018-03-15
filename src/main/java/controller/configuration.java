@@ -1,9 +1,10 @@
 package controller;
 
-import biz.ServiceBiz;
-import biz.financeBiz;
+import biz.*;
 import com.alibaba.fastjson.JSON;
 
+import entity.Application;
+import entity.Life;
 import entity.Service;
 import entity.finance;
 import org.springframework.stereotype.Controller;
@@ -25,6 +26,13 @@ public class configuration {
     private financeBiz financeBiz;
     @Resource
     private ServiceBiz serviceBiz;
+    @Resource
+    private LifeBiz lifeBiz;
+    @Resource
+    private ApplicationBiz applicationBiz;
+
+    @Resource
+    private CustomerBiz customerBiz;
 
     //财务类型集合查询
     @RequestMapping("/Financeselect")
@@ -134,7 +142,23 @@ public class configuration {
         return selectService(m);
          }
 
+    @RequestMapping("/selectlife")
+    private  String selectlife(Model m, Life life){
+       m.addAttribute("life",lifeBiz.selectlife(life)) ;
+       return "configuration-life";
+    }
+    @RequestMapping("/selectapplication")
+    private  String selectapplication(Model m, Application application){
+              m.addAttribute("application",applicationBiz.selectapplication(application));
+              return "configuration-application";
+    }
 
+    @RequestMapping("/selectcurrency")
+    private String selectcurrency(Model m){
+       m.addAttribute("currency",customerBiz.selectcurrency());
+       return "configuration-customer";
+
+    }
 
     }
 
