@@ -12,4 +12,5 @@ public interface ServiceBiz {
     boolean insertselect(Service service);
 
     List<Service> selectname(Service service);
+    boolean updateservice(Service service);
 }

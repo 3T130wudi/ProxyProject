@@ -7,4 +7,5 @@ import java.util.List;
 public interface KeywordBiz {
     int insertKeyword(keyword keyword);
     List<keyword> keywordList(String name);
+    List<keyword> selectKeyword(int id);
 }

@@ -48,7 +48,6 @@
                             是否启用：<select name="service_enable">
                             <option value="0">启用</option>
                             <option value="1">不启用</option>
-
                         </select>
                         </div>
 
@@ -84,7 +83,7 @@
                 <c:if test="${s.service_enable==0}">启用</c:if>
                 <c:if test="${s.service_enable==1}">不启用</c:if>
             <td/>
-            <td><a id="sid" name="sid"   data-toggle="modal" data-target="#Myomoal">修改</a><td/>
+            <td><a id="sid" name="sid"   data-toggle="modal" data-target="#Mymoal">修改</a><td/>
         <tr/>
 
         </c:forEach>
@@ -92,6 +91,41 @@
         <table/>
 </form>
 
+    <div class="container">
+        <!-- 模态框 -->
+        <div class="modal fade" id="Mymoal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+
+                    <div class="modal-header">
+                        <h4 class="modal-title">您正在进行修改操作</h4>
+                    </div>
+                    <form action="/insertselect"  method="post" >
+                        <!-- 模态框主体 -->
+                        <div class="modal-body">
+                            配置类型：<input id="servicetype"name="service_type" type="text">&nbsp<span id="ser"></span><br/>
+                            <p></p>
+                            配置数值：<input id="servicetow" name="service_tow" type="text"><br/>
+                            <p></p>
+                            是否启用：<select name="service_enable">
+                            <option value="0">启用</option>
+                            <option value="1">不启用</option>
+
+                        </select>
+                        </div>
+
+                        <!-- 模态框底部 -->
+                        <div class="modal-footer">
+                            <button type="submit"   class="btn btn-secondary" >确定</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </div>
 
 <script src="js/jquery-1.12.4.js"></script>

@@ -11,8 +11,10 @@
     <insert id="insertselect">
         INSERT INTO `service` VALUES(DEFAULT,#{service_type},#{service_tow},#{service_enable})
     </insert>
-
     <select id="selectname" resultType="entity.Service">
         SELECT * FROM `service` where service_type=#{service_type}
     </select>
+    <update id="updateservice">
+       UPDATE service SET service_type=#{service_type},service_tow=#{service_tow},service_enable=#{service_enable}  WHERE service_id=#{service_id}
+    </update>
 </mapper>

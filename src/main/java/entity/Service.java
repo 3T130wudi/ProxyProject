@@ -5,7 +5,6 @@ public class Service {
     private int service_tow;
     private String service_type;
     private int service_enable;
-
     public Service() {
     }
 

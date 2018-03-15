@@ -11,6 +11,7 @@ import java.util.List;
 public class ServiceBizImpl implements ServiceBiz{
     @Resource
     private ServiceDao serviceDao;
+
     public List<Service> selectService() {
         return serviceDao.selectService();
     }
@@ -21,6 +22,10 @@ public class ServiceBizImpl implements ServiceBiz{
 
     public List<Service> selectname(Service service) {
         return serviceDao.selectname(service);
+    }
+
+    public boolean updateservice(Service service) {
+        return serviceDao.updateservice(service)>0;
     }
 
 
