@@ -7,4 +7,5 @@ import java.util.List;
 public interface LifeDao {
 
    Life selectlife(Life life);
+
 }
