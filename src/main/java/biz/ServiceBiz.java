@@ -11,6 +11,9 @@ public interface ServiceBiz {
     //服务类型新增
     boolean insertselect(Service service);
 
+    Service serviceselect(Service service);
+
     List<Service> selectname(Service service);
+
     boolean updateservice(Service service);
 }

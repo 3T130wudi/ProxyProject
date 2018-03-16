@@ -22,6 +22,28 @@ $(function () {
 
 });
 
+
+function updatefance(id) {
+    $.ajax({
+        type: "POST",
+        url: "/updatafinance?finance_id="+id,
+        dataType: "json",
+        success: function (date) {
+            if (date>0) {
+                alert("修改成功");
+
+
+            }
+        },
+
+        error: function () {
+            alert("455555");
+        }
+    });
+
+
+}
+
 function selectfanace(id){
     $.ajax({
         type: "POST",
@@ -45,5 +67,4 @@ function selectfanace(id){
 
 
 }
-
 

@@ -130,8 +130,8 @@
                             <li><a  href="/selectlife">${user.role.authorityList.configuration_3}</a></li>
                             <li><a  href="/selectapplication">${user.role.authorityList.configuration_4}</a></li>
                             <li><a  href="/selectcurrency">${user.role.authorityList.configuration_5}</a></li>
-                            <li><a  href="personalDataUpdate.html">${user.role.authorityList.configuration_6}</a></li>
-                            <li><a  href="personalDataUpdate.html">${user.role.authorityList.configuration_7}</a></li>
+                            <li><a  href="/selectcertificates">${user.role.authorityList.configuration_6}</a></li>
+                            <li><a  href="/selectDiscount">${user.role.authorityList.configuration_7}</a></li>
                         </ul>
                     </li>
                 </c:if>

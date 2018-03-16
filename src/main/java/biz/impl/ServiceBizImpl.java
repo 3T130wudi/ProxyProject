@@ -20,6 +20,10 @@ public class ServiceBizImpl implements ServiceBiz{
         return serviceDao.insertselect(service)>0;
     }
 
+    public Service serviceselect(Service service) {
+        return serviceDao.serviceselect(service);
+    }
+
     public List<Service> selectname(Service service) {
         return serviceDao.selectname(service);
     }

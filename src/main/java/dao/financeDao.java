@@ -13,8 +13,9 @@ public interface financeDao {
 
     int updatafinance(finance finance);
 
+    finance fanceselect(finance finance);
 
-    finance selectfnance(@Param("id")int id);
+    finance selectfnance(int id);
 
 
     int deletefinance(@Param("financeId")int financeId);

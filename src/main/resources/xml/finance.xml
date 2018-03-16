@@ -8,21 +8,20 @@
     </select>
 
     <insert id="insertfinance">
-
         INSERT INTO `finance` VALUES(DEFAULT,#{finance_type},#{finance_enable})
     </insert>
-
     <select id="selectfnance" resultType="entity.finance">
           SELECT * FROM `finance` WHERE finance_id=#{id}
     </select>
-    <update id="updatafinance">
-        UPDATE finance SET finance_type=#{finance_type},finance_enable=#{finance_enable} WHERE finance_id=#{finance_id}
-    </update>
-
-
     <delete id="deletefinance">
         DELETE FROM finance WHERE finance_id=#{financeId}
     </delete>
 
+    <update id="updatafinance">
+        UPDATE `finance` SET finance_type=#{finance_type},finance_enable=#{finance_enable} WHERE finance_id=#{finance_id}
+    </update>
+    <select id="fanceselect" resultType="entity.finance">
+         SELECT * FROM `finance`
+    </select>
 
 </mapper>

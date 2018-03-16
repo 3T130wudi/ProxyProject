@@ -21,10 +21,13 @@ public class financeBizImpl implements financeBiz {
         return financeDao.financeselect();
     }
 
-    public boolean updatafinance(finance finance) {
-        return financeDao.updatafinance(finance)>0;
+    public int updatafinance(finance finance) {
+        return financeDao.updatafinance(finance);
     }
 
+    public finance fanceselect(finance finance) {
+        return financeDao.fanceselect(finance);
+    }
 
 
     public boolean deletefinance(int financeId) {

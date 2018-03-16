@@ -15,6 +15,9 @@
         SELECT * FROM `service` where service_type=#{service_type}
     </select>
     <update id="updateservice">
-       UPDATE service SET service_type=#{service_type},service_tow=#{service_tow},service_enable=#{service_enable}  WHERE service_id=#{service_id}
+      UPDATE `service` SET service_type=#{service_type},service_tow=#{service_tow},service_enable=#{service_enable} WHERE service_id=#{service_id}
     </update>
+    <select id="serviceselect" resultType="entity.Service">
+           SELECT * FROM `service` WHERE service_id=#{service_id}
+    </select>
 </mapper>

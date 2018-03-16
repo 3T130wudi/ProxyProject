@@ -23,10 +23,10 @@
                     <form action="/insertselect" id="regisetForm" method="post" >
                         <!-- 模态框主体 -->
                         <div class="modal-body">
-                            配置类型：<input id="service_type" onblur="
+                            配置类型：<input id="servicepe" onblur="
                             $.ajax({
                             type: 'POST',
-                            url: '/selectname?service_type='+$('#service_type').val(),
+                            url: '/selectname?service_type='+$('#servicepe').val(),
                             dataType: 'json',
                             success: function (date) {
                             var name= $('#service_type').val();
@@ -41,7 +41,7 @@
                             error: function () {
 
                             }
-                            });" name="service_type" type="text">&nbsp<span id="ser"></span><br/>
+                            });" name="servicepe" type="text">&nbsp<span id="ser"></span><br/>
                             <p></p>
                             配置数值：<input id="service_tow" name="service_tow" type="text"><br/>
                             <p></p>
@@ -83,7 +83,21 @@
                 <c:if test="${s.service_enable==0}">启用</c:if>
                 <c:if test="${s.service_enable==1}">不启用</c:if>
             <td/>
-            <td><a id="sid" name="sid"   data-toggle="modal" data-target="#Mymoal">修改</a><td/>
+            <td><a id="sid" name="sid" onclick="
+                    $.ajax({
+                            type: 'POST',
+                            url: '/serviceselect?uid='+${s.service_id},
+                            dataType: 'json',
+                            success: function (date) {
+                                $('#service_id').val(date.service_id);
+                                 $('#service_type').val(date.service_type);
+                                $('#servicetow').val(date.service_tow);
+                                $('#serviceenable').val(date.service_enable);
+                            },
+                            error: function () {
+
+                            }
+                            });"  data-toggle="modal" data-target="#Mymoal">修改</a><td/>
         <tr/>
 
         </c:forEach>
@@ -101,14 +115,15 @@
                     <div class="modal-header">
                         <h4 class="modal-title">您正在进行修改操作</h4>
                     </div>
-                    <form action="/insertselect"  method="post" >
+                    <form action="/updateservice"  method="post" >
                         <!-- 模态框主体 -->
                         <div class="modal-body">
-                            配置类型：<input id="servicetype"name="service_type" type="text">&nbsp<span id="ser"></span><br/>
+                            <input type="hidden" id="service_id" name="service_id">
+                            配置类型：<input id="service_type" name="service_type" type="text">&nbsp<span id="se"></span><br/>
                             <p></p>
                             配置数值：<input id="servicetow" name="service_tow" type="text"><br/>
                             <p></p>
-                            是否启用：<select name="service_enable">
+                            是否启用：<select id="serviceenable" name="service_enable">
                             <option value="0">启用</option>
                             <option value="1">不启用</option>
 
@@ -127,9 +142,8 @@
 
     </div>
 </div>
-
 <script src="js/jquery-1.12.4.js"></script>
-<script src="js/configuration.js"></script>
 
+<script src="js/configuration.js"></script>
 
 <jsp:include page="listBottom.jsp"/>

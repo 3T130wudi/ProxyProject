@@ -3,16 +3,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="listTop.jsp"/>
 
-<style>
-</style>
-
-
 <div class="col-md-9 col-sm-12" style="height: 80%;width: 70%;margin-left: 15%;margin-top: 5%;">
     <div>
         <div class="container">
             <!-- 按钮：用于打开模态框 -->
             <button type="button" data-toggle="modal" data-target="#myModal" >
-                添加财务类型
+                添加客户类型
             </button>
 
             <!-- 模态框 -->
@@ -58,18 +54,17 @@
                     <td>是否启用<td/>
                     <td>操作<td/>
                 <tr/>
-                <c:forEach items="${finance}" var="f">
+                <c:forEach items="${certificates}" var="c">
 
                 <tr id="coifn">
-                    <td>${f.finance_id}<td/>
-                    <td>${f.finance_type}<td/>
+                    <td>${c.certificates_id}<td/>
+                    <td>${c.certificates_type}<td/>
                     <td>
-                        <c:if test="${f.finance_enable==0}">启用</c:if>
-                        <c:if test="${f.finance_enable==1}">不启用</c:if>
+                        <c:if test="${c.certificates_enable==0}">启用</c:if>
+                        <c:if test="${c.certificates_enable==1}">不启用</c:if>
                     <td/>
-                    <td><a id="finanId" name="finanId" onclick="selectfanace(${f.finance_id})"  data-toggle="modal" data-target="#Myomoal">修改|</a><a id="configId" href="/deletefinance?configId=${f.finance_id}" name="configId"> 删除</a><td/>
+                    <td><a id="finanId" name="finanId"   data-toggle="modal" data-target="#Myomoal">修改|</a><a id="configId" href="/deletefinance?configId=${f.finance_id}" name="configId"> 删除</a><td/>
                 <tr/>
-
                 </c:forEach>
 
                 <table/>
@@ -88,7 +83,7 @@
                     <div class="modal-header">
                         <h4 class="modal-title">您正在进行修改操作</h4>
                     </div>
-                    <form action="updatafinance" method="post" >
+                    <form action="/updatafinance" method="post" >
                         <!-- 模态框主体 -->
                         <div class="modal-body">
                             类型名称：<input id="financetype" name="financetype" type="text"><br/>
@@ -110,6 +105,8 @@
             </div>
         </div>
     </div>
+
+
 
     <script src="js/jquery-1.12.4.js"></script>
     <script src="js/configuration.js"></script>
