@@ -23,6 +23,7 @@
     <select id="fanceselect" resultType="entity.finance">
          SELECT * FROM `finance` WHERE finance_id=#{finance_id}
     </select>
+
      <select id="insertjuct" resultType="entity.finance">
            SELECT * FROM `finance` WHERE finance_type=#{finance_type}
      </select>

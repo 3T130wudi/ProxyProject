@@ -9,7 +9,6 @@ public interface CustomerBiz {
 
     List<Customer> selectcurrency();
     boolean insertcurrrency(Customer customer);
-
     List<Customer> currencyselect(Customer customer);
 
 }

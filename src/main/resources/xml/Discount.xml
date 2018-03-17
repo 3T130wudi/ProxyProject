@@ -6,5 +6,4 @@
     <select id="selectDiscount" resultType="entity.Discount">
         SELECT * FROM `discount`
     </select>
-
 </mapper>

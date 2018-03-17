@@ -14,5 +14,7 @@ public class DiscountBizImpl implements DiscountBiz{
     private DiscountDao discountDao;
     public List<Discount> selectDiscount() {
         return discountDao.selectDiscount();
+
+
     }
 }

@@ -20,6 +20,7 @@ public class LifeBizImpl implements LifeBiz {
 
     public boolean updatelife(Life life) {
         return lifeDao.updatelife(life)>0;
+
     }
 }
 

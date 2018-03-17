@@ -31,6 +31,7 @@ public class financeBizImpl implements financeBiz {
 
     public List<finance> insertjuct(finance finance) {
         return financeDao.insertjuct(finance);
+
     }
 
 

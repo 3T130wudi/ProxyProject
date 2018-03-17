@@ -10,4 +10,5 @@ public interface ApplicationBiz {
     boolean updateappcation(Application application);
 
 
+
 }

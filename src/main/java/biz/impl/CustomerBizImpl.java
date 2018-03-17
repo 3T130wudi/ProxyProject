@@ -23,5 +23,6 @@ public class CustomerBizImpl implements CustomerBiz {
 
     public List<Customer> currencyselect(Customer customer) {
         return customerDao.currencyselect(customer);
+
     }
 }

@@ -14,6 +14,5 @@ public interface ServiceBiz {
     Service serviceselect(Service service);
 
     List<Service> selectname(Service service);
-
     boolean updateservice(Service service);
 }

@@ -10,4 +10,5 @@ public interface LifeDao {
 
    int updatelife(Life life);
 
+
 }

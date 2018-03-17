@@ -13,5 +13,6 @@ public class CertificatesBizImpl implements CertificatesBiz {
     private CertificatesDao certificatesDao;
     public List<Certificates> selectcertificates() {
         return certificatesDao.selectcertificates();
+
     }
 }

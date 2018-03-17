@@ -30,6 +30,7 @@ public class ServiceBizImpl implements ServiceBiz{
 
     public boolean updateservice(Service service) {
         return serviceDao.updateservice(service)>0;
+
     }
 
 
