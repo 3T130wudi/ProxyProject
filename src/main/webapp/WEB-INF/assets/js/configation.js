@@ -49,7 +49,6 @@ function insertjudgment(){
 
         }
     });
-
 };
 
 function del() {

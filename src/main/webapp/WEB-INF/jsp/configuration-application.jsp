@@ -23,6 +23,7 @@
             <td>配置数值：<input id="application_numer" name="application_numer" type="text" value="${application.application_numer}"><br/></td>
             <td> <input type="submit" class="btn" id="service" name="service" value="保存" style="font-size: 25px;margin-left: 35px"></td>
         </tr>
+
         </form>
     </table>
 

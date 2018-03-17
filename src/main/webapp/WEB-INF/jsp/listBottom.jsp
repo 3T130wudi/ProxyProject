@@ -9,7 +9,6 @@
 <script src="js/configation.js"></script>
 <!--common script for all pages-->
 <script src="js/common-scripts.js"></script>
-
 <script>
     //custom select box
     $(function(){

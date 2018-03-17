@@ -101,10 +101,8 @@
         <tr/>
 
         </c:forEach>
-
         <table/>
 </form>
-
     <div class="container">
         <!-- 模态框 -->
         <div class="modal fade" id="Mymoal">

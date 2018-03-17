@@ -110,6 +110,7 @@
                     <form action="updatafinance" method="post" >
                         <!-- 模态框主体 -->
                         <div class="modal-body">
+
                             <input type="hidden" id="finance_id" name="finance_id" class="finance_id">
                             类型名称：<input id="fine" name="finance_type" type="text"><br/>
                             <p></p>
