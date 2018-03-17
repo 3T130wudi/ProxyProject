@@ -10,6 +10,9 @@ public class Users {
     private Role role;
     private int isDelete;
     private int roleId;
+    private String type;
+    private String phone;
+    private Date fristDate;
 
     public int getRoleId() {
         return roleId;
@@ -18,10 +21,6 @@ public class Users {
     public void setRoleId(int roleId) {
         this.roleId = roleId;
     }
-
-    private String type;
-    private String phone;
-    private Date fristDate;
 
     public Date getFristDate() {
         return fristDate;

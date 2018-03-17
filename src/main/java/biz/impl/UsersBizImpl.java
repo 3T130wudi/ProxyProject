@@ -30,12 +30,16 @@ public class UsersBizImpl implements UsersBiz {
         return usersDao.addUser(users)>0;
     }
 
-    public boolean delectUser(Users users) {
-        return usersDao.delectUser(users)>0;
+    public boolean deleteUser(Users users) {
+        return usersDao.deleteUser(users)>0;
     }
 
     public boolean updateUser(Users users) {
         return usersDao.updateUser(users)>0;
+    }
+
+    public Users selectOne(Users users) {
+        return usersDao.selectOne(users);
     }
 
 }

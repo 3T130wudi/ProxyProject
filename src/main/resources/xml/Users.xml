@@ -14,6 +14,7 @@
         <result column="type" property="type"/>
         <result column="fristDate" property="fristDate"/>
         <result column="phone" property="phone"/>
+        <result column="roleId" property="roleId"/>
         <!-- property指的是在bean中字段名 ofType类的全定向名 -->
         <collection property="role" ofType="entity.Role">
             <result column="role.id" property="id"/>
@@ -84,5 +85,18 @@
         INSERT INTO users(`userId`,`NAME`,`PASSWORD`,`roleId`,`isDelete`,`type`,`fristDate`,`phone`)
         VALUE (#{userId},#{name},#{password},#{roleId},0,#{type},now(),null)
     </insert>
+
+    <update id="updateUser">
+        UPDATE users SET userId=#{userId},name={#name},password=#{password},roleId=#{roleId},type={type}
+         WHERE id=#{id}
+    </update>
+
+    <delete id="deleteUser">
+        DELETE FROM users WHERE id=#{id}
+    </delete>
+
+    <select id="selectOne" resultType="Users">
+        SELECT * FROM users WHERE id=#{id}
+    </select>
 
 </mapper>

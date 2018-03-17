@@ -55,9 +55,34 @@ public class UsersController {
     @RequestMapping("/addUser")
     public String addUser(Model m,Users users){
         if (usersBiz.addUser(users)){
-           return this.showUserList(m,new Users());
+           return this.showUserList(m,users);
         }else {
            return this.showUserList(m,new Users());
         }
     }
+
+    @RequestMapping("/selectOne")
+    public Model selectOne(Model m,Users users){
+       m.addAttribute("oneUser",usersBiz.selectOne(users));
+        return m;
+    }
+
+    @RequestMapping("/updateUser")
+    public String updateUser(Model m,Users users){
+        if (usersBiz.updateUser(users)){
+            return this.showUserList(m,users);
+        }else {
+            return this.showUserList(m,new Users());
+        }
+    }
+
+    @RequestMapping("/deleteUser")
+    public String deleteUser(Model m,Users users){
+        if (usersBiz.deleteUser(users)){
+            return this.showUserList(m,new Users());
+        }else {
+            return this.showUserList(m,new Users());
+        }
+    }
+
 }

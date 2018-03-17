@@ -9,6 +9,7 @@ public interface UsersDao {
     Users selectList();
     List<Users> selectUser(Users users);
     int addUser(Users users);
-    int delectUser(Users users);
+    int deleteUser(Users users);
     int updateUser(Users users);
+    Users selectOne(Users users);
 }

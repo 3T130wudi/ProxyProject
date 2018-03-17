@@ -26,7 +26,6 @@
                                         <p></p>
                                         角色：
                                         <select name="roleId">
-                                            <option value="0">-请选择-</option>
                                             <c:forEach items="${roleList}" var="rl">
                                                 <option value="${rl.id}">${rl.name}</option>
                                             </c:forEach>
@@ -47,6 +46,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="container">
                     <!-- 模态框 -->
                     <div class="modal fade" id="myModa2">
@@ -57,22 +57,22 @@
                                 </div>
                                 <form action="/updateUser" method="post" >
                                     <!-- 模态框主体 -->
+                                    <input type="hidden" name="id" value="8">
                                     <div class="modal-body">
-                                        登陆账号：<input id="userid1" name="userId" type="text" value=""><br/>
+                                        登陆账号：<input name="userId" type="text" value="${oneUser.id}"><br/>
                                         <p></p>
-                                        用户名称：<input id="name1"  name="name" type="text" value=""><br/>
+                                        用户名称：<input name="name" type="text"><br/>
                                         <p></p>
-                                        登陆密码：<input  type="password" name="password" value="******"><br/>
+                                        登陆密码：<input  type="password" name="password" ><br/>
                                         <p></p>
                                         角色：
-                                        <select id="roleId1"  name="roleId">
+                                        <select name="roleId">
                                             <c:forEach items="${roleList}" var="rl">
-                                                <option value="${rl.id}"
-                                                        ${rl.name}</option>
+                                                <option value="${rl.id}">${rl.name}</option>
                                             </c:forEach>
                                         </select>
                                         <p></p>
-                                        是否启用：<select id="type1" name="type">
+                                        是否启用：<select name="type">
                                         <option value="启用">启用</option>
                                         <option value="未启用">未启用</option>
                                     </select>
@@ -87,7 +87,6 @@
                         </div>
                     </div>
                 </div>
-
 
                 <div class="container">
                     <form action="/showUserList" method="post">
@@ -137,10 +136,10 @@
                             </td>
                             <td>${ul.type}</td>
                             <td>
-                                <button onclick="javascript:subs(this);"class="btn btn-primary" type="button" data-toggle="modal" data-target="#myModa2" >
+                                <a href="/selectOne?id=${ul.id}" class="btn btn-primary" type="button" data-toggle="modal" data-target="#myModa2" >
                                     修改
-                                </button>
-                                <a href="/deleteRole?id=${r.id}" class="btn btn-primary">删除</a>
+                                </a>
+                                <a href="/deleteUser?id=${ul.id}" class="btn btn-primary">删除</a>
                             </td>
                         </tr>
                     </c:forEach>
