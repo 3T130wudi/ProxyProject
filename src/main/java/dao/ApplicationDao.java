@@ -8,5 +8,7 @@ public interface ApplicationDao {
 
     Application selectapplication(Application application);
 
+    int updateappcation(Application application);
+
 
 }

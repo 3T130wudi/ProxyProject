@@ -27,7 +27,7 @@
                         <form action="/insertfinance" method="post" >
                             <!-- 模态框主体 -->
                             <div class="modal-body">
-                                类型名称：<input name="finance_type" type="text"><br/>
+                                类型名称：<input id="finance_type" name="finance_type" type="text" onblur="insertjudgment()"><br/>
                                 <p></p>
                                 是否启用：<select name="finance_enable">
                                 <option value="0">启用</option>
@@ -49,7 +49,7 @@
         </div>
 
 
-        <form action="/Financeselect">
+        <form action="/Financeselect" method="post">
             <table class="table table-striped table-advance table-hover">
 
                 <tr >
@@ -67,7 +67,26 @@
                         <c:if test="${f.finance_enable==0}">启用</c:if>
                         <c:if test="${f.finance_enable==1}">不启用</c:if>
                     <td/>
-                    <td><a id="finanId" name="finanId" onclick="selectfanace(${f.finance_id})"  data-toggle="modal" data-target="#Myomoal">修改|</a><a id="configId" href="/deletefinance?configId=${f.finance_id}" name="configId"> 删除</a><td/>
+                    <td><a id="finanId" name="finanId" onclick="
+                    $.ajax({
+                        type: 'POST',
+                        url: '/selectfnance?finance_id='+${f.finance_id},
+                        dataType: 'json',
+                        success: function (date) {
+                        if (date!=null) {
+                        $('.finance_id').val(date.finance_id);
+                        $('#fine').val(date.finance_type);
+                        $('#finance_enable').val(date.finance_enable);
+
+
+                        }
+                        },
+
+                        error: function () {
+                        alert('455555');
+                        }
+                        });
+                          "  data-toggle="modal" data-target="#Myomoal">修改|</a><a id="configId" href="/deletefinance?configId=${f.finance_id}" onclick="javascript:return del();" name="configId"> 删除</a><td/>
                 <tr/>
 
                 </c:forEach>
@@ -91,9 +110,10 @@
                     <form action="updatafinance" method="post" >
                         <!-- 模态框主体 -->
                         <div class="modal-body">
-                            类型名称：<input id="financetype" name="financetype" type="text"><br/>
+                            <input type="hidden" id="finance_id" name="finance_id" class="finance_id">
+                            类型名称：<input id="fine" name="finance_type" type="text"><br/>
                             <p></p>
-                            是否启用：<select id="financeenable" name="financeenable">
+                            是否启用：<select id="finance_enable" name="finance_enable">
                             <option value="0">启用</option>
                             <option value="1">不启用</option>
 

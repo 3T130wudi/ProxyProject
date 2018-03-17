@@ -1,10 +1,15 @@
 package dao;
 
-import java.util.Currency;
+import entity.Customer;
+
 import java.util.List;
 
 public interface CustomerDao {
 
-    List<Currency> selectcurrency();
+    List<Customer> selectcurrency();
+
+    int insertcurrrency(Customer customer);
+
+    List<Customer> currencyselect(Customer customer);
 
 }

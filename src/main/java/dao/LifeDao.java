@@ -8,4 +8,6 @@ public interface LifeDao {
 
    Life selectlife(Life life);
 
+   int updatelife(Life life);
+
 }

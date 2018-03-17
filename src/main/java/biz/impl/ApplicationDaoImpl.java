@@ -17,4 +17,8 @@ public class ApplicationDaoImpl implements ApplicationBiz {
 
         return applicationDao.selectapplication(application);
     }
+
+    public boolean updateappcation(Application application) {
+        return applicationDao.updateappcation(application)>0;
+    }
 }

@@ -23,9 +23,9 @@
                         <form action="/insertfinance" method="post" >
                             <!-- 模态框主体 -->
                             <div class="modal-body">
-                                类型名称：<input name="finance_type" type="text"><br/>
+                                类型名称：<input id="customer_type" name="customer_type" onblur="selectcustmer()" type="text"><br/>
                                 <p></p>
-                                是否启用：<select name="finance_enable">
+                                是否启用：<select id="customer_enable" name="customer_enable">
                                 <option value="0">启用</option>
                                 <option value="1">不启用</option>
 

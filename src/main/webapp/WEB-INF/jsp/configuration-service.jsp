@@ -29,7 +29,7 @@
                             url: '/selectname?service_type='+$('#servicepe').val(),
                             dataType: 'json',
                             success: function (date) {
-                            var name= $('#service_type').val();
+                            var name= $('#servicepe').val();
                             if(name!=''&& name!=null){
                             if (date==true) {
 
@@ -41,7 +41,7 @@
                             error: function () {
 
                             }
-                            });" name="servicepe" type="text">&nbsp<span id="ser"></span><br/>
+                            });" name="service_type" type="text">&nbsp<span id="ser"></span><br/>
                             <p></p>
                             配置数值：<input id="service_tow" name="service_tow" type="text"><br/>
                             <p></p>
@@ -142,8 +142,8 @@
 
     </div>
 </div>
-<script src="js/jquery-1.12.4.js"></script>
 
-<script src="js/configuration.js"></script>
+<script src="js/jquery-1.12.4.js"></script>
+<script src="js/configation.js"></script>
 
 <jsp:include page="listBottom.jsp"/>

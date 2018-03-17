@@ -6,5 +6,8 @@
     <select id="selectlife" resultType="entity.Life">
        SELECT * FROM `life`
     </select>
+    <update id="updatelife">
+        UPDATE life SET life_numer=#{life_numer} WHERE life_id=#{life_id}
+    </update>
 
 </mapper>
