@@ -6,4 +6,27 @@
     <select id="selectDiscount" resultType="entity.Discount">
         SELECT * FROM `discount`
     </select>
+
+    <select id="discountselect" resultType="entity.Discount">
+          SELECT * FROM `discount` WHERE discount_type=#{discount_type}
+    </select>
+
+    <select id="soutselect" resultType="entity.Discount">
+      SELECT * FROM `discount` WHERE discount_id=#{discount_id}
+    </select>
+
+    <insert id="insertdicount">
+        INSERT INTO `discount` VALUES(DEFAULT ,#{discount_type},#{discount_numer},#{discount_actual},#{discount_enable})
+    </insert>
+
+    <update id="updatedisount">
+        UPDATE discount SET discount_type=#{discount_type},
+        discount_numer=#{discount_numer},discount_actual=#{discount_actual},
+        discount_enable=#{discount_enable}  WHERE discount_id=#{discount_id}
+    </update>
+
+    <delete id="deletedisount">
+        DELETE FROM `discount` WHERE discount_id=#{discount_id}
+    </delete>
+
 </mapper>

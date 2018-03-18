@@ -17,4 +17,24 @@ public class DiscountBizImpl implements DiscountBiz{
 
 
     }
+
+    public List<Discount> discountselect(Discount discount) {
+        return discountDao.discountselect(discount);
+    }
+
+    public Discount soutselect(Discount discount) {
+        return discountDao.soutselect(discount);
+    }
+
+    public boolean insertdicount(Discount discount) {
+        return discountDao.insertdicount(discount)>0;
+    }
+
+    public boolean updatedisount(Discount discount) {
+        return discountDao.updatedisount(discount)>0;
+    }
+
+    public boolean deletedisount(int discount_id) {
+        return discountDao.deletedisount(discount_id)>0;
+    }
 }

@@ -259,6 +259,56 @@ public class configuration {
         }
 
     }
+    //客户类型增
+    @RequestMapping("/insertcurrrency")
+    private  String insertcurrrency(Model m,Customer customer,@RequestParam("customer_type") String customer_type){
+        customer.setCustomer_type(customer_type);
+        List<Customer> cust =customerBiz.currencyselect(customer);
+        if(customer_type!=null&&customer_type!="") {
+            for (Customer c : cust) {
+
+                if (c.getCustomer_type().equals(customer_type)) {
+                    return selectcurrency(m);
+                }
+            }
+            customerBiz.insertcurrrency(customer);
+        }
+        return selectcurrency(m);
+
+    }
+    //客户类型删除
+    @RequestMapping("/deletecustomer")
+    private  String deletecustomer(Model m,@RequestParam("customer_id") int customer_id){
+        if(customerBiz.deletecustomer(customer_id)){
+
+        }
+        return selectcurrency(m);
+    }
+    //客户类型修改查看
+    @RequestMapping("/customerselect")
+    private  void customerselect(Model m,Customer customer,@RequestParam("customer_id") int customer_id,HttpServletResponse resp) throws IOException {
+        customer.setCustomer_id(customer_id);
+      Customer com=  customerBiz.customerselect(customer);
+      if(com!=null) {
+          resp.setContentType("text/html;charset=utf-8");
+          resp.setCharacterEncoding("UTF-8");
+          PrintWriter writer = resp.getWriter();
+          String s = JSON.toJSONString(com);
+          writer.print(s);
+          writer.flush();
+          writer.close();
+      }
+
+    }
+    //客户类型修改
+    @RequestMapping("/updatecustomer")
+    private String updatecustomer(Model m,Customer customer,@RequestParam("customer_id") int customer_id){
+        customer.setCustomer_id(customer_id);
+        if(customerBiz.updatecustomer(customer)){
+
+        }
+       return selectcurrency(m);
+    }
 
 
 
@@ -269,6 +319,77 @@ public class configuration {
         return "configuration-certificates";
 
     }
+    //证件类型增加判断重复的值
+    @RequestMapping("/certificatesselect")
+    private void certificatesselect(Model m,Certificates certificates,@RequestParam("certificates_type") String certificates_type,HttpServletResponse resp) throws IOException {
+       certificates.setCertificates_type(certificates_type);
+       List<Certificates> cer= certificatesBiz.certificatesselect(certificates);
+        for (Certificates c:cer) {
+            if(c!=null) {
+                resp.setContentType("text/html;charset=utf-8");
+                resp.setCharacterEncoding("UTF-8");
+                PrintWriter writer = resp.getWriter();
+                String s = JSON.toJSONString(c.getCertificates_type().equals(certificates_type));
+                writer.print(s);
+                writer.flush();
+                writer.close();
+            }
+        }
+
+    }
+    //证件类型增加判断重复的值
+    @RequestMapping("/insertcertificates")
+    private  String insertcertificates(Model m,Certificates certificates,@RequestParam("certificates_type") String certificates_type){
+        List<Certificates> cer= certificatesBiz.certificatesselect(certificates);
+        if (certificates_type!=null&&certificates_type!="") {
+            for (Certificates c:cer) {
+               if(c.getCertificates_type().equals(certificates_type)){
+                   return selectcertificates(m);
+               }
+            }
+            certificatesBiz.insertcertificates(certificates);
+        }
+
+        return selectcertificates(m);
+
+    }
+    //证件类型删除
+    @RequestMapping("/deletecertificates")
+    private  String deletecertificates(Model m,@RequestParam("certificates_id") int certificates_id){
+        if(certificatesBiz.deletecertificates(certificates_id)){
+
+        }
+        return selectcertificates(m);
+    }
+    //证件类型修改查看
+    @RequestMapping("/selectficates")
+    private  void  selectficates(Model m,Certificates certificates,@RequestParam("certificates_id") int certificates_id,HttpServletResponse resp) throws IOException {
+
+        certificates.setCertificates_id(certificates_id);
+        Certificates c= certificatesBiz.selectficates(certificates);
+        if(c!=null) {
+            resp.setContentType("text/html;charset=utf-8");
+            resp.setCharacterEncoding("UTF-8");
+            PrintWriter writer = resp.getWriter();
+            String s = JSON.toJSONString(c);
+            writer.print(s);
+            writer.flush();
+            writer.close();
+        }
+    }
+
+    //证件类型修改
+    @RequestMapping("/updatecertificates")
+    private String updatecertificates(Model m,Certificates certificates,@RequestParam("certificates_id") int certificates_id ){
+        certificates.setCertificates_id(certificates_id);
+        if(certificatesBiz.updatecertificates(certificates)){
+
+        }
+        return selectcertificates(m);
+    }
+
+
+
 
     //优惠类型集合查看
     @RequestMapping("/selectDiscount")
@@ -277,5 +398,72 @@ public class configuration {
         return "configuration-discount";
 
     }
+    //优惠类型增加重复的值
+    @RequestMapping("/discountselect")
+    private  void  discountselect(Model m,Discount discount,@RequestParam("discount_type") String discount_type,HttpServletResponse resp) throws IOException {
+
+        discount.setDiscount_type(discount_type);
+        List<Discount> discountselect = discountBiz.discountselect(discount);
+        for (Discount d: discountselect) {
+            if(d!=null) {
+                resp.setContentType("text/html;charset=utf-8");
+                resp.setCharacterEncoding("UTF-8");
+                PrintWriter writer = resp.getWriter();
+                String s = JSON.toJSONString(d.getDiscount_type().equals(discount_type));
+                writer.print(s);
+                writer.flush();
+                writer.close();
+            }
+        }
     }
+    //优惠类型增加
+    @RequestMapping("/insertdicount")
+    private  String insertdicount(Model m,Discount discount,HttpServletRequest req){
+        String discount_type = req.getParameter("discount_type");
+        discount.setDiscount_type(discount_type);
+        List<Discount> discountselect = discountBiz.discountselect(discount);
+            for (Discount d: discountselect) {
+                if(d.getDiscount_type().equals(discount_type)){
+                    return selectDiscount(m);
+                }
+            }
+        if(discountBiz.insertdicount(discount)){
+        }
+
+        return selectDiscount(m);
+    }
+    //优惠类型删除
+    @RequestMapping("/deletedisount")
+    private  String deletedisount(Model m,@RequestParam("discount_id") int discount_id){
+        discountBiz.deletedisount(discount_id);
+        return selectDiscount(m);
+
+    }
+
+    //优惠类型修改查看
+    @RequestMapping("/soutselect")
+    private void  soutselect(Model m,Discount discount,@RequestParam("discount_id") int discount_id,HttpServletResponse resp) throws IOException {
+        discount.setDiscount_id(discount_id);
+        Discount sout = discountBiz.soutselect(discount);
+        if(sout!=null) {
+            resp.setContentType("text/html;charset=utf-8");
+            resp.setCharacterEncoding("UTF-8");
+            PrintWriter writer = resp.getWriter();
+            String s = JSON.toJSONString(sout);
+            writer.print(s);
+            writer.flush();
+            writer.close();
+        }
+    }
+    //优惠类型修改
+    @RequestMapping("/updatedisount")
+    private String updatedisount(Model m,Discount discount,@RequestParam("discount_id") int discount_id){
+        discount.setDiscount_id(discount_id);
+        discountBiz.updatedisount(discount);
+        return selectDiscount(m);
+    }
+
+
+
+}
 

@@ -8,7 +8,7 @@
         <div class="container">
             <!-- 按钮：用于打开模态框 -->
             <button type="button" data-toggle="modal" data-target="#myModal" >
-                添加客户类型
+                添加证件类型
             </button>
 
             <!-- 模态框 -->
@@ -20,12 +20,12 @@
                         <div class="modal-header">
                             <h4 class="modal-title">您正在进行添加操作</h4>
                         </div>
-                        <form action="/insertfinance" method="post" >
+                        <form action="/insertcertificates" method="post" >
                             <!-- 模态框主体 -->
                             <div class="modal-body">
-                                类型名称：<input name="finance_type" type="text"><br/>
+                                证件类型：<input id="certificates_type" name="certificates_type" onblur="certificatesselect()" type="text"><br/>
                                 <p></p>
-                                是否启用：<select name="finance_enable">
+                                是否启用：<select id="certificates_enable" name="certificates_enable">
                                 <option value="0">启用</option>
                                 <option value="1">不启用</option>
 
@@ -63,7 +63,7 @@
                         <c:if test="${c.certificates_enable==0}">启用</c:if>
                         <c:if test="${c.certificates_enable==1}">不启用</c:if>
                     <td/>
-                    <td><a id="finanId" name="finanId"   data-toggle="modal" data-target="#Myomoal">修改|</a><a id="configId" href="/deletefinance?configId=${f.finance_id}" name="configId"> 删除</a><td/>
+                    <td><a id="finanId" name="finanId" onclick="selectficates(${c.certificates_id})"   data-toggle="modal" data-target="#Myomoal">修改|</a><a id="configId" onclick="javascript:return deletecerti();" href="/deletecertificates?certificates_id=${c.certificates_id}" name="configId"> 删除</a><td/>
                 <tr/>
                 </c:forEach>
 
@@ -83,12 +83,13 @@
                     <div class="modal-header">
                         <h4 class="modal-title">您正在进行修改操作</h4>
                     </div>
-                    <form action="/updatafinance" method="post" >
+                    <form action="/updatecertificates" method="post" >
                         <!-- 模态框主体 -->
                         <div class="modal-body">
-                            类型名称：<input id="financetype" name="financetype" type="text"><br/>
+                            <input type="hidden" id="certificates_id" name="certificates_id">
+                            证件类型：<input id="certificatestype" name="certificates_type" type="text"><br/>
                             <p></p>
-                            是否启用：<select id="financeenable" name="financeenable">
+                            是否启用：<select id="certificatesenable" name="certificates_enable">
                             <option value="0">启用</option>
                             <option value="1">不启用</option>
 

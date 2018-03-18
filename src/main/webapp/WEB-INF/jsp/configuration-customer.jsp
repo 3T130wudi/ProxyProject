@@ -20,10 +20,10 @@
                         <div class="modal-header">
                             <h4 class="modal-title">您正在进行添加操作</h4>
                         </div>
-                        <form action="/insertfinance" method="post" >
+                        <form action="/insertcurrrency" method="post" >
                             <!-- 模态框主体 -->
                             <div class="modal-body">
-                                类型名称：<input id="customer_type" name="customer_type" onblur="selectcustmer()" type="text"><br/>
+                                客户名称：<input id="customer_type" name="customer_type" onblur="selectcustmer()" type="text"><br/>
                                 <p></p>
                                 是否启用：<select id="customer_enable" name="customer_enable">
                                 <option value="0">启用</option>
@@ -64,7 +64,7 @@
                         <c:if test="${c.customer_enable==0}">启用</c:if>
                         <c:if test="${c.customer_enable==1}">不启用</c:if>
                     <td/>
-                    <td><a id="finanId" name="finanId"   data-toggle="modal" data-target="#Myomoal">修改|</a><a id="configId" href="/deletefinance?configId=${f.finance_id}" name="configId"> 删除</a><td/>
+                    <td><a id="finanId" name="finanId"  onclick="customerselect(${c.customer_id})"  data-toggle="modal" data-target="#Myomoal">修改|</a><a id="configId" href="/deletecustomer?customer_id=${c.customer_id}" onclick="javascript:return deletecust();"  name="configId"> 删除</a><td/>
                 <tr/>
                 </c:forEach>
 
@@ -84,12 +84,13 @@
                     <div class="modal-header">
                         <h4 class="modal-title">您正在进行修改操作</h4>
                     </div>
-                    <form action="/updatafinance" method="post" >
+                    <form action="/updatecustomer" method="post" >
                         <!-- 模态框主体 -->
                         <div class="modal-body">
-                            类型名称：<input id="financetype" name="financetype" type="text"><br/>
+                            <input type="hidden" id="customer_id" name="customer_id">
+                            客户名称：<input id="customertype" name="customer_type" type="text"><br/>
                             <p></p>
-                            是否启用：<select id="financeenable" name="financeenable">
+                            是否启用：<select id="customerenable" name="customer_enable">
                             <option value="0">启用</option>
                             <option value="1">不启用</option>
 

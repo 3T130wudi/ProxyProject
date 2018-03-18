@@ -15,4 +15,17 @@
     </insert>
 
 
+    <delete id="deletecustomer">
+        DELETE FROM `customer` WHERE customer_id=#{customer_id}
+    </delete>
+
+    <select id="customerselect" resultType="entity.Customer" >
+           SELECT * FROM customer WHERE customer_id=#{customer_id}
+    </select>
+
+    <update id="updatecustomer">
+        UPDATE customer SET customer_type=#{customer_type},customer_enable=#{customer_enable} WHERE customer_id=#{customer_id}
+
+    </update>
+
 </mapper>

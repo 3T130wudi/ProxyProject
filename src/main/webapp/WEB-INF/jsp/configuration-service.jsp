@@ -20,13 +20,14 @@
                     <div class="modal-header">
                         <h4 class="modal-title">您正在进行添加操作</h4>
                     </div>
-                    <form action="/insertselect" id="regisetForm" method="post" >
+                    <form action="/insertselect"onsubmit="return servicecheckForm();" id="frm" method="post" >
                         <!-- 模态框主体 -->
                         <div class="modal-body">
-                            配置类型：<input id="servicepe" onblur="
+                            服务类型：<input id="servicepe" onblur="
                             $.ajax({
                             type: 'POST',
-                            url: '/selectname?service_type='+$('#servicepe').val(),
+                            data:{service_type:$('#servicepe').val()},
+                            url: '/selectname',
                             dataType: 'json',
                             success: function (date) {
                             var name= $('#servicepe').val();
@@ -117,7 +118,7 @@
                         <!-- 模态框主体 -->
                         <div class="modal-body">
                             <input type="hidden" id="service_id" name="service_id">
-                            配置类型：<input id="service_type" name="service_type" type="text">&nbsp<span id="se"></span><br/>
+                            服务类型：<input id="service_type" name="service_type" type="text">&nbsp<span id="se"></span><br/>
                             <p></p>
                             配置数值：<input id="servicetow" name="service_tow" type="text"><br/>
                             <p></p>
