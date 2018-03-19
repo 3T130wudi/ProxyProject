@@ -7,6 +7,7 @@ import entity.Role;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
 
@@ -26,8 +27,8 @@ public class SystemController {
      * @return
      */
     @RequestMapping("/selectList")
-    public String selectList(Model m){
-        m.addAttribute("roleList",roleBiz.selectList());
+    public String selectList(Model m,@RequestParam(required = false,defaultValue = "1") int pageNo){
+        m.addAttribute("roleList",roleBiz.queryProjectinfos(3,pageNo));
         return "roleList";
     }
 
@@ -40,9 +41,9 @@ public class SystemController {
     @RequestMapping("/addRole")
     public String addRole(Model m, Role role,HttpServletRequest request){
         if (roleBiz.addRole(role)){
-            return this.selectList(m);
+            return this.selectList(m,1);
         }else {
-            return this.selectList(m);
+            return this.selectList(m,1);
         }
     }
 
@@ -55,9 +56,9 @@ public class SystemController {
     @RequestMapping("/updateRole")
     public String updateRole(Model m, Role role){
         if (roleBiz.updateRole(role)){
-            return this.selectList(m);
+            return this.selectList(m,1);
         }else {
-            return this.selectList(m);
+            return this.selectList(m,1);
         }
     }
 
@@ -70,9 +71,9 @@ public class SystemController {
     @RequestMapping("/deleteRole")
     public String deleteRole(Model m, Role role){
         if (roleBiz.deleteRole(role)){
-            return this.selectList(m);
+            return this.selectList(m,1);
         }else {
-            return this.selectList(m);
+            return this.selectList(m,1);
         }
     }
 

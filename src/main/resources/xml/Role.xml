@@ -7,6 +7,15 @@
     <select id="selectList" resultType="Role">
         SELECT * from role
     </select>
+
+    <select id="queryProjectinfos" resultType="Role">
+        SELECT * from role  limit #{offset},#{pageSize}
+    </select>
+
+    <select id="queryRoleCount" resultType="_int">
+        select count(1) from role
+    </select>
+
     <!--新增角色-->
     <insert id="addRole" >
         INSERT  INTO role(name,uthorityId,type,fristDate) VALUES
