@@ -8,6 +8,7 @@
 <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
 <!--common script for all pages-->
 <script src="js/common-scripts.js"></script>
+<script src="js/configuration.js"></script>
 
 <script>
     //custom select box
