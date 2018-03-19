@@ -90,7 +90,7 @@
         UPDATE users SET userId=#{userId},name=#{name},password=#{password},roleId=#{roleId},type=#{type}
          WHERE id=#{id}
     </update>
-x
+
     <delete id="deleteUser">
         DELETE FROM users WHERE id=#{id}
     </delete>
