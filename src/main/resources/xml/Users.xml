@@ -87,7 +87,7 @@
     </insert>
 
     <update id="updateUser">
-        UPDATE users SET userId=#{userId},name={#name},password=#{password},roleId=#{roleId},type={type}
+        UPDATE users SET userId=#{userId},name=#{name},password=#{password},roleId=#{roleId},type=#{type}
          WHERE id=#{id}
     </update>
 

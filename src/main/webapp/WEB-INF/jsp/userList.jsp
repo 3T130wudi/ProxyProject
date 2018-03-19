@@ -57,22 +57,22 @@
                                 </div>
                                 <form action="/updateUser" method="post" >
                                     <!-- 模态框主体 -->
-                                    <input type="hidden" name="id" value="8">
+                                    <input id="uid" type="hidden" name="id" value="8">
                                     <div class="modal-body">
-                                        登陆账号：<input name="userId" type="text" value="${oneUser.id}"><br/>
+                                        登陆账号：<input id="userId" name="userId" type="text" value=""><br/>
                                         <p></p>
-                                        用户名称：<input name="name" type="text"><br/>
+                                        用户名称：<input id="uname" name="name" type="text"><br/>
                                         <p></p>
-                                        登陆密码：<input  type="password" name="password" ><br/>
+                                        登陆密码：<input id="upassword"  type="password" name="password" ><br/>
                                         <p></p>
                                         角色：
-                                        <select name="roleId">
+                                        <select id="uroleId" name="roleId">
                                             <c:forEach items="${roleList}" var="rl">
                                                 <option value="${rl.id}">${rl.name}</option>
                                             </c:forEach>
                                         </select>
                                         <p></p>
-                                        是否启用：<select name="type">
+                                        是否启用：<select id="utype" name="type">
                                         <option value="启用">启用</option>
                                         <option value="未启用">未启用</option>
                                     </select>
@@ -136,7 +136,7 @@
                             </td>
                             <td>${ul.type}</td>
                             <td>
-                                <a href="/selectOne?id=${ul.id}" class="btn btn-primary" type="button" data-toggle="modal" data-target="#myModa2" >
+                                <a onclick="selectone(${ul.id})"  class="btn btn-primary" type="button" data-toggle="modal" data-target="#myModa2" >
                                     修改
                                 </a>
                                 <a href="/deleteUser?id=${ul.id}" class="btn btn-primary">删除</a>

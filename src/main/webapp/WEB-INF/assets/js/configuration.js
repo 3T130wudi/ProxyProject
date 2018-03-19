@@ -63,8 +63,28 @@ function selectfanace(id){
             alert("455555");
         }
     });
+}
 
+function selectone(id) {
+    $.ajax({
+        type: "POST",
+        url: "/selectOne",
+        data: {fid: id},
+        dataType: "json",
+        success: function (date) {
+            if (date!=null) {
+                $("#uid").val(date.id);
+                $("#uroleId").val(date.roleId);
+                $("#uname").val(date.name);
+                $("#utype").val(date.type);
+                $("#upassword").val(date.password);
+                $("#userId").val(date.userId)
+            }
+        },
 
-
+        error: function () {
+            alert("455555");
+        }
+    });
 }
 
