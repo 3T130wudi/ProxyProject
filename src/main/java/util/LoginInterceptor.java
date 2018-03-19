@@ -16,16 +16,17 @@ public class LoginInterceptor implements HandlerInterceptor {
         //首先进入的方法
         System.out.println("preHandle");
         //return false表示拦截，不向下执行
-        //return true表示放行
-        System.out.println(request.getServletPath());
-        HttpSession session = request.getSession();
+       //return true表示放行
+       System.out.println(request.getServletPath());
+       HttpSession session = request.getSession();
 
-        Users u=(Users)session.getAttribute("user");
-        if(u!=null){
+       Users u=(Users)session.getAttribute("user");
+       if(u!=null){
             return true;
         }else{
-            return false;
+           return false;
         }
+
 
     }
     public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, ModelAndView modelAndView) throws Exception {
