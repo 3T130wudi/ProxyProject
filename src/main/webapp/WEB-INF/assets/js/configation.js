@@ -45,7 +45,6 @@ $(function () {
         var tow=$("#service_tow").val();
         if(tow==""){
             alert("配置数值不能为空！");
-            tow.focus();
             return false;
         }
     });

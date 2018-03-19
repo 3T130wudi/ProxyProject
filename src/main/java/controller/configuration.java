@@ -81,9 +81,9 @@ public class configuration {
                 }
 
             }
-
+            financeBiz.insertfinance(finance);
         }
-        financeBiz.insertfinance(finance);
+
         return financeselect(m);
     }
 
