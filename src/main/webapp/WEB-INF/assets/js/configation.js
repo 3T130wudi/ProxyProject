@@ -225,18 +225,6 @@ function discountselect() {
     });
 };
 
-function caiwuform(frm) {
-    var flag = true;
-    $("#frm input[type='text']").each(function(i, obj) {
-        if(obj.value == "") {
-            alert('输入框不能为空');
-            flag = false;
-            return false;
-        }
-    });
-    return flag;
-};
-
 
 function checkForm(frm) {
     var flag = true;
@@ -249,6 +237,52 @@ function checkForm(frm) {
     });
     return flag;
 };
+
+function checkForm1(frm) {
+    var flag = true;
+    $("#frm input[type='text']").each(function(i, obj) {
+        if(obj.value == "") {
+            alert('输入框不能为空');
+            flag = false;
+            return false;
+        }
+    });
+    return flag;
+};
+function checkForm2(frm) {
+    var flag = true;
+    $("#frm input[type='text']").each(function(i, obj) {
+        if(obj.value == "") {
+            alert('输入框不能为空');
+            flag = false;
+            return false;
+        }
+    });
+    return flag;
+};
+
+function checkForm3(frm) {
+    var flag = true;
+    $("#frm input[type='text']").each(function(i, obj) {
+        if(obj.value == "") {
+            alert('用户名不能为空');
+            flag = false;
+            return false;
+        }else if ($("#password").val()==""){
+                alert('密码不能为空');
+                return false;
+
+        }
+    });
+
+
+
+    return flag;
+};
+
+
+
+
 
 function servicecheckForm(frm) {
     var flag = true;

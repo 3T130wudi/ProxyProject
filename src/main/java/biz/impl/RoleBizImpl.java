@@ -2,6 +2,7 @@ package biz.impl;
 
 import biz.RoleBiz;
 import dao.RoleDao;
+import entity.Pager;
 import entity.Role;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,18 @@ public class RoleBizImpl implements RoleBiz {
 
     @Resource
     private RoleDao roleDao;
+
+
+    public Pager<Role> queryProjectinfos(int pageSize,int offset) {
+        Pager<Role> pager = new Pager<Role>();
+        pager.setPageNo(offset);
+        pager.setPageSize(pageSize);
+        pager.setTotalRows(roleDao.queryRoleCount());
+        pager.setTotalPage((pager.getTotalRows()+pageSize-1)/pageSize);
+       pager.setDatas(roleDao.queryProjectinfos((offset-1)*pageSize,pageSize));
+        return pager;
+    }
+
     public List<Role> selectList() {
         return roleDao.selectList();
     }

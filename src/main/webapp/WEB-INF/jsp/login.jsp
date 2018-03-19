@@ -16,6 +16,7 @@
     <link href="css/style-responsive.css" rel="stylesheet">
 	  <script src="js/html5shiv.js"></script>
       <script src="js/respond.js"></script>
+	  <script src="js/configation.js"></script>
 
   </head>
 
@@ -23,19 +24,19 @@
 	  <div id="login-page">
 	  	<div class="container">
 	  	
-		      <form class="form-login" action="/login">
+		      <form class="form-login" action="/login" onsubmit="return checkForm3();" id="frm" >
 		        <h2 class="form-login-heading">现在登录</h2>
 		        <div class="login-wrap">
-		            <input name="userId" type="text" class="form-control" placeholder="账号" autofocus>
+		            <input name="userId"  type="text" class="form-control" placeholder="账号" autofocus>
 		            <br>
-		            <input name="password" type="password" class="form-control" placeholder="密码">
+		            <input id="password" name="password" type="password" class="form-control" placeholder="密码">
 		            <label class="checkbox">
 		                <span class="pull-right">
 		                    <a data-toggle="modal" href="login.jsp#myModal">忘记密码?</a>
 		
 		                </span>
 		            </label>
-		            <button class="btn btn-theme btn-block" href="basic_table.html" type="submit"><i class="fa fa-lock"></i>登录</button>
+		            <button id="button1"  class="btn btn-theme btn-block" onclick="selec()"  href="basic_table.html" type="submit"><i class="fa fa-lock"></i>登录</button>
 		            <hr>
 		            <div class="registration">
 						还没有帐户？<br/>

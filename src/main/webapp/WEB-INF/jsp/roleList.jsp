@@ -79,7 +79,7 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach items="${roleList}" var="r">
+            <c:forEach items="${roleList.datas}" var="r">
                 <tr>
                     <td>${r.id}</td>
                     <td>${r.name}</td>
@@ -97,6 +97,10 @@
             </c:forEach>
             </tbody>
         </table>
+                <a href="/selectList?pageNo=1">首页</a>
+                <a href="/selectList?pageNo=${roleList.pageNo-1}">上一页</a>
+                <a href="/selectList?pageNo=${roleList.pageNo+1}">下一页</a>
+                <a href="/selectList?pageNo=${roleList.totalPage}">尾页</a>
             </tr>
             </thead>
         </table>

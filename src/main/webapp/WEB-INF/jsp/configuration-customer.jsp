@@ -20,7 +20,7 @@
                         <div class="modal-header">
                             <h4 class="modal-title">您正在进行添加操作</h4>
                         </div>
-                        <form action="/insertcurrrency" method="post" >
+                        <form action="/insertcurrrency" method="post" onsubmit="return checkForm2();" id="frm" >
                             <!-- 模态框主体 -->
                             <div class="modal-body">
                                 客户名称：<input id="customer_type" name="customer_type" onblur="selectcustmer()" type="text"><br/>
