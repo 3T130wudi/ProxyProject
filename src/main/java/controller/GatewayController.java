@@ -99,6 +99,4 @@ public class GatewayController {
             return this.GatewayList(model, null, request);
         }
     }
-
-
 }

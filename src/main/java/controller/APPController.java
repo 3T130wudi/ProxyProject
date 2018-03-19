@@ -30,7 +30,7 @@ public class APPController {
     @Resource
     private APPBiz appBiz;
     @RequestMapping("/selectName")
-    public void selectName(@RequestParam("name") String name, HttpServletResponse resp) throws IOException {
+    public void selectName(@RequestParam(value = "name",required = false) String name, HttpServletResponse resp) throws IOException {
         APP app = appBiz.selectAPP(name);
         if(app !=null){
             resp.setContentType("text/html;charset=utf-8");

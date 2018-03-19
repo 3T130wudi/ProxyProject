@@ -96,7 +96,7 @@
                             <span>${user.role.authorityList.authority_report}</span>
                         </a>
                         <ul class="sub">
-                            <li><a  href="commissionList.html">${user.role.authorityList.report_1}</a></li>
+                            <li><a  href="FinancialStatementsList">${user.role.authorityList.report_1}</a></li>
                         </ul>
                     </li>
                 </c:if>

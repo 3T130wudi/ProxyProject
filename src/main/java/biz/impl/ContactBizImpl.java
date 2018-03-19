@@ -6,6 +6,7 @@ import entity.Contact;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class ContactBizImpl implements ContactBiz {
@@ -21,5 +22,9 @@ public class ContactBizImpl implements ContactBiz {
 
     public int updateContact(Contact contact) {
         return contactDao.updateContact(contact);
+    }
+
+    public List<Contact> ContactList() {
+        return contactDao.ContactList();
     }
 }

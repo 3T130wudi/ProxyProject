@@ -28,19 +28,7 @@
         <property name="maxPoolPreparedStatementPerConnectionSize" value="100"/>
     </bean>
 
-    <mvc:interceptors>
-        <mvc:interceptor>
 
-            <!--默认拦截的连接-->
-            <mvc:mapping path="/**"/>
-
-            <!--不拦截的连接-->
-            <mvc:exclude-mapping path="/showLogin"/>
-
-
-            <bean class="util.LoginInterceptor"></bean>
-        </mvc:interceptor>
-    </mvc:interceptors>
 
 
 

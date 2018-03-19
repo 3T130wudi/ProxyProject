@@ -3,6 +3,37 @@
         "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.ContactDao">
+    <resultMap id="ContactMap" type="entity.Contact">
+        <result property="id" column="id"/>
+        <result property="contact_name" column="contact_name"/>
+        <result property="contact_phone" column="contact_phone"/>
+        <result property="contact_fax" column="contact_fax"/>
+        <result property="contact_mobile" column="contact_mobile"/>
+        <result property="contact_email" column="contact_email"/>
+        <result property="contact_post" column="contact_post"/>
+        <association property="id" javaType="entity.Enterprise">
+            <result property="id" column="id"/>
+            <result property="enterprise_name" column="enterprise_name"/>
+            <result property="enterprise_type" column="enterprise_type"/>
+            <result property="enterprise_home" column="enterprise_home"/>
+            <result property="enterprise_state" column="enterprise_state"/>
+            <association property="gateway_id" column="id">
+                <result property="id" column="id"/>
+                <result property="gateway_representative" column="gateway_representative"/>
+                <result property="gateway_type" column="gateway_type"/>
+                <result property="gateway_certificates" column="gateway_certificates"/>
+                <result property="gateway_phone" column="gateway_phone"/>
+                <result property="gateway_fax" column="gateway_fax"/>
+                <result property="gateway_date" column="gateway_date"/>
+                <result property="gateway_country" column="gateway_country"/>
+                <result property="gateway_region" column="gateway_region"/>
+                <result property="gateway_city" column="gateway_city"/>
+                <result property="gateway_area" column="gateway_area"/>
+                <result property="gateway_address" column="gateway_address"/>
+                <result property="gateway_remarks" column="gateway_remarks"/>
+            </association>
+        </association>
+    </resultMap>
     <insert id="insertContact">
         insert into contact VALUES(DEFAULT,#{contact_name},#{contact_phone},#{contact_fax},#{contact_mobile},#{contact_email},#{contact_post},#{enterprise_id.id})
     </insert>
@@ -18,4 +49,7 @@
         contact_email=#{contact_email},
         contact_post=#{contact_post} where id=#{id}
     </update>
+    <select id="ContactList" resultMap="ContactMap">
+        SELECT * FROM contact c,enterprise e,gateway g where c.enterprise_id=e.id and e.gateway_id=g.id
+    </select>
 </mapper>

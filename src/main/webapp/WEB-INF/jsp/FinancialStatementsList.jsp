@@ -1,7 +1,6 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:include page="listTop.jsp"/>
+<%@include file="listTop.jsp"%>
+
 
 <div class="col-md-9 col-sm-12" style="height: 80%;width: 70%;margin-left: 15%;margin-top: 5%;">
     <div>
@@ -54,7 +53,7 @@
                         ${F.remark}
                 </td>
                 <td>
-                        ${F.apply_date}
+                  <fmt:formatDate value="${F.apply_date}" pattern="yyyy-MM-dd"/>
                 </td>
             </tr>
             </c:forEach>
@@ -64,4 +63,4 @@
     </div><!-- /col-md-12 -->
 </div>
 
-<jsp:include page="listBottom.jsp"/>
+<%@include file="listBottom.jsp"%>

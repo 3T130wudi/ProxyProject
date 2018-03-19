@@ -28,6 +28,13 @@ public class KeywordListController {
     @Resource
     private KeywordBiz keywordBiz;
 
+
+    @RequestMapping("/keyword")
+    public String keyword(Model model, HttpServletRequest request){
+
+        return "keyword";
+    }
+
     @RequestMapping("keywordList")
     public String keywordList(Model model, HttpServletRequest request, @RequestParam(value = "keyword", required = false) String name) {
         HttpSession session = request.getSession();
@@ -54,7 +61,7 @@ public class KeywordListController {
     }
 
 
-    /*@RequestMapping("/insertKeyword")
+    @RequestMapping("/insertKeyword")
     public String insertKeyword(@RequestParam("keyword") String keyword, @RequestParam("service_Type_id") int service_Type_id,
                                 @RequestParam("keywordDate") int keywordDate, @RequestParam("price") float price,
                                 @RequestParam("id") int user_id, Model model, HttpServletRequest request){
@@ -83,7 +90,6 @@ public class KeywordListController {
         if(keywordBiz.insertKeyword(k)>0){
             return this.keywordList(model,request,null);
         }
-        return usersController.keyword(model,request);
-
-}*/
+        return this.keyword(model,request);
+}
 }

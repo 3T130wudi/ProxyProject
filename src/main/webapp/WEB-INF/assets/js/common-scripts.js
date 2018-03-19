@@ -28,10 +28,12 @@ var Script = function () {
 
     $(function () {
         $("#kehu").on("mouseout",function () {
+            alert("asd")
             var a=$("#kehu").val()
             $.ajax({
                 type:"POST",
-                url:"/selectName?name="+a,
+                data:{name:a},
+                url:"/selectName",
                 dataType:"json",
                 success:function (date) {
                     if(date!=null){
