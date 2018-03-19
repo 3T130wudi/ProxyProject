@@ -28,6 +28,9 @@ public class SystemController {
      */
     @RequestMapping("/selectList")
     public String selectList(Model m,@RequestParam(required = false,defaultValue = "1") int pageNo){
+        if (pageNo<=0){
+            pageNo=1;
+        }
         m.addAttribute("roleList",roleBiz.queryProjectinfos(3,pageNo));
         return "roleList";
     }
