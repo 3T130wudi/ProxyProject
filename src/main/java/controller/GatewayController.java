@@ -31,7 +31,7 @@ public class GatewayController {
     @RequestMapping("GatewayList")
     public String GatewayList(Model model, @RequestParam(value = "name", required = false) String name, HttpServletRequest request) {
         HttpSession session = request.getSession();
-        Users users=(Users) session.getAttribute("user");
+        Users users = (Users) session.getAttribute("user");
         model.addAttribute("gateway", gatewayBiz.AgentCustomerList(name));
         return "gatewayList";
     }
@@ -40,19 +40,19 @@ public class GatewayController {
     public String GatewayObject(HttpServletRequest request, @RequestParam(value = "id", required = false) String id, @RequestParam(value = "model", required = false) String model, Model m) {
         if (model.equals("0")) {
             HttpSession session = request.getSession();
-            Users users=(Users) session.getAttribute("user");
+            Users users = (Users) session.getAttribute("user");
             m.addAttribute("gateway", gatewayBiz.AgentCustomerById(Integer.parseInt(id)));
             return "gateway";
         }
         HttpSession session = request.getSession();
-        Users users=(Users) session.getAttribute("user");
+        Users users = (Users) session.getAttribute("user");
         return "gateway";
     }
 
     @RequestMapping("insertAgentCustomer")
-    public String insertKeyword(HttpServletRequest request,Model model, @RequestBody Contact contact,
-                                @RequestBody Gateway gateway,@RequestBody Enterprise enterprise,@RequestBody AgentCustomer agentCustomer) {
-        if (gateway.getId()>0) {
+    public String insertKeyword(HttpServletRequest request, Model model, @RequestBody Contact contact,
+                                @RequestBody Gateway gateway, @RequestBody Enterprise enterprise, @RequestBody AgentCustomer agentCustomer) {
+        if (gateway.getId() > 0) {
             contactBiz.updateContact(contact);
             enterpriseBiz.updateEnterprise(enterprise);
             gatewayBiz.updateGateway(gateway);
@@ -71,7 +71,7 @@ public class GatewayController {
             gateway.setGateway_remarks(gateway.getGateway_remarks());
             gateway.setGateway_type(gateway.getGateway_type());
             gatewayBiz.GatewayInsert(gateway);
-            Gateway gateway1 = gatewayBiz.GatewaySelect(gateway.getGateway_phone()+"");
+            Gateway gateway1 = gatewayBiz.GatewaySelect(gateway.getGateway_phone() + "");
             enterprise.setEnterprise_home(enterprise.getEnterprise_home());
             enterprise.setEnterprise_name(enterprise.getEnterprise_name());
             enterprise.setEnterprise_type(enterprise.getEnterprise_type());
@@ -92,11 +92,13 @@ public class GatewayController {
             agentCustomer.setState(0);
             agentCustomer.setType(agentCustomer.getType());
             HttpSession session = request.getSession();
-            Users users=(Users) session.getAttribute("user");
+            Users users = (Users) session.getAttribute("user");
             agentCustomer.setUser_id(users);
             agentCustomer.setContact_id(contact1);
             agentCustomerBiz.AgentCustomerInsert(agentCustomer);
             return this.GatewayList(model, null, request);
         }
     }
+
+
 }

@@ -15,7 +15,7 @@
             <tbody>
             <tr>
                 <td>
-                    <form action="/insertAgentCustomer">
+                    <form action="/UpdateGateway" method="post">
                         <p>基本信息</p>
                         <input type="hidden" name="contact.id" value="${gateway.contact_id.id}"/>
                         <input type="hidden" name="enterprise.id" value="${gateway.contact_id.enterprise_id.id}"/>
@@ -23,7 +23,7 @@
                         企业名字 <input type="text" name="enterprise.enterprise_name" value="${gateway.contact_id.enterprise_id.enterprise_name}"> 企业类型<select name="enterprise.enterprise_type">
                         <option value="个人" <c:if test="${gateway.contact_id.enterprise_id.enterprise_type}==个人">selected="selected"</c:if>>个人</option>
                         <option value="组织" <c:if test="${gateway.contact_id.enterprise_id.enterprise_type}==组织">selected="selected"</c:if>>组织</option>
-                        </select><br/>
+                    </select><br/>
                         企业主页 <input type="text" name="enterprise.enterprise_home" value="${gateway.contact_id.enterprise_id.enterprise_home}"> 状态 <select name="enterprise.enterprise_state">
                         <option value="0" <c:if test="${gateway.contact_id.enterprise_id.enterprise_state==0}">selected="selected"</c:if>>禁用</option>
                         <option value="1" <c:if test="${gateway.contact_id.enterprise_id.enterprise_state==1}">selected="selected"</c:if>>启用</option></select><br/>
@@ -52,17 +52,16 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <c:forEach items="${gateway.contact_id}" var="c">
-                                <tr>
-                                    <td><input name="contact.contact_name" value="${c.contact_name}"></td>
-                                    <td><input name="contact.contact_phone" value="${c.contact_phone}"></td>
-                                    <td><input name="contact.contact_fax" value="${c.contact_fax}"></td>
-                                    <td><input name="contact.contact_mobile" value="${c.contact_mobile}"></td>
-                                    <td><input name="contact.contact_email" value="${c.contact_email}"></td>
-                                    <td><input name="contact.contact_post" value="${c.contact_post}"></td>
-                                    <td><a href="#" id="del">删除</a></td>
-                                </tr>
-                            </c:forEach>
+
+                            <tr>
+                                <td><input name="contact.contact_name" value="${c.contact_name}"></td>
+                                <td><input name="contact.contact_phone" value="${c.contact_phone}"></td>
+                                <td><input name="contact.contact_fax" value="${c.contact_fax}"></td>
+                                <td><input name="contact.contact_mobile" value="${c.contact_mobile}"></td>
+                                <td><input name="contact.contact_email" value="${c.contact_email}"></td>
+                                <td><input name="contact.contact_post" value="${c.contact_post}"></td>
+                                <td><a href="#" id="del">删除</a></td>
+                            </tr>
                             </tbody>
                         </table>
                         <input type="submit" value="递交" class="btn btn-primary"/><a class="btn btn-primary" href="javascript:history.go(-1);">返回上一页</a>
