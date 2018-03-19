@@ -29,19 +29,19 @@ public class KeywordListController {
     private KeywordBiz keywordBiz;
 
     @RequestMapping("keywordList")
-    public String keywordList(Model model, HttpServletRequest request, @RequestParam(value = "keyword",required = false) String name){
+    public String keywordList(Model model, HttpServletRequest request, @RequestParam(value = "keyword", required = false) String name) {
         HttpSession session = request.getSession();
-        Users users=(Users) session.getAttribute("user");
-        model.addAttribute("keyword",keywordBiz.keywordList(name));
+        Users users = (Users) session.getAttribute("user");
+        model.addAttribute("keyword", keywordBiz.keywordList(name));
         return "keywordList";
     }
 
     @RequestMapping("/selectKeyword")
-    public void selectKeyword(@RequestParam("id") int id,HttpServletResponse resp) throws IOException {
+    public void selectKeyword(@RequestParam("id") int id, HttpServletResponse resp) throws IOException {
         List<keyword> keywords = keywordBiz.selectKeyword(id);
-        for (keyword k:keywords
-             ) {
-            if (k != null){
+        for (keyword k : keywords
+                ) {
+            if (k != null) {
                 resp.setContentType("text/html;charset=utf-8");
                 resp.setCharacterEncoding("UTF-8");
                 PrintWriter writer = resp.getWriter();
@@ -54,7 +54,7 @@ public class KeywordListController {
     }
 
 
-    @RequestMapping("/insertKeyword")
+    /*@RequestMapping("/insertKeyword")
     public String insertKeyword(@RequestParam("keyword") String keyword, @RequestParam("service_Type_id") int service_Type_id,
                                 @RequestParam("keywordDate") int keywordDate, @RequestParam("price") float price,
                                 @RequestParam("id") int user_id, Model model, HttpServletRequest request){
@@ -84,5 +84,6 @@ public class KeywordListController {
             return this.keywordList(model,request,null);
         }
         return usersController.keyword(model,request);
-    }
+
+}*/
 }

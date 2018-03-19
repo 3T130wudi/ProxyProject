@@ -22,7 +22,7 @@
             <tbody>
             <a class="btn btn-primary" href="GatewayObject?id=${g.id}&model=1">添加</a>
             <c:forEach items="${gateway}" var="g">
-            <tr>
+                <tr>
 
                     <td>
                             ${g.id}
@@ -40,12 +40,12 @@
                             ${g.contact_id.enterprise_id.enterprise_type}
                     </td>
                     <td>
-                            <c:if test="${g.contact_id.enterprise_id.enterprise_state==0}">
-                                已停用
-                            </c:if>
-                            <c:if test="${g.contact_id.enterprise_id.enterprise_state==1}">
-                                以起用
-                            </c:if>
+                        <c:if test="${g.contact_id.enterprise_id.enterprise_state==0}">
+                            已停用
+                        </c:if>
+                        <c:if test="${g.contact_id.enterprise_id.enterprise_state==1}">
+                            以起用
+                        </c:if>
                     </td>
                     <td>
                         <a href="GatewayObject?id=${g.id}&model=0" class="btn btn-primary">查看</a>
@@ -59,22 +59,22 @@
                             </c:if>
                         </a>
                     </td>
-            </tr>
-            </c:forEach>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        <form action="GatewayList">
-                            <input name="name" type="text"/>
-                            <input type="submit" value="查询">
-                        </form>
-                    </td>
                 </tr>
+            </c:forEach>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <form action="GatewayList" method="post">
+                        <input name="name" type="text"/>
+                        <input type="submit" value="查询">
+                    </form>
+                </td>
+            </tr>
             </tbody>
         </table>
     </div><!-- /col-md-12 -->

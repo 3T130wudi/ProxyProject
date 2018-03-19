@@ -79,5 +79,6 @@
         $.backstretch("assets/img/", {speed: 500});
     </script>
 
+
   </body>
 </html>

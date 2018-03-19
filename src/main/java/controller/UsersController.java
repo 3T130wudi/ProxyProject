@@ -34,12 +34,13 @@ public class UsersController {
     public String showLogin(){
         return "login";
     }
-    @RequestMapping("/keyword")
+
+    /*@RequestMapping("/keyword")
     public String keyword(Model model, HttpServletRequest request){
         HttpSession session = request.getSession();
         Users users=(Users) session.getAttribute("user");
         return "keyword";
-    }
+    }*/
     @RequestMapping("/login")
     public String login(Model m,Users users,HttpServletRequest request){
         Users u=usersBiz.login(users);
