@@ -12,7 +12,6 @@ public interface ServiceDao {
     int insertselect(Service service);
 
     int updateservice(Service service);
-
     Service serviceselect(Service service);
 
     List<Service> selectname(Service service);

@@ -4,7 +4,6 @@ public class Certificates {
     private  int certificates_id;
     private  String certificates_type;
     private  int certificates_enable;
-
     public Certificates() {
     }
 

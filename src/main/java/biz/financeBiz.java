@@ -13,6 +13,7 @@ public interface financeBiz {
     int updatafinance(finance finance);
 
     finance fanceselect(finance finance);
+    List<finance> insertjuct(finance finance);
 
     boolean deletefinance(int financeId);
     finance selectfnance(int id);

@@ -17,5 +17,10 @@ public class LifeBizImpl implements LifeBiz {
         return lifeDao.selectlife(life);
 
     }
+
+    public boolean updatelife(Life life) {
+        return lifeDao.updatelife(life)>0;
+
+    }
 }
 

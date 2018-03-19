@@ -7,7 +7,6 @@
         SELECT * FROM `service`
     </select>
 
-
     <insert id="insertselect">
         INSERT INTO `service` VALUES(DEFAULT,#{service_type},#{service_tow},#{service_enable})
     </insert>

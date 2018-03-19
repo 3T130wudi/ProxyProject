@@ -8,4 +8,8 @@
         SELECT * FROM `application`
     </select>
 
+    <update id="updateappcation">
+      UPDATE application SET application_numer=#{application_numer} WHERE application_id=#{application_id}
+    </update>
+
 </mapper>

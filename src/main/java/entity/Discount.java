@@ -6,7 +6,6 @@ public class Discount {
     private int discount_numer;
     private int discount_actual;
     private int discount_enable;
-
     public Discount() {
     }
 

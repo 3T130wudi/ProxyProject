@@ -11,8 +11,9 @@ public interface financeDao {
 
     List<finance> financeselect();
 
-    int updatafinance(finance finance);
+    List<finance> insertjuct(finance finance);
 
+    int updatafinance(finance finance);
     finance fanceselect(finance finance);
 
     finance selectfnance(int id);

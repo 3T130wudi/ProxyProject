@@ -7,4 +7,23 @@
         SELECT * FROM `certificates`
     </select>
 
+    <select id="certificatesselect" resultType="entity.Certificates" >
+        SELECT * FROM `certificates` WHERE certificates_type=#{certificates_type}
+    </select>
+
+    <select id="selectficates" resultType="entity.Certificates" >
+        SELECT * FROM `certificates` WHERE certificates_id=#{certificates_id}
+    </select>
+
+    <update id="updatecertificates">
+        UPDATE  certificates SET certificates_type=#{certificates_type},certificates_enable=#{certificates_enable} WHERE certificates_id=#{certificates_id}
+    </update>
+
+    <insert id="insertcertificates">
+        INSERT INTO certificates VALUES (DEFAULT ,#{certificates_type},#{certificates_enable})
+    </insert>
+
+    <delete id="deletecertificates">
+        DELETE FROM certificates WHERE certificates_id=#{certificates_id}
+    </delete>
 </mapper>

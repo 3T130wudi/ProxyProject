@@ -8,11 +8,12 @@
         <div class="container">
             <!-- 按钮：用于打开模态框 -->
             <button type="button" data-toggle="modal" data-target="#myModal" >
-                添加客户类型
+                添加优惠类型
             </button>
 
             <!-- 模态框 -->
             <div class="modal fade" id="myModal">
+
                 <div class="modal-dialog">
                     <div class="modal-content">
 
@@ -20,12 +21,16 @@
                         <div class="modal-header">
                             <h4 class="modal-title">您正在进行添加操作</h4>
                         </div>
-                        <form action="/insertfinance" method="post" >
+                        <form action="/insertdicount" method="post" onsubmit="return checkForm();" id="frm" >
                             <!-- 模态框主体 -->
                             <div class="modal-body">
-                                类型名称：<input name="finance_type" type="text"><br/>
+                               优惠类型：<input id="discount_type" onblur="discountselect()" name="discount_type" type="text"><br/>
                                 <p></p>
-                                是否启用：<select name="finance_enable">
+                                配置数值：<input id="discount_numer"  name="discount_numer" type="text"><br/>
+                                <p></p>
+                               实际数值：<input id="discount_actual"  name="discount_actual" type="text"><br/>
+                                <p></p>
+                                是否启用：<select id="discount_enable"  name="discount_enable">
                                 <option value="0">启用</option>
                                 <option value="1">不启用</option>
 
@@ -34,7 +39,7 @@
 
                             <!-- 模态框底部 -->
                             <div class="modal-footer">
-                                <button type="submit" class="btn btn-secondary" >确定</button>
+                                <button type="submit"  class="btn btn-secondary" >确定</button>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
                             </div>
                         </form>
@@ -67,7 +72,7 @@
                         <c:if test="${d.discount_enable==0}">启用</c:if>
                         <c:if test="${d.discount_enable==1}">不启用</c:if>
                     <td/>
-                    <td><a id="finanId" name="finanId"   data-toggle="modal" data-target="#Myomoal">修改|</a><a id="configId" href="/deletefinance?configId=${f.finance_id}" name="configId"> 删除</a><td/>
+                    <td><a id="finanId" name="finanId"  onclick="soutselect(${d.discount_id})"  data-toggle="modal" data-target="#Myomoal">修改|</a><a id="configId" onclick="javascript:return deletedosount();" href="/deletedisount?discount_id=${d.discount_id}" name="configId"> 删除</a><td/>
                 <tr/>
                 </c:forEach>
 
@@ -87,12 +92,17 @@
                     <div class="modal-header">
                         <h4 class="modal-title">您正在进行修改操作</h4>
                     </div>
-                    <form action="/updatafinance" method="post" >
+                    <form action="/updatedisount" method="post" >
                         <!-- 模态框主体 -->
                         <div class="modal-body">
-                            类型名称：<input id="financetype" name="financetype" type="text"><br/>
+                            <input type="hidden" id="discountid" name="discount_id">
+                            优惠类型：<input id="discounttype" name="discount_type" type="text"><br/>
                             <p></p>
-                            是否启用：<select id="financeenable" name="financeenable">
+                            配置数值：<input id="discountnumer"  name="discount_numer" type="text"><br/>
+                            <p></p>
+                            实际数值：<input id="discountactual"  name="discount_actual" type="text"><br/>
+                            <p></p>
+                            是否启用：<select id="discountenable" name="discount_enable">
                             <option value="0">启用</option>
                             <option value="1">不启用</option>
 

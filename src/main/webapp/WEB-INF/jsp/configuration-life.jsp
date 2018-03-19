@@ -17,11 +17,16 @@
         <tr>
             <td><h3>服务年限管理-填写最大的服务年限</h3></td>
         </tr>
-        <tr>
-            <td>配置名称<input type="text" id="servicetype" value="${life.life_name}"></td><br/>
-            <p></p>
-            <td>配置数值：<input id="servicetow" name="service_tow" type="text" value="${life.life_numer}"><br/></td>
+        <form action="updatelife" method="post">
+            <input type="hidden" name="life_id" value="${life.life_id}">
+            <tr>
+            <td>配置名称<input readonly type="text" id="life_name"  name="life_name" value="${life.life_name}"></td>
+            <td>配置数值：<input id="life_numer" name="life_numer" type="text" value="${life.life_numer}"></td>
+               <td> <input type="submit" class="btn" id="service" name="service" value="保存" style="font-size: 25px;"></td>
         </tr>
+
+        </form>
+
     </table>
 
 

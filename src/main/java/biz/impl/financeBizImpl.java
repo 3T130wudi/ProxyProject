@@ -29,6 +29,11 @@ public class financeBizImpl implements financeBiz {
         return financeDao.fanceselect(finance);
     }
 
+    public List<finance> insertjuct(finance finance) {
+        return financeDao.insertjuct(finance);
+
+    }
+
 
     public boolean deletefinance(int financeId) {
         return financeDao.deletefinance(financeId)>0;

@@ -63,8 +63,8 @@ function selectfanace(id){
             alert("455555");
         }
     });
-}
 
+}
 function selectone(id) {
     $.ajax({
         type: "POST",

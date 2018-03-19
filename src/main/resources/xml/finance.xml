@@ -21,7 +21,10 @@
         UPDATE `finance` SET finance_type=#{finance_type},finance_enable=#{finance_enable} WHERE finance_id=#{finance_id}
     </update>
     <select id="fanceselect" resultType="entity.finance">
-         SELECT * FROM `finance`
+         SELECT * FROM `finance` WHERE finance_id=#{finance_id}
     </select>
 
+     <select id="insertjuct" resultType="entity.finance">
+           SELECT * FROM `finance` WHERE finance_type=#{finance_type}
+     </select>
 </mapper>
