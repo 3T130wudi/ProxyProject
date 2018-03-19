@@ -31,7 +31,7 @@ public class UsersController {
      * @return
      */
     @RequestMapping("/showLogin")
-    public String showLogin(){
+    public String showLogin(Model m){
         return "login";
     }
 
@@ -49,7 +49,7 @@ public class UsersController {
             session.setAttribute("user",u);
             return "index";
         }
-        return this.showLogin();
+        return this.showLogin(m);
     }
 
     @RequestMapping("/showUserList")
