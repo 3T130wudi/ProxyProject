@@ -30,18 +30,12 @@
 
     <mvc:interceptors>
         <mvc:interceptor>
-
-            <!--默认拦截的连接-->
             <mvc:mapping path="/**"/>
-
-            <!--不拦截的连接-->
+            <mvc:exclude-mapping path="/login"/>
             <mvc:exclude-mapping path="/showLogin"/>
-
-
-            <bean class="util.LoginInterceptor"></bean>
+            <bean class="util.LoginInterceptor" />
         </mvc:interceptor>
     </mvc:interceptors>
-
 
 
     <!--会话工厂-->
