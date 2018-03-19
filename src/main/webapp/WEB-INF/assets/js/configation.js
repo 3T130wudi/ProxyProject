@@ -249,6 +249,18 @@ function servicecheckForm(frm) {
     return flag;
 };
 
+function caiwuform(frm) {
+    var flag = true;
+    $("#frm input[type='text']").each(function(i, obj) {
+        if(obj.value == "") {
+            alert('输入框不能为空');
+            flag = false;
+            return false;
+        }
+    });
+    return flag;
+};
+
 function soutselect(id) {
     $.ajax({
         type: "POST",

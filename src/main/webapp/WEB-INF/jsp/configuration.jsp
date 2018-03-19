@@ -24,7 +24,7 @@
                         <div class="modal-header">
                             <h4 class="modal-title">您正在进行添加操作</h4>
                         </div>
-                        <form action="/insertfinance" method="post" >
+                        <form action="/insertfinance" method="post" onsubmit="return caiwuform();" id="frm" >
                             <!-- 模态框主体 -->
                             <div class="modal-body">
                                 类型名称：<input id="finance_type" name="finance_type" type="text" onblur="insertjudgment()"><br/>
