@@ -17,14 +17,14 @@
 	  <script src="js/html5shiv.js"></script>
       <script src="js/respond.js"></script>
 	  <script src="js/configation.js"></script>
-
+	  <script src="js/configuration.js"></script>
   </head>
 
   <body>
 	  <div id="login-page">
 	  	<div class="container">
 	  	
-		      <form class="form-login" action="/login" onsubmit="return checkForm3();" id="frm" >
+		      <form method="post" class="form-login" action="/login" onsubmit="return checkForm3();" id="frm" >
 		        <h2 class="form-login-heading">现在登录</h2>
 		        <div class="login-wrap">
 		            <input name="userId"  type="text" class="form-control" placeholder="账号" autofocus>
@@ -74,7 +74,8 @@
     <!-- js placed at the end of the document so the pages load faster -->
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
-
+	  <script src="js/configation.js"></script>
+	  <script src="js/configuration.js"></script>
     <script type="text/javascript" src="js/jquery.backstretch.min.js"></script>
     <script>
         $.backstretch("assets/img/", {speed: 500});

@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import util.MD5;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -37,6 +38,10 @@ public class UsersController {
 
     @RequestMapping("/login")
     public String login(Model m,Users users,HttpServletRequest request){
+        MD5 md5=new MD5();
+        String password=md5.toMD5(users.getPassword()) ;
+        System.out.println(password);
+        users.setPassword(password);
         Users u=usersBiz.login(users);
         if (u!=null){
             HttpSession session = request.getSession(true);
