@@ -84,7 +84,7 @@
                             <span>${user.role.authorityList.authority_gateway}</span>
                         </a>
                         <ul class="sub">
-                            <li><a  href="commissionList.html">${user.role.authorityList.gateway_1}</a></li>
+                            <li><a  href="/ALLContact">${user.role.authorityList.gateway_1}</a></li>
                         </ul>
                     </li>
                 </c:if>
