@@ -28,6 +28,7 @@
     </div>
     <!--logo start-->
     <a class="logo"><b>欢迎您:${user.role.name}</b></a>
+    <a href="/showUserList"/>
     <!--logo end-->
     <div class="nav notify-row" id="top_menu">
         <!--  notification start -->

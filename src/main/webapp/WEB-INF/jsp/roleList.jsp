@@ -39,6 +39,7 @@
                 </div>
             </div>
         </div>
+
          <div class="container">
                     <!-- 模态框 -->
                     <div class="modal fade" id="myModal1">
@@ -68,6 +69,7 @@
                         </div>
                     </div>
                 </div>
+
         <table class="table table-advance table-hover">
             <thead>
             <tr>
