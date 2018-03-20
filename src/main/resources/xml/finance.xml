@@ -27,4 +27,12 @@
      <select id="insertjuct" resultType="entity.finance">
            SELECT * FROM `finance` WHERE finance_type=#{finance_type}
      </select>
+
+    <select id="queryfinance" resultType="entity.finance">
+        SELECT * FROM `finance` limit #{pageNo},#{pageSize}
+    </select>
+
+    <select id="queryfinanceCount" resultType="_int">
+        SELECT count(1)  FROM `finance`
+    </select>
 </mapper>

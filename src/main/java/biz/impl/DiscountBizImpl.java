@@ -3,6 +3,7 @@ package biz.impl;
 import biz.DiscountBiz;
 import dao.DiscountDao;
 import entity.Discount;
+import entity.Pager;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -12,8 +13,14 @@ import java.util.List;
 public class DiscountBizImpl implements DiscountBiz{
     @Resource
     private DiscountDao discountDao;
-    public List<Discount> selectDiscount() {
-        return discountDao.selectDiscount();
+    public Pager<Discount> selectDiscount(int pageNo, int pageSize) {
+        Pager<Discount> pager=new Pager<Discount>();
+        pager.setPageNo(pageNo);
+        pager.setPageSize(pageSize);
+        pager.setTotalRows(discountDao.countdiscountcurre());
+        pager.setTotalPage((pager.getTotalRows()+pageSize-1)/pageSize);
+        pager.setDatas(discountDao.selectDiscount((pageNo-1)*pageSize,pageSize));
+        return pager;
 
 
     }

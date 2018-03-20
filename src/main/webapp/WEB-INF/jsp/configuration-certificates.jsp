@@ -60,10 +60,10 @@
                     <td>${c.certificates_id}<td/>
                     <td>${c.certificates_type}<td/>
                     <td>
-                        <c:if test="${c.certificates_enable==0}">启用</c:if>
-                        <c:if test="${c.certificates_enable==1}">不启用</c:if>
+                        <c:if test="${c.certificates_enable==0}"><span style="color:Green">启用</span></c:if>
+                        <c:if test="${c.certificates_enable==1}"><span style="color: red">不启用</span></c:if>
                     <td/>
-                    <td><a id="finanId" name="finanId" onclick="selectficates(${c.certificates_id})"   data-toggle="modal" data-target="#Myomoal">修改|</a><a id="configId" onclick="javascript:return deletecerti();" href="/deletecertificates?certificates_id=${c.certificates_id}" name="configId"> 删除</a><td/>
+                    <td><a id="finanId" name="finanId" onclick="selectficates(${c.certificates_id})"  class="btn btn-default"  data-toggle="modal" data-target="#Myomoal">修改</a><a class="btn btn-default" id="configId" onclick="javascript:return deletecerti();" href="/deletecertificates?certificates_id=${c.certificates_id}" name="configId"> 删除</a><td/>
                 <tr/>
                 </c:forEach>
 

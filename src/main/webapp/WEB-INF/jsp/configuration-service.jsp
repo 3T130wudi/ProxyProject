@@ -74,15 +74,15 @@
             <td>是否启用<td/>
             <td>操作<td/>
         <tr/>
-        <c:forEach items="${service}" var="s">
+        <c:forEach items="${pager.datas}" var="s">
 
         <tr id="coifn">
             <td>${s.service_id}<td/>
             <td>${s.service_type}<td/>
             <td>${s.service_tow}<td/>
             <td>
-                <c:if test="${s.service_enable==0}">启用</c:if>
-                <c:if test="${s.service_enable==1}">不启用</c:if>
+                <c:if test="${s.service_enable==0}"><span style="color:Green">启用</span></c:if>
+                <c:if test="${s.service_enable==1}"><span style="color: red">不启用</span></c:if>
             <td/>
             <td><a id="sid" name="sid" onclick="
                     $.ajax({
@@ -98,12 +98,26 @@
                             error: function () {
 
                             }
-                            });"  data-toggle="modal" data-target="#Mymoal">修改</a><td/>
+                            });"  data-toggle="modal" data-target="#Mymoal" class="btn btn-default">修改</a><td/>
         <tr/>
 
         </c:forEach>
         <table/>
 </form>
+    <div style="margin-left: 185px">
+        <a class="btn btn-default " href="/selectService?pageNo=1">首页</a>&nbsp;&nbsp;
+
+        <a  class="btn btn-default" href="/selectService?pageNo=${pager.pageNo-1}">上一页</a>&nbsp;&nbsp;
+
+        <a  class="btn btn-default " >第${pager.pageNo}/${pager.totalPage}页</a>&nbsp;&nbsp;
+
+        <c:if test="${pager.pageNo<pager.totalPage}">
+            <a class="btn btn-default  " href="/selectService?pageNo=${pager.pageNo+1}">下一页</a>&nbsp;&nbsp;
+        </c:if>
+
+        <a class="btn btn-default  " href="/selectService?pageNo=${pager.totalPage}">尾页</a>&nbsp;&nbsp;
+    </div>
+
     <div class="container">
         <!-- 模态框 -->
         <div class="modal fade" id="Mymoal">

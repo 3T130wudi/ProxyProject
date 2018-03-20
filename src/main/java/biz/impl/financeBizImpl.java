@@ -2,6 +2,7 @@ package biz.impl;
 
 import biz.financeBiz;
 import dao.financeDao;
+import entity.Pager;
 import entity.finance;
 import org.springframework.stereotype.Service;
 
@@ -42,6 +43,19 @@ public class financeBizImpl implements financeBiz {
     public finance selectfnance(int id) {
         return financeDao.selectfnance(id);
     }
+
+    public Pager<finance> queryfinance(int pageNo, int pageSize) {
+
+        Pager<finance> financePager=new Pager<finance>();
+        financePager.setPageNo(pageNo);
+        financePager.setPageSize(pageSize);
+        financePager.setTotalRows(financeDao.queryfinanceCount());
+        financePager.setTotalPage((financePager.getTotalRows()+pageSize-1)/pageSize);
+        financePager.setDatas(financeDao.queryfinance((pageNo-1)*pageSize,pageSize));
+
+        return financePager;
+    }
+
 
 
 }
