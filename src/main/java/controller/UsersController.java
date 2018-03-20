@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import util.MD5;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -37,6 +38,10 @@ public class UsersController {
 
     @RequestMapping("/login")
     public String login(Model m,Users users,HttpServletRequest request){
+        MD5 md5=new MD5();
+        String password=md5.toMD5(users.getPassword()) ;
+        System.out.println(password);
+        users.setPassword(password);
         Users u=usersBiz.login(users);
         if (u!=null){
             HttpSession session = request.getSession(true);
@@ -47,19 +52,22 @@ public class UsersController {
     }
 
     @RequestMapping("/showUserList")
-    public String showUserList(Model m,Users users){
+    public String showUserList(Model m,@RequestParam(required = false,defaultValue = "1") int pageNo,Users users){
+        if (pageNo<=0){
+            pageNo=1;
+        }
+
         m.addAttribute("roleList",roleBiz.selectList());
-        m.addAttribute("userList",usersBiz.selectUser(users));
-        m.addAttribute("user1",usersBiz.selectUser(users));
+        m.addAttribute("userList",usersBiz.selectUser(users.getName(),users.getRoleId(),users.getType(),3,pageNo));
         return "userList";
     }
 
     @RequestMapping("/addUser")
     public String addUser(Model m,Users users){
         if (usersBiz.addUser(users)){
-           return this.showUserList(m,users);
+           return this.showUserList(m,1,users);
         }else {
-           return this.showUserList(m,new Users());
+           return this.showUserList(m,1,new Users());
         }
     }
 
@@ -79,18 +87,18 @@ public class UsersController {
     @RequestMapping("/updateUser")
     public String updateUser(Model m,Users users){
         if (usersBiz.updateUser(users)){
-            return this.showUserList(m,users);
+            return this.showUserList(m,1,users);
         }else {
-            return this.showUserList(m,new Users());
+            return this.showUserList(m,1,new Users());
         }
     }
 
     @RequestMapping("/deleteUser")
     public String deleteUser(Model m,Users users){
         if (usersBiz.deleteUser(users)){
-            return this.showUserList(m,new Users());
+            return this.showUserList(m,1,new Users());
         }else {
-            return this.showUserList(m,new Users());
+            return this.showUserList(m,1,new Users());
         }
     }
 

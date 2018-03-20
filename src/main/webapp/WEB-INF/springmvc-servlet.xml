@@ -35,6 +35,9 @@
             <mvc:exclude-mapping path="/showLogin"/>
             <mvc:exclude-mapping path=".css"/>
             <mvc:exclude-mapping path=".js"/>
+            <mvc:exclude-mapping path=".js"/>
+            <mvc:exclude-mapping path=".css"/>
+            <mvc:exclude-mapping path=".img"/>
             <bean class="util.LoginInterceptor" />
         </mvc:interceptor>
     </mvc:interceptors>

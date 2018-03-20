@@ -22,7 +22,7 @@ public class RoleBizImpl implements RoleBiz {
         pager.setPageSize(pageSize);
         pager.setTotalRows(roleDao.queryRoleCount());
         pager.setTotalPage((pager.getTotalRows()+pageSize-1)/pageSize);
-       pager.setDatas(roleDao.queryProjectinfos((offset-1)*pageSize,pageSize));
+        pager.setDatas(roleDao.queryProjectinfos((offset-1)*pageSize,pageSize));
         return pager;
     }
 

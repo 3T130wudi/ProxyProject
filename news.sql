@@ -21,12 +21,12 @@ USE `test`;
 DROP TABLE IF EXISTS `advance`;
 
 CREATE TABLE `advance` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `approach_id` int(11) NOT NULL,
-  `isAdvance` int(11) NOT NULL,
-  `finance_id` int(11) NOT NULL,
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `approach_id` INT(11) NOT NULL,
+  `isAdvance` INT(11) NOT NULL,
+  `finance_id` INT(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 /*Data for the table `advance` */
 
@@ -35,22 +35,22 @@ CREATE TABLE `advance` (
 DROP TABLE IF EXISTS `agentcustomer`;
 
 CREATE TABLE `agentcustomer` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
-  `contact_id` int(11) NOT NULL,
-  `date` date NOT NULL,
-  `type` varchar(50) NOT NULL,
-  `state` int(11) NOT NULL,
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `user_id` INT(11) NOT NULL,
+  `contact_id` INT(11) NOT NULL,
+  `date` DATE NOT NULL,
+  `type` VARCHAR(50) NOT NULL,
+  `state` INT(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `contact_id` (`contact_id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `agentcustomer_ibfk_1` FOREIGN KEY (`contact_id`) REFERENCES `contact` (`id`),
   CONSTRAINT `agentcustomer_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=INNODB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 /*Data for the table `agentcustomer` */
 
-insert  into `agentcustomer`(`id`,`user_id`,`contact_id`,`date`,`type`,`state`) values
+INSERT  INTO `agentcustomer`(`id`,`user_id`,`contact_id`,`date`,`type`,`state`) VALUES
 (3,1,1,'2018-02-19','加拿大身份证',1),
 (4,1,7,'2018-02-19','国内身份证',0);
 
@@ -59,23 +59,23 @@ insert  into `agentcustomer`(`id`,`user_id`,`contact_id`,`date`,`type`,`state`) 
 DROP TABLE IF EXISTS `app`;
 
 CREATE TABLE `app` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `APP_name` varchar(50) NOT NULL,
-  `APP_id` varchar(32) NOT NULL,
-  `APP_pwd` varchar(50) NOT NULL,
-  `APP_price` float(10,2) DEFAULT NULL,
-  `user_id` int(11) NOT NULL,
-  `APPDate` date NOT NULL,
-  `APP_service_type` varchar(50) NOT NULL,
-  `Application` int(11) NOT NULL,
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `APP_name` VARCHAR(50) NOT NULL,
+  `APP_id` VARCHAR(32) NOT NULL,
+  `APP_pwd` VARCHAR(50) NOT NULL,
+  `APP_price` FLOAT(10,2) DEFAULT NULL,
+  `user_id` INT(11) NOT NULL,
+  `APPDate` DATE NOT NULL,
+  `APP_service_type` VARCHAR(50) NOT NULL,
+  `Application` INT(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `app_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=INNODB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 /*Data for the table `app` */
 
-insert  into `app`(`id`,`APP_name`,`APP_id`,`APP_pwd`,`APP_price`,`user_id`,`APPDate`,`APP_service_type`,`Application`) values
+INSERT  INTO `app`(`id`,`APP_name`,`APP_id`,`APP_pwd`,`APP_price`,`user_id`,`APPDate`,`APP_service_type`,`Application`) VALUES
 (-1,'null','null','null',0.00,1,'2018-02-13','null',-1),
 (1,'aaa','zhangsan','zhangsan',3000.00,1,'2020-12-30','不传苹果商城',0),
 (2,'bbb','lisi','lisi',3500.00,2,'2021-12-30','传苹果商城',0),
@@ -90,15 +90,15 @@ insert  into `app`(`id`,`APP_name`,`APP_id`,`APP_pwd`,`APP_price`,`user_id`,`APP
 DROP TABLE IF EXISTS `application`;
 
 CREATE TABLE `application` (
-  `application_id` int(11) NOT NULL AUTO_INCREMENT,
-  `application_name` varchar(50) NOT NULL,
-  `application_numer` varchar(50) NOT NULL DEFAULT 'http://url',
+  `application_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `application_name` VARCHAR(50) NOT NULL,
+  `application_numer` VARCHAR(50) NOT NULL DEFAULT 'http://url',
   PRIMARY KEY (`application_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=INNODB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 /*Data for the table `application` */
 
-insert  into `application`(`application_id`,`application_name`,`application_numer`) values
+INSERT  INTO `application`(`application_id`,`application_name`,`application_numer`) VALUES
 (1,'APP系统地址','http://url');
 
 /*Table structure for table `authoritylist` */
@@ -106,39 +106,39 @@ insert  into `application`(`application_id`,`application_name`,`application_nume
 DROP TABLE IF EXISTS `authoritylist`;
 
 CREATE TABLE `authoritylist` (
-  `id` int(11) NOT NULL,
-  `authority_agwnt` varchar(20) DEFAULT NULL,
-  `authority_gateway` varchar(20) DEFAULT NULL,
-  `authority_report` varchar(20) DEFAULT NULL,
-  `authority_system` varchar(20) DEFAULT NULL,
-  `authority_configuration` varchar(20) DEFAULT NULL,
-  `agwnt_1` varchar(20) DEFAULT NULL,
-  `agwnt_2` varchar(20) DEFAULT NULL,
-  `agwnt_3` varchar(20) DEFAULT NULL,
-  `agwnt_4` varchar(20) DEFAULT NULL,
-  `agwnt_5` varchar(20) DEFAULT NULL,
-  `gateway_1` varchar(20) DEFAULT NULL,
-  `report_1` varchar(20) DEFAULT NULL,
-  `system_1` varchar(20) DEFAULT NULL,
-  `system_2` varchar(20) DEFAULT NULL,
-  `system_3` varchar(20) DEFAULT NULL,
-  `system_4` varchar(20) DEFAULT NULL,
-  `system_5` varchar(20) DEFAULT NULL,
-  `configuration_1` varchar(20) DEFAULT NULL,
-  `configuration_2` varchar(20) DEFAULT NULL,
-  `configuration_3` varchar(20) DEFAULT NULL,
-  `configuration_4` varchar(20) DEFAULT NULL,
-  `configuration_5` varchar(20) DEFAULT NULL,
-  `configuration_6` varchar(20) DEFAULT NULL,
-  `configuration_7` varchar(20) DEFAULT NULL,
-  `dateTime` date DEFAULT NULL,
-  `type` int(11) NOT NULL,
+  `id` INT(11) NOT NULL,
+  `authority_agwnt` VARCHAR(20) DEFAULT NULL,
+  `authority_gateway` VARCHAR(20) DEFAULT NULL,
+  `authority_report` VARCHAR(20) DEFAULT NULL,
+  `authority_system` VARCHAR(20) DEFAULT NULL,
+  `authority_configuration` VARCHAR(20) DEFAULT NULL,
+  `agwnt_1` VARCHAR(20) DEFAULT NULL,
+  `agwnt_2` VARCHAR(20) DEFAULT NULL,
+  `agwnt_3` VARCHAR(20) DEFAULT NULL,
+  `agwnt_4` VARCHAR(20) DEFAULT NULL,
+  `agwnt_5` VARCHAR(20) DEFAULT NULL,
+  `gateway_1` VARCHAR(20) DEFAULT NULL,
+  `report_1` VARCHAR(20) DEFAULT NULL,
+  `system_1` VARCHAR(20) DEFAULT NULL,
+  `system_2` VARCHAR(20) DEFAULT NULL,
+  `system_3` VARCHAR(20) DEFAULT NULL,
+  `system_4` VARCHAR(20) DEFAULT NULL,
+  `system_5` VARCHAR(20) DEFAULT NULL,
+  `configuration_1` VARCHAR(20) DEFAULT NULL,
+  `configuration_2` VARCHAR(20) DEFAULT NULL,
+  `configuration_3` VARCHAR(20) DEFAULT NULL,
+  `configuration_4` VARCHAR(20) DEFAULT NULL,
+  `configuration_5` VARCHAR(20) DEFAULT NULL,
+  `configuration_6` VARCHAR(20) DEFAULT NULL,
+  `configuration_7` VARCHAR(20) DEFAULT NULL,
+  `dateTime` DATE DEFAULT NULL,
+  `type` INT(11) NOT NULL,
   UNIQUE KEY `roleId` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 /*Data for the table `authoritylist` */
 
-insert  into `authoritylist`(`id`,`authority_agwnt`,`authority_gateway`,`authority_report`,`authority_system`,`authority_configuration`,`agwnt_1`,`agwnt_2`,`agwnt_3`,`agwnt_4`,`agwnt_5`,`gateway_1`,`report_1`,`system_1`,`system_2`,`system_3`,`system_4`,`system_5`,`configuration_1`,`configuration_2`,`configuration_3`,`configuration_4`,`configuration_5`,`configuration_6`,`configuration_7`,`dateTime`,`type`) values
+INSERT  INTO `authoritylist`(`id`,`authority_agwnt`,`authority_gateway`,`authority_report`,`authority_system`,`authority_configuration`,`agwnt_1`,`agwnt_2`,`agwnt_3`,`agwnt_4`,`agwnt_5`,`gateway_1`,`report_1`,`system_1`,`system_2`,`system_3`,`system_4`,`system_5`,`configuration_1`,`configuration_2`,`configuration_3`,`configuration_4`,`configuration_5`,`configuration_6`,`configuration_7`,`dateTime`,`type`) VALUES
 (1,'代理商管理','门户管理','报表管理','系统管理','系统配置管理','关键词申请','代理商客户管理','代理商预付款','关键词申请管理','操作日志','门户管理','报表管理','财务管理','角色管理','角色权限配置','用户管理','关键词审核','财务类型','服务类型','服务年限','APP地址','客户类型','证件类型','优惠类型','2018-03-15',1),
 (2,'代理商管理','门户管理',NULL,NULL,NULL,'关键词申请','代理商客户管理','代理商预付款','关键词申请管理','操作日志','门户管理',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2018-03-15',1),
 (3,NULL,NULL,'报表管理','系统管理',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'报表管理','财务管理',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2018-03-15',1),
@@ -153,14 +153,14 @@ insert  into `authoritylist`(`id`,`authority_agwnt`,`authority_gateway`,`authori
 DROP TABLE IF EXISTS `capitalsource`;
 
 CREATE TABLE `capitalsource` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `approach` varchar(255) NOT NULL,
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `approach` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=INNODB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 /*Data for the table `capitalsource` */
 
-insert  into `capitalsource`(`id`,`approach`) values
+INSERT  INTO `capitalsource`(`id`,`approach`) VALUES
 (1,'代理款'),
 (2,'转账'),
 (3,'财务打款'),
@@ -178,15 +178,15 @@ insert  into `capitalsource`(`id`,`approach`) values
 DROP TABLE IF EXISTS `certificates`;
 
 CREATE TABLE `certificates` (
-  `certificates_id` int(11) NOT NULL AUTO_INCREMENT,
-  `certificates_type` varchar(50) NOT NULL,
-  `certificates_enable` int(1) NOT NULL DEFAULT '0',
+  `certificates_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `certificates_type` VARCHAR(50) NOT NULL,
+  `certificates_enable` INT(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`certificates_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=INNODB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 /*Data for the table `certificates` */
 
-insert  into `certificates`(`certificates_id`,`certificates_type`,`certificates_enable`) values
+INSERT  INTO `certificates`(`certificates_id`,`certificates_type`,`certificates_enable`) VALUES
 (1,'国内身份证',0),
 (2,'境外身份证',0),
 (3,'营业执照',0);
@@ -196,22 +196,22 @@ insert  into `certificates`(`certificates_id`,`certificates_type`,`certificates_
 DROP TABLE IF EXISTS `contact`;
 
 CREATE TABLE `contact` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `contact_name` varchar(50) NOT NULL,
-  `contact_phone` varchar(50) NOT NULL,
-  `contact_fax` varchar(500) DEFAULT NULL,
-  `contact_mobile` varchar(50) NOT NULL,
-  `contact_email` varchar(100) NOT NULL,
-  `contact_post` varchar(20) NOT NULL,
-  `enterprise_id` int(11) DEFAULT NULL,
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `contact_name` VARCHAR(50) NOT NULL,
+  `contact_phone` VARCHAR(50) NOT NULL,
+  `contact_fax` VARCHAR(500) DEFAULT NULL,
+  `contact_mobile` VARCHAR(50) NOT NULL,
+  `contact_email` VARCHAR(100) NOT NULL,
+  `contact_post` VARCHAR(20) NOT NULL,
+  `enterprise_id` INT(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `enterprise_id` (`enterprise_id`),
   CONSTRAINT `contact_ibfk_1` FOREIGN KEY (`enterprise_id`) REFERENCES `enterprise` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=INNODB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 /*Data for the table `contact` */
 
-insert  into `contact`(`id`,`contact_name`,`contact_phone`,`contact_fax`,`contact_mobile`,`contact_email`,`contact_post`,`enterprise_id`) values
+INSERT  INTO `contact`(`id`,`contact_name`,`contact_phone`,`contact_fax`,`contact_mobile`,`contact_email`,`contact_post`,`enterprise_id`) VALUES
 (1,'张安顺','075512312','52312','136213123','zhangans@qq.com','保洁',1),
 (2,'李维新','075512312','52312','136213123','liweixin@qq.com','绿化',2),
 (3,'胖子','075512312','52312','136213123','pangzi@qq.com','房地产',3),
@@ -223,15 +223,15 @@ insert  into `contact`(`id`,`contact_name`,`contact_phone`,`contact_fax`,`contac
 DROP TABLE IF EXISTS `customer`;
 
 CREATE TABLE `customer` (
-  `customer_id` int(11) NOT NULL AUTO_INCREMENT,
-  `customer_type` varchar(50) NOT NULL,
-  `customer_enable` varchar(1) NOT NULL DEFAULT '0',
+  `customer_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `customer_type` VARCHAR(50) NOT NULL,
+  `customer_enable` VARCHAR(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`customer_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=INNODB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 /*Data for the table `customer` */
 
-insert  into `customer`(`customer_id`,`customer_type`,`customer_enable`) values
+INSERT  INTO `customer`(`customer_id`,`customer_type`,`customer_enable`) VALUES
 (1,'个人','0'),
 (2,'企业','0'),
 (3,'政府','0');
@@ -241,17 +241,17 @@ insert  into `customer`(`customer_id`,`customer_type`,`customer_enable`) values
 DROP TABLE IF EXISTS `discount`;
 
 CREATE TABLE `discount` (
-  `discount_id` int(11) NOT NULL AUTO_INCREMENT,
-  `discount_type` varchar(50) NOT NULL,
-  `discount_numer` int(11) NOT NULL,
-  `discount_actual` int(11) NOT NULL,
-  `discount_enable` int(1) NOT NULL DEFAULT '0',
+  `discount_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `discount_type` VARCHAR(50) NOT NULL,
+  `discount_numer` INT(11) NOT NULL,
+  `discount_actual` INT(11) NOT NULL,
+  `discount_enable` INT(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`discount_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=INNODB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 /*Data for the table `discount` */
 
-insert  into `discount`(`discount_id`,`discount_type`,`discount_numer`,`discount_actual`,`discount_enable`) values
+INSERT  INTO `discount`(`discount_id`,`discount_type`,`discount_numer`,`discount_actual`,`discount_enable`) VALUES
 (1,'买二赠一',2,3,0),
 (2,'买一送一',5,14,0);
 
@@ -260,20 +260,20 @@ insert  into `discount`(`discount_id`,`discount_type`,`discount_numer`,`discount
 DROP TABLE IF EXISTS `enterprise`;
 
 CREATE TABLE `enterprise` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `enterprise_name` varchar(50) NOT NULL,
-  `enterprise_type` varchar(50) NOT NULL,
-  `enterprise_home` varchar(500) DEFAULT NULL,
-  `enterprise_state` int(11) NOT NULL,
-  `gateway_id` int(11) DEFAULT NULL,
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `enterprise_name` VARCHAR(50) NOT NULL,
+  `enterprise_type` VARCHAR(50) NOT NULL,
+  `enterprise_home` VARCHAR(500) DEFAULT NULL,
+  `enterprise_state` INT(11) NOT NULL,
+  `gateway_id` INT(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `gateway_id` (`gateway_id`),
   CONSTRAINT `enterprise_ibfk_1` FOREIGN KEY (`gateway_id`) REFERENCES `gateway` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=INNODB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 /*Data for the table `enterprise` */
 
-insert  into `enterprise`(`id`,`enterprise_name`,`enterprise_type`,`enterprise_home`,`enterprise_state`,`gateway_id`) values
+INSERT  INTO `enterprise`(`id`,`enterprise_name`,`enterprise_type`,`enterprise_home`,`enterprise_state`,`gateway_id`) VALUES
 (1,'通泰实业有限公司','个人','tongtai.com',0,1),
 (2,'万力可集团','个人','wanlike.com',0,2),
 (3,'伟翔实业有限公司','个人','weixiang.com',1,3),
@@ -285,15 +285,15 @@ insert  into `enterprise`(`id`,`enterprise_name`,`enterprise_type`,`enterprise_h
 DROP TABLE IF EXISTS `finance`;
 
 CREATE TABLE `finance` (
-  `finance_id` int(11) NOT NULL AUTO_INCREMENT,
-  `finance_type` varchar(50) NOT NULL,
-  `finance_enable` int(1) NOT NULL DEFAULT '0',
+  `finance_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `finance_type` VARCHAR(50) NOT NULL,
+  `finance_enable` INT(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`finance_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=INNODB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 /*Data for the table `finance` */
 
-insert  into `finance`(`finance_id`,`finance_type`,`finance_enable`) values
+INSERT  INTO `finance`(`finance_id`,`finance_type`,`finance_enable`) VALUES
 (1,'财务打款',0),
 (3,'asdasd',0);
 
@@ -302,26 +302,26 @@ insert  into `finance`(`finance_id`,`finance_type`,`finance_enable`) values
 DROP TABLE IF EXISTS `financialstatements`;
 
 CREATE TABLE `financialstatements` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
-  `approach_id` int(11) NOT NULL,
-  `capital` float(10,2) NOT NULL,
-  `apply_date` date NOT NULL,
-  `pass_date` date NOT NULL,
-  `disburse_income` int(11) NOT NULL,
-  `verifier_id` int(11) NOT NULL,
-  `accountBalance` varchar(50) NOT NULL,
-  `remark` varchar(500) DEFAULT NULL,
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `user_id` INT(11) NOT NULL,
+  `approach_id` INT(11) NOT NULL,
+  `capital` FLOAT(10,2) NOT NULL,
+  `apply_date` DATE NOT NULL,
+  `pass_date` DATE NOT NULL,
+  `disburse_income` INT(11) NOT NULL,
+  `verifier_id` INT(11) NOT NULL,
+  `accountBalance` VARCHAR(50) NOT NULL,
+  `remark` VARCHAR(500) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   KEY `approach_id` (`approach_id`),
   CONSTRAINT `financialstatements_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   CONSTRAINT `financialstatements_ibfk_2` FOREIGN KEY (`approach_id`) REFERENCES `capitalsource` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=INNODB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 /*Data for the table `financialstatements` */
 
-insert  into `financialstatements`(`id`,`user_id`,`approach_id`,`capital`,`apply_date`,`pass_date`,`disburse_income`,`verifier_id`,`accountBalance`,`remark`) values
+INSERT  INTO `financialstatements`(`id`,`user_id`,`approach_id`,`capital`,`apply_date`,`pass_date`,`disburse_income`,`verifier_id`,`accountBalance`,`remark`) VALUES
 (2,1,1,18.50,'2018-02-05','2019-01-04',1,1,'52555336.25','个人隐私');
 
 /*Table structure for table `gateway` */
@@ -329,25 +329,25 @@ insert  into `financialstatements`(`id`,`user_id`,`approach_id`,`capital`,`apply
 DROP TABLE IF EXISTS `gateway`;
 
 CREATE TABLE `gateway` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `gateway_representative` varchar(50) NOT NULL,
-  `gateway_type` varchar(20) NOT NULL,
-  `gateway_certificates` int(11) NOT NULL,
-  `gateway_phone` int(11) NOT NULL,
-  `gateway_fax` int(11) DEFAULT NULL,
-  `gateway_date` date DEFAULT NULL,
-  `gateway_country` varchar(50) DEFAULT NULL,
-  `gateway_region` varchar(50) NOT NULL,
-  `gateway_city` varchar(50) NOT NULL,
-  `gateway_area` varchar(50) NOT NULL,
-  `gateway_address` varchar(50) DEFAULT NULL,
-  `gateway_remarks` varchar(50) DEFAULT NULL,
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `gateway_representative` VARCHAR(50) NOT NULL,
+  `gateway_type` VARCHAR(20) NOT NULL,
+  `gateway_certificates` INT(11) NOT NULL,
+  `gateway_phone` INT(11) NOT NULL,
+  `gateway_fax` INT(11) DEFAULT NULL,
+  `gateway_date` DATE DEFAULT NULL,
+  `gateway_country` VARCHAR(50) DEFAULT NULL,
+  `gateway_region` VARCHAR(50) NOT NULL,
+  `gateway_city` VARCHAR(50) NOT NULL,
+  `gateway_area` VARCHAR(50) NOT NULL,
+  `gateway_address` VARCHAR(50) DEFAULT NULL,
+  `gateway_remarks` VARCHAR(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=INNODB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 /*Data for the table `gateway` */
 
-insert  into `gateway`(`id`,`gateway_representative`,`gateway_type`,`gateway_certificates`,`gateway_phone`,`gateway_fax`,`gateway_date`,`gateway_country`,`gateway_region`,`gateway_city`,`gateway_area`,`gateway_address`,`gateway_remarks`) values
+INSERT  INTO `gateway`(`id`,`gateway_representative`,`gateway_type`,`gateway_certificates`,`gateway_phone`,`gateway_fax`,`gateway_date`,`gateway_country`,`gateway_region`,`gateway_city`,`gateway_area`,`gateway_address`,`gateway_remarks`) VALUES
 (1,'小红','国内身份证',2147483647,7552312,6555,'2018-02-22','中国','广东省','深圳市','罗湖区','hhh','ds'),
 (2,'小伟','国内身份证',2147483647,623122,5100,'2018-02-23','中国','广东省','广州市','白云区','白云区福祥路','66664'),
 (3,'小高','国内身份证',2147483647,831231,5200,'2018-02-24','中国','江西省','南昌市','南林区','吉祥路8号','66663'),
@@ -359,12 +359,12 @@ insert  into `gateway`(`id`,`gateway_representative`,`gateway_type`,`gateway_cer
 DROP TABLE IF EXISTS `journal`;
 
 CREATE TABLE `journal` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `type` int(11) NOT NULL,
-  `date` date DEFAULT NULL,
-  `user_id` int(11) NOT NULL,
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `type` INT(11) NOT NULL,
+  `date` DATE DEFAULT NULL,
+  `user_id` INT(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 /*Data for the table `journal` */
 
@@ -373,19 +373,19 @@ CREATE TABLE `journal` (
 DROP TABLE IF EXISTS `keywords`;
 
 CREATE TABLE `keywords` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `keyword` varchar(50) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `service_Type_id` int(11) NOT NULL,
-  `price` float(10,2) NOT NULL,
-  `verifier` int(11) NOT NULL,
-  `user_mode` int(11) NOT NULL,
-  `Application` int(11) NOT NULL,
-  `agent_id` int(11) NOT NULL,
-  `keywordDate` date NOT NULL,
-  `keywordsOverdue` date NOT NULL,
-  `APP_id` int(11) DEFAULT NULL,
-  `ageLimit` int(11) DEFAULT NULL,
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `keyword` VARCHAR(50) NOT NULL,
+  `user_id` INT(11) NOT NULL,
+  `service_Type_id` INT(11) NOT NULL,
+  `price` FLOAT(10,2) NOT NULL,
+  `verifier` INT(11) NOT NULL,
+  `user_mode` INT(11) NOT NULL,
+  `Application` INT(11) NOT NULL,
+  `agent_id` INT(11) NOT NULL,
+  `keywordDate` DATE NOT NULL,
+  `keywordsOverdue` DATE NOT NULL,
+  `APP_id` INT(11) DEFAULT NULL,
+  `ageLimit` INT(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `agent_id` (`agent_id`),
   KEY `APP_id` (`APP_id`),
@@ -393,11 +393,11 @@ CREATE TABLE `keywords` (
   CONSTRAINT `keywords_ibfk_1` FOREIGN KEY (`agent_id`) REFERENCES `agentcustomer` (`id`),
   CONSTRAINT `keywords_ibfk_2` FOREIGN KEY (`APP_id`) REFERENCES `app` (`id`),
   CONSTRAINT `keywords_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=INNODB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 /*Data for the table `keywords` */
 
-insert  into `keywords`(`id`,`keyword`,`user_id`,`service_Type_id`,`price`,`verifier`,`user_mode`,`Application`,`agent_id`,`keywordDate`,`keywordsOverdue`,`APP_id`,`ageLimit`) values
+INSERT  INTO `keywords`(`id`,`keyword`,`user_id`,`service_Type_id`,`price`,`verifier`,`user_mode`,`Application`,`agent_id`,`keywordDate`,`keywordsOverdue`,`APP_id`,`ageLimit`) VALUES
 (1,'你好',1,1,300.00,0,1,0,3,'2018-02-11','2018-02-11',1,1),
 (2,'NSA',1,0,6000.00,0,1,0,3,'2019-02-11','2018-02-11',1,1),
 (4,'55555',1,0,55555.00,0,1,0,3,'2018-02-13','2019-02-13',-1,1),
@@ -408,15 +408,15 @@ insert  into `keywords`(`id`,`keyword`,`user_id`,`service_Type_id`,`price`,`veri
 DROP TABLE IF EXISTS `life`;
 
 CREATE TABLE `life` (
-  `life_id` int(11) NOT NULL AUTO_INCREMENT,
-  `life_name` varchar(50) NOT NULL,
-  `life_numer` int(11) DEFAULT NULL,
+  `life_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `life_name` VARCHAR(50) NOT NULL,
+  `life_numer` INT(11) DEFAULT NULL,
   PRIMARY KEY (`life_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=INNODB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 /*Data for the table `life` */
 
-insert  into `life`(`life_id`,`life_name`,`life_numer`) values
+INSERT  INTO `life`(`life_id`,`life_name`,`life_numer`) VALUES
 (1,'服务年限',3);
 
 /*Table structure for table `role` */
@@ -424,19 +424,19 @@ insert  into `life`(`life_id`,`life_name`,`life_numer`) values
 DROP TABLE IF EXISTS `role`;
 
 CREATE TABLE `role` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `NAME` varchar(20) NOT NULL,
-  `uthorityId` int(11) NOT NULL,
-  `type` varchar(10) NOT NULL,
-  `fristDate` date DEFAULT NULL,
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `NAME` VARCHAR(20) NOT NULL,
+  `uthorityId` INT(11) NOT NULL,
+  `type` VARCHAR(10) NOT NULL,
+  `fristDate` DATE DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `uthorityId` (`uthorityId`),
   CONSTRAINT `role_ibfk_1` FOREIGN KEY (`uthorityId`) REFERENCES `authoritylist` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=INNODB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 /*Data for the table `role` */
 
-insert  into `role`(`id`,`NAME`,`uthorityId`,`type`,`fristDate`) values
+INSERT  INTO `role`(`id`,`NAME`,`uthorityId`,`type`,`fristDate`) VALUES
 (1,'系统管理员',1,'启用','2018-03-01'),
 (2,'代理商用户',2,'启用','2018-03-01'),
 (3,'财务用户',3,'启用','2018-03-01'),
@@ -450,16 +450,16 @@ insert  into `role`(`id`,`NAME`,`uthorityId`,`type`,`fristDate`) values
 DROP TABLE IF EXISTS `service`;
 
 CREATE TABLE `service` (
-  `service_id` int(11) NOT NULL AUTO_INCREMENT,
-  `service_type` varchar(50) NOT NULL,
-  `service_tow` int(11) NOT NULL,
-  `service_enable` int(1) NOT NULL DEFAULT '0',
+  `service_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `service_type` VARCHAR(50) NOT NULL,
+  `service_tow` INT(11) NOT NULL,
+  `service_enable` INT(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`service_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=INNODB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 
 /*Data for the table `service` */
 
-insert  into `service`(`service_id`,`service_type`,`service_tow`,`service_enable`) values
+INSERT  INTO `service`(`service_id`,`service_type`,`service_tow`,`service_enable`) VALUES
 (1,'上传苹果商城',26000,0),
 (2,'OPPO商城',18000,0),
 (3,'ddd',20000,1),
@@ -472,29 +472,29 @@ insert  into `service`(`service_id`,`service_type`,`service_tow`,`service_enable
 DROP TABLE IF EXISTS `users`;
 
 CREATE TABLE `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `userId` varchar(20) NOT NULL,
-  `NAME` varchar(20) NOT NULL,
-  `PASSWORD` varchar(20) NOT NULL,
-  `roleId` int(11) NOT NULL,
-  `isDelete` int(1) NOT NULL,
-  `type` varchar(10) NOT NULL,
-  `fristDate` date DEFAULT NULL,
-  `phone` varchar(200) DEFAULT NULL,
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `userId` VARCHAR(20) NOT NULL,
+  `NAME` VARCHAR(20) NOT NULL,
+  `PASSWORD` VARCHAR(100) NOT NULL,
+  `roleId` INT(11) NOT NULL,
+  `isDelete` INT(1) NOT NULL,
+  `type` VARCHAR(10) NOT NULL,
+  `fristDate` DATE DEFAULT NULL,
+  `phone` VARCHAR(200) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `roleId` (`roleId`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=INNODB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 /*Data for the table `users` */
 
-insert  into `users`(`id`,`userId`,`NAME`,`PASSWORD`,`roleId`,`isDelete`,`type`,`fristDate`,`phone`) values
-(1,'zhangsan','张三','zhangsan',1,0,'启用','2018-03-01',NULL),
-(2,'lisi','李四','lisi',2,0,'启用','2018-03-01',NULL),
-(3,'wangwu','王五','wangwu',3,0,'启用','2018-03-01',NULL),
-(4,'zhaoliu','赵六','zhaoliu',4,0,'启用','2018-03-01',NULL),
-(5,'tianqi','田七','tianqi',5,0,'启用','2018-03-01',NULL),
-(6,'wangba','王八','wangba',6,0,'启用','2018-03-01',NULL),
-(7,'jiumei','九妹','jiumei',7,0,'启用','2018-03-01',NULL);
+INSERT  INTO `users`(`id`,`userId`,`NAME`,`PASSWORD`,`roleId`,`isDelete`,`type`,`fristDate`,`phone`) VALUES
+(1,'zhangsan','张三','01d7f40760960e7bd9443513f22ab9af',1,0,'启用','2018-03-01',NULL),
+(2,'lisi','李四','dc3a8f1670d65bea69b7b65048a0ac40',2,0,'启用','2018-03-01',NULL),
+(3,'wangwu','王五','9f001e4166cf26bfbdd3b4f67d9ef617',3,0,'启用','2018-03-01',NULL),
+(4,'zhaoliu','赵六','27311020efc4ce2806feca0aab933fbd',4,0,'启用','2018-03-01',NULL),
+(5,'tianqi','田七','885a7428d5262ac73ff7b2f53ee4a730',5,0,'启用','2018-03-01',NULL),
+(6,'wangba','王八','aa64750af6583f0f77f121e31d6cca7b',6,0,'启用','2018-03-01',NULL),
+(7,'jiumei','九妹','40873c6fcf93bf193b44183f0ef51126',7,0,'启用','2018-03-01',NULL);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

@@ -60,8 +60,13 @@
 
     </select>
 
+
     <select id="selectList" resultType="Users">
         SELECT * from users
+    </select>
+
+    <select id="queryRoleCount" resultType="_int">
+        select count(1) from users
     </select>
 
     <select id="selectUser" resultType="Users">
@@ -76,9 +81,9 @@
               <if test="type != null and type !=''">
                      AND u.type=#{type}
               </if>
-                    AND    u.roleId=r.id
+                    AND   u.roleId=r.id
           </where>
-
+        limit #{offset},#{pageSize}
     </select>
 
     <insert id="addUser">

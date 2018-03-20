@@ -274,9 +274,6 @@ function checkForm3(frm) {
 
         }
     });
-
-
-
     return flag;
 };
 
@@ -296,7 +293,6 @@ function servicecheckForm(frm) {
     return flag;
 };
 
-
 function soutselect(id) {
     $.ajax({
         type: "POST",
@@ -305,14 +301,11 @@ function soutselect(id) {
         dataType: "json",
         success: function (date) {
             if (date) {
-
                 $("#discountid").val(date.discount_id);
                 $("#discounttype").val(date.discount_type);
                 $("#discountnumer").val(date.discount_numer);
                 $("#discountactual").val(date.discount_actual);
                 $("#discountenable").val(date.discount_enable)
-
-
             }
         },
         error: function () {

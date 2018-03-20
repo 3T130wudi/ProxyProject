@@ -126,7 +126,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach items="${userList}" var="ul">
+                    <c:forEach items="${userList.datas}" var="ul">
                         <tr>
                             <td>${ul.userId}</td>
                             <td>${ul.name}</td>
@@ -145,6 +145,12 @@
                     </c:forEach>
                     </tbody>
                 </table>
+                <a class="btn btn-primary" href="/showUserList?pageNo=1">首页</a>
+                <a class="btn btn-primary" href="/showUserList?pageNo=${userList.pageNo-1}">上一页</a>
+                <a class="btn btn-primary" href="/showUserList?pageNo=${userList.pageNo+1}">下一页</a>
+                <input type="hidden" id="totalPage" value="${userList.totalPage}">
+                <input type="hidden" id="pageNo" value="${userList.pageNo}">
+                <a class="btn btn-primary" href="/showUserList?pageNo=${userList.totalPage}">尾页</a>
             </tr>
             </thead>
         </table>

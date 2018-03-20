@@ -24,6 +24,7 @@
 	  <div id="login-page">
 	  	<div class="container">
 	  	
+		      <form method="post" class="form-login" action="/login" onsubmit="return checkForm3();" id="frm" >
 		      <form class="form-login" action="/login" onsubmit="return checkForm3();" id="frm" method="post">
 		        <h2 class="form-login-heading">现在登录</h2>
 		        <div class="login-wrap">

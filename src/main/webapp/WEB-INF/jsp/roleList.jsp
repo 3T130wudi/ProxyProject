@@ -39,6 +39,7 @@
                 </div>
             </div>
         </div>
+
          <div class="container">
                     <!-- 模态框 -->
                     <div class="modal fade" id="myModal1">
@@ -68,6 +69,7 @@
                         </div>
                     </div>
                 </div>
+
         <table class="table table-advance table-hover">
             <thead>
             <tr>
@@ -97,10 +99,12 @@
             </c:forEach>
             </tbody>
         </table>
-                <a href="/selectList?pageNo=1">首页</a>
-                <a href="/selectList?pageNo=${roleList.pageNo-1}">上一页</a>
-                <a href="/selectList?pageNo=${roleList.pageNo+1}">下一页</a>
-                <a href="/selectList?pageNo=${roleList.totalPage}">尾页</a>
+                <a class="btn btn-primary" href="/selectList?pageNo=1">首页</a>
+                <a class="btn btn-primary" href="/selectList?pageNo=${roleList.pageNo-1}">上一页</a>
+                <a class="btn btn-primary" href="/selectList?pageNo=${roleList.pageNo+1}">下一页</a>
+                <input type="hidden" id="totalPage" value="${roleList.totalPage}">
+                <input type="hidden" id="pageNo" value="${roleList.pageNo}">
+                <a class="btn btn-primary" href="/selectList?pageNo=${roleList.totalPage}">尾页</a>
             </tr>
             </thead>
         </table>

@@ -3,6 +3,7 @@ package controller;
 import biz.RoleBiz;
 import biz.AuthoritylistBiz;
 import entity.AuthorityList;
+import entity.Pager;
 import entity.Role;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,7 +32,8 @@ public class SystemController {
         if (pageNo<=0){
             pageNo=1;
         }
-        m.addAttribute("roleList",roleBiz.queryProjectinfos(3,pageNo));
+        Pager<Role> rolePager= roleBiz.queryProjectinfos(3,pageNo);
+        m.addAttribute("roleList",rolePager);
         return "roleList";
     }
 
