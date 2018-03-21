@@ -99,12 +99,14 @@
             </c:forEach>
             </tbody>
         </table>
-                <a class="btn btn-primary" href="/selectList?pageNo=1">首页</a>
-                <a class="btn btn-primary" href="/selectList?pageNo=${roleList.pageNo-1}">上一页</a>
-                <a class="btn btn-primary" href="/selectList?pageNo=${roleList.pageNo+1}">下一页</a>
-                <input type="hidden" id="totalPage" value="${roleList.totalPage}">
-                <input type="hidden" id="pageNo" value="${roleList.pageNo}">
-                <a class="btn btn-primary" href="/selectList?pageNo=${roleList.totalPage}">尾页</a>
+                <div style="margin-left: 185px">
+                <a class="btn btn-default" href="/selectList?pageNo=1">首页</a>
+                <a class="btn btn-default" href="/selectList?pageNo=${roleList.pageNo-1}">上一页</a>
+                <c:if test="${roleList.pageNo<roleList.totalPage}">
+                <a class="btn btn-default" href="/selectList?pageNo=${roleList.pageNo+1}">下一页</a>
+                </c:if>
+                <a class="btn btn-default" href="/selectList?pageNo=${roleList.totalPage}">尾页</a>
+                </div>
             </tr>
             </thead>
         </table>

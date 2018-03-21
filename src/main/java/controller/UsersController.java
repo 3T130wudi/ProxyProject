@@ -102,4 +102,10 @@ public class UsersController {
         }
     }
 
+    @RequestMapping("romoveSession")
+    public  String romoveSession(HttpSession session){
+       session.removeAttribute("user");
+       session.getAttribute("user");
+       return "login";
+    }
 }
