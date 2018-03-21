@@ -27,7 +27,7 @@
         <div class="fa fa-bars tooltips" data-placement="right"></div>
     </div>
     <!--logo start-->
-    <a class="logo"><b>欢迎您:${user.role.name}</b></a>
+    <a class="logo"><b>欢迎您:${user.role.name} ${user.name}</b></a>
     <a href="/showUserList"/>
     <!--logo end-->
     <div class="nav notify-row" id="top_menu">
@@ -58,8 +58,6 @@
         <div  id="sidebar"  class="nav-collapse col-md-3">
             <!-- sidebar menu start-->
             <ul class="sidebar-menu" id="nav-accordion">
-                <p class="centered"><img src="WEB-INF/assets/img/product.jpg" class="img-circle" width="60"></p>
-                <h5 class="centered">${user.name}</h5>
 
                 <!--显示代理商管理-->
                 <c:if test="${user.role.authorityList.authority_agwnt != null}">

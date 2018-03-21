@@ -63,7 +63,9 @@ public class UsersController {
     }
 
     @RequestMapping("/addUser")
-    public String addUser(Model m,Users users){
+    public String addUser(Model m, Users users) {
+
+
         if (usersBiz.addUser(users)){
            return this.showUserList(m,1,users);
         }else {

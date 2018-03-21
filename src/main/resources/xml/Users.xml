@@ -88,7 +88,7 @@
 
     <insert id="addUser">
         INSERT INTO users(`userId`,`NAME`,`PASSWORD`,`roleId`,`isDelete`,`type`,`fristDate`,`phone`)
-        VALUE (#{userId},#{name},#{password},#{roleId},0,#{type},now(),null)
+        VALUE (#{userId},#{name},#{password},#{roleId},0,#{type},now(),NULL)
     </insert>
 
     <update id="updateUser">

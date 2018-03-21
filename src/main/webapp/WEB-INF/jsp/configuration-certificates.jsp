@@ -7,9 +7,7 @@
     <div>
         <div class="container">
             <!-- 按钮：用于打开模态框 -->
-            <button type="button" data-toggle="modal" data-target="#myModal" >
-                添加证件类型
-            </button>
+            <a  class="btn btn-default" data-toggle="modal" data-target="#myModal" >添加证件类型</a>
 
             <!-- 模态框 -->
             <div class="modal fade" id="myModal">

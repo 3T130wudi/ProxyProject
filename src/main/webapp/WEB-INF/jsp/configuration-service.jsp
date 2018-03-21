@@ -7,9 +7,7 @@
 <div class="col-md-9 col-sm-12" style="height: 80%;width: 70%;margin-left: 15%;margin-top: 5%;">
     <div class="container">
         <!-- 按钮：用于打开模态框 -->
-        <button type="button" data-toggle="modal" data-target="#myModal" >
-            添加服务类型
-        </button>
+        <a  class="btn btn-default" data-toggle="modal" data-target="#myModal" >添加服务类型</a>
 
         <!-- 模态框 -->
         <div class="modal fade" id="myModal">
