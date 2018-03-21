@@ -62,31 +62,28 @@ public class KeywordListController {
 
 
     @RequestMapping("/insertKeyword")
-    public String insertKeyword(@RequestParam("keyword") String keyword, @RequestParam("service_Type_id") int service_Type_id,
-                                @RequestParam("keywordDate") int keywordDate, @RequestParam("price") float price,
-                                @RequestParam("id") int user_id, Model model, HttpServletRequest request){
+    public String insertKeyword(@RequestParam("keyword") String keyword, @RequestParam("service_Type_id") String service_Type_id,
+                                @RequestParam("keywordDate") String keywordDate, @RequestParam("price") String price, Model model, HttpServletRequest request){
         entity.keyword k=new keyword();
         k.setKeyword(keyword);
-        Users users=new Users();
-        users.setId(user_id);
-        k.setUser_id(users);
-        k.setService_Type_id(service_Type_id);
-        k.setPrice(price);
+        Users user = (Users) request.getSession().getAttribute("user");
+        k.setUser_id(user);
+        k.setService_Type_id(Integer.parseInt(service_Type_id));
+        k.setPrice(Float.parseFloat(price));
         k.setVerifier(0);
         k.setUser_mode(1);
         k.setApplication(0);
         AgentCustomer agent=new AgentCustomer();
-        agent.setId(user_id);
+        agent.setId(4);
         k.setAgent_id(agent);
         k.setKeywordDate(new Date());
         Calendar c = Calendar.getInstance();
-        c.add(Calendar.YEAR, keywordDate);
+        c.add(Calendar.YEAR, Integer.parseInt(keywordDate));
         k.setKeywordsOverdue(c.getTime());
-        k.setAgeLimit(keywordDate);
+        k.setAgeLimit(Integer.parseInt(keywordDate));
         APP app=new APP();
         app.setId(-1);
         k.setAPP_id(app);
-        UsersController usersController=new UsersController();
         if(keywordBiz.insertKeyword(k)>0){
             return this.keywordList(model,request,null);
         }

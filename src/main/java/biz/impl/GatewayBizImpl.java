@@ -10,7 +10,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @Service
-public class GatewayBizImpl implements GatewayBiz{
+public class GatewayBizImpl implements GatewayBiz {
     @Resource
     private GatewayDao gatewayDao;
     public List<AgentCustomer> AgentCustomerList(String name) {
@@ -24,6 +24,8 @@ public class GatewayBizImpl implements GatewayBiz{
     public int GatewayInsert(Gateway gateway) {
         return gatewayDao.GatewayInsert(gateway);
     }
+//
+
 
     public Gateway GatewaySelect(String phone) {
         return gatewayDao.GatewaySelect(phone);
@@ -31,5 +33,9 @@ public class GatewayBizImpl implements GatewayBiz{
 
     public int updateGateway(Gateway gateway) {
         return gatewayDao.updateGateway(gateway);
+    }
+
+    public int updateGatewayGateway_remarks(Gateway gateway) {
+        return gatewayDao.updateGatewayGateway_remarks(gateway);
     }
 }

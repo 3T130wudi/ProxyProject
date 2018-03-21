@@ -24,7 +24,11 @@ public class ContactBizImpl implements ContactBiz {
         return contactDao.updateContact(contact);
     }
 
-    public List<Contact> ContactList() {
-        return contactDao.ContactList();
+    public List<Contact> ContactList(String contact_name,String enterprise_name) {
+        return contactDao.ContactList(contact_name,enterprise_name);
+    }
+
+    public Contact Contact(int id) {
+        return contactDao.Contact(id);
     }
 }

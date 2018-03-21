@@ -28,16 +28,14 @@ var Script = function () {
 
     $(function () {
         $("#kehu").on("mouseout",function () {
-            alert("asd")
-            var a=$("#kehu").val()
+            var a=$("#kehu").val();
             $.ajax({
                 type:"POST",
-                data:{name:a},
-                url:"/selectName",
+                data:{names:a},
+                url:"/selectNameasdasdsaddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
                 dataType:"json",
                 success:function (date) {
                     if(date!=null){
-
                         $("#xinming").attr("value",date.user_id.name);
                     }else{
                         $("#kehu").append("搜索的客户不存在");

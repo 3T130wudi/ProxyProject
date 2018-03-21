@@ -1,6 +1,6 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:include page="listTop.jsp"/>
+<%@include file="listTop.jsp"%>
 
 <div class="" style="width: 83%;margin-left: 15%;margin-top: 5%;">
     <div>
@@ -43,10 +43,11 @@
                             ${k.ageLimit}
                     </td>
                     <td>
-                            ${k.keywordDate}
+                        <fmt:formatDate value="${k.keywordDate}" pattern="yyyy-MM-dd"/>
                     </td>
                     <td>
-                            ${k.keywordsOverdue}
+                        <fmt:formatDate value="${k.keywordsOverdue}" pattern="yyyy-MM-dd"/>
+
                     </td>
                 <td>
                     <c:if test="${k.getApplication() eq 0}">
@@ -163,4 +164,4 @@
 </div>
 <script src="js/jquery-1.12.4.js"></script>
 <script src="js/keywordList.js"></script>
-<jsp:include page="listBottom.jsp"/>
+<%@include file="listBottom.jsp"%>

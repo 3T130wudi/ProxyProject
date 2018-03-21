@@ -21,8 +21,8 @@
                         <input type="hidden" name="enterprise.id" value="${gateway.contact_id.enterprise_id.id}"/>
                         <input type="hidden" name="gateway.id" value="${gateway.contact_id.enterprise_id.gateway_id.id}"/>
                         企业名字 <input type="text" name="enterprise.enterprise_name" value="${gateway.contact_id.enterprise_id.enterprise_name}"> 企业类型<select name="enterprise.enterprise_type">
-                        <option value="个人" <c:if test="${gateway.contact_id.enterprise_id.enterprise_type}==个人">selected="selected"</c:if>>个人</option>
-                        <option value="组织" <c:if test="${gateway.contact_id.enterprise_id.enterprise_type}==组织">selected="selected"</c:if>>组织</option>
+                        <option value="个人" <c:if test="${gateway.contact_id.enterprise_id.enterprise_type=='个人'}">selected="selected"</c:if>>个人</option>
+                        <option value="组织" <c:if test="${gateway.contact_id.enterprise_id.enterprise_type=='组织'}">selected="selected"</c:if>>组织</option>
                     </select><br/>
                         企业主页 <input type="text" name="enterprise.enterprise_home" value="${gateway.contact_id.enterprise_id.enterprise_home}"> 状态 <select name="enterprise.enterprise_state">
                         <option value="0" <c:if test="${gateway.contact_id.enterprise_id.enterprise_state==0}">selected="selected"</c:if>>禁用</option>

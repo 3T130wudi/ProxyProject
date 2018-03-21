@@ -1,7 +1,8 @@
 package dao;
 
 import entity.APP;
+import org.apache.ibatis.annotations.Param;
 
 public interface APPDao {
-    APP selectAPP(String name);
+    APP selectAPP(@Param("name") String name);
 }

@@ -7,6 +7,7 @@ import com.alibaba.fastjson.JSON;
 import entity.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -29,8 +30,8 @@ public class APPController {
 
     @Resource
     private APPBiz appBiz;
-    @RequestMapping("/selectName")
-    public void selectName(@RequestParam(value = "name",required = false) String name, HttpServletResponse resp) throws IOException {
+    @RequestMapping("/selectNameasdasdsaddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd")
+    public void selectName(@RequestParam(value = "names",required = false) String name, HttpServletResponse resp) throws IOException {
         APP app = appBiz.selectAPP(name);
         if(app !=null){
             resp.setContentType("text/html;charset=utf-8");

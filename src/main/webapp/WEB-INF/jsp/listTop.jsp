@@ -47,7 +47,7 @@
     </div>
     <div class="top-menu">
         <ul class="nav pull-right top-menu">
-            <li><a class="logout" href="/romoveSession">退出</a></li>
+            <li><a class="logout" href="/romoveset">退出</a></li>
         </ul>
     </div>
 </header>
@@ -76,7 +76,6 @@
                         </ul>
                     </li>
                 </c:if>
-
                 <!--显示门户管理-->
                 <c:if test="${user.role.authorityList.authority_gateway != null}">
                     <li class="sub-menu">
@@ -85,7 +84,7 @@
                             <span>${user.role.authorityList.authority_gateway}</span>
                         </a>
                         <ul class="sub">
-                            <li><a  href="commissionList.html">${user.role.authorityList.gateway_1}</a></li>
+                            <li><a  href="enterpriseMenList">${user.role.authorityList.gateway_1}</a></li>
                         </ul>
                     </li>
                 </c:if>
@@ -126,7 +125,7 @@
                             <span>${user.role.authorityList.authority_configuration}</span>
                         </a>
                         <ul class="sub">
-                            <li><a  href="/queryfinance">${user.role.authorityList.configuration_1}</a></li>
+                            <li><a  href="Financeselect">${user.role.authorityList.configuration_1}</a></li>
                             <li><a  href="/selectService">${user.role.authorityList.configuration_2}</a></li>
                             <li><a  href="/selectlife">${user.role.authorityList.configuration_3}</a></li>
                             <li><a  href="/selectapplication">${user.role.authorityList.configuration_4}</a></li>

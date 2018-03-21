@@ -49,6 +49,37 @@ public class GatewayController {
         return "gateway";
     }
 
+    //2018-3-21新增 查看门户
+    @RequestMapping("enterList")
+    public String enterList(HttpServletRequest request, @RequestParam(value = "id", required = false) String id, @RequestParam(value = "model", required = false) String model, Model m) {
+        if (model.equals("0")) {
+            HttpSession session = request.getSession();
+            Users users=(Users) session.getAttribute("user");
+            m.addAttribute("gateway", gatewayBiz.AgentCustomerById(Integer.parseInt(id)));
+            return "enterpriseMenList";
+        }
+        HttpSession session = request.getSession();
+        Users users=(Users) session.getAttribute("user");
+        return "enterpriseMenList";
+    }
+    //2018-3-21新增 修改门户
+    @RequestMapping("enterList2")
+    public String enterList2(HttpServletRequest request, @RequestParam(value = "id", required = false) String id, @RequestParam(value = "model", required = false) String model, Model m) {
+        if (model.equals("0")) {
+            HttpSession session = request.getSession();
+            Users users=(Users) session.getAttribute("user");
+            m.addAttribute("gateway", gatewayBiz.AgentCustomerById(Integer.parseInt(id)));
+            return "enterpriseMenList2";
+        }
+        HttpSession session = request.getSession();
+        Users users=(Users) session.getAttribute("user");
+        return "enterpriseMenList2";
+    }
+
+
+
+
+//
     @RequestMapping("insertAgentCustomer")
     public String insertKeyword(HttpServletRequest request, Model model, @RequestBody Contact contact,
                                 @RequestBody Gateway gateway, @RequestBody Enterprise enterprise, @RequestBody AgentCustomer agentCustomer) {

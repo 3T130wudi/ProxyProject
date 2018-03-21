@@ -9,7 +9,7 @@ public class AgentCustomer {
     private Date date;
     private String type;
     private int state;
-
+    //
     @Override
     public String toString() {
         return "AgentCustomer{" +
@@ -33,6 +33,8 @@ public class AgentCustomer {
     public Users getUser_id() {
         return user_id;
     }
+
+
 
     public void setUser_id(Users user_id) {
         this.user_id = user_id;
