@@ -420,15 +420,15 @@ INSERT  INTO `keywords`(`id`,`keyword`,`user_id`,`service_Type_id`,`price`,`veri
 DROP TABLE IF EXISTS `life`;
 
 CREATE TABLE `life` (
-  `life_id` int(11) NOT NULL AUTO_INCREMENT,
-  `life_name` varchar(50) NOT NULL,
-  `life_numer` int(11) DEFAULT NULL,
+  `life_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `life_name` VARCHAR(50) NOT NULL,
+  `life_numer` INT(11) DEFAULT NULL,
   PRIMARY KEY (`life_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=INNODB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 /*Data for the table `life` */
 
-insert  into `life`(`life_id`,`life_name`,`life_numer`) values
+INSERT  INTO `life`(`life_id`,`life_name`,`life_numer`) VALUES
 (1,'服务年限',3);
 
 /*Table structure for table `role` */
@@ -436,19 +436,19 @@ insert  into `life`(`life_id`,`life_name`,`life_numer`) values
 DROP TABLE IF EXISTS `role`;
 
 CREATE TABLE `role` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `NAME` varchar(20) NOT NULL,
-  `uthorityId` int(11) NOT NULL,
-  `type` varchar(10) NOT NULL,
-  `fristDate` date DEFAULT NULL,
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `NAME` VARCHAR(20) NOT NULL,
+  `uthorityId` INT(11) NOT NULL,
+  `type` VARCHAR(10) NOT NULL,
+  `fristDate` DATE DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `uthorityId` (`uthorityId`),
   CONSTRAINT `role_ibfk_1` FOREIGN KEY (`uthorityId`) REFERENCES `authoritylist` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=INNODB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 /*Data for the table `role` */
 
-insert  into `role`(`id`,`NAME`,`uthorityId`,`type`,`fristDate`) values
+INSERT  INTO `role`(`id`,`NAME`,`uthorityId`,`type`,`fristDate`) VALUES
 (1,'系统管理员',1,'启用','2018-03-01'),
 (2,'代理商用户',2,'启用','2018-03-01'),
 (3,'财务用户',3,'启用','2018-03-01'),
@@ -462,16 +462,16 @@ insert  into `role`(`id`,`NAME`,`uthorityId`,`type`,`fristDate`) values
 DROP TABLE IF EXISTS `service`;
 
 CREATE TABLE `service` (
-  `service_id` int(11) NOT NULL AUTO_INCREMENT,
-  `service_type` varchar(50) NOT NULL,
-  `service_tow` int(11) NOT NULL,
-  `service_enable` int(1) NOT NULL DEFAULT '0',
+  `service_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `service_type` VARCHAR(50) NOT NULL,
+  `service_tow` INT(11) NOT NULL,
+  `service_enable` INT(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`service_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=INNODB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 
 /*Data for the table `service` */
 
-insert  into `service`(`service_id`,`service_type`,`service_tow`,`service_enable`) values
+INSERT  INTO `service`(`service_id`,`service_type`,`service_tow`,`service_enable`) VALUES
 (1,'上传苹果商城',26000,0),
 (2,'不上传苹果商城',18000,0);
 
@@ -480,23 +480,23 @@ insert  into `service`(`service_id`,`service_type`,`service_tow`,`service_enable
 DROP TABLE IF EXISTS `users`;
 
 CREATE TABLE `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `userId` varchar(20) NOT NULL,
-  `NAME` varchar(20) NOT NULL,
-  `PASSWORD` varchar(100) NOT NULL,
-  `roleId` int(11) NOT NULL,
-  `isDelete` int(1) NOT NULL,
-  `type` varchar(10) NOT NULL,
-  `fristDate` date DEFAULT NULL,
-  `phone` varchar(200) DEFAULT NULL,
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `userId` VARCHAR(20) NOT NULL,
+  `NAME` VARCHAR(20) NOT NULL,
+  `PASSWORD` VARCHAR(100) NOT NULL,
+  `roleId` INT(11) NOT NULL,
+  `isDelete` INT(1) NOT NULL,
+  `type` VARCHAR(10) NOT NULL,
+  `fristDate` DATE DEFAULT NULL,
+  `phone` VARCHAR(200) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `roleId` (`roleId`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=INNODB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 
 /*Data for the table `users` */
 /*Data for the table `users` */
-insert  into `users`(`id`,`userId`,`NAME`,`PASSWORD`,`roleId`,`isDelete`,`type`,`fristDate`,`phone`) values
+INSERT  INTO `users`(`id`,`userId`,`NAME`,`PASSWORD`,`roleId`,`isDelete`,`type`,`fristDate`,`phone`) VALUES
 (1,'zhangsan','张三','01d7f40760960e7bd9443513f22ab9af',1,0,'启用','2018-03-01',NULL),
 (2,'lisi','李四','dc3a8f1670d65bea69b7b65048a0ac40',2,0,'启用','2018-03-01',NULL),
 (3,'wangwu','王五','9f001e4166cf26bfbdd3b4f67d9ef617',3,0,'启用','2018-03-01',NULL),
@@ -509,4 +509,3 @@ insert  into `users`(`id`,`userId`,`NAME`,`PASSWORD`,`roleId`,`isDelete`,`type`,
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-

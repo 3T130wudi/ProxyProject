@@ -12,7 +12,7 @@ import java.util.List;
 public class EnterpriseBizImpl implements EnterpriseBiz {
     @Resource
     private EnterpriseDao enterpriseDao;
-    //
+
     public int insertEnterprise(Enterprise enterprise) {
         return enterpriseDao.insertEnterprise(enterprise);
     }
