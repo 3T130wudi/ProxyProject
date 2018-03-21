@@ -12,4 +12,5 @@ public interface GatewayDao {
     int GatewayInsert(Gateway gateway);
     Gateway GatewaySelect(@Param("phone") String phone);
     int updateGateway(Gateway gateway);
+    int updateGatewayGateway_remarks(Gateway gateway);
 }

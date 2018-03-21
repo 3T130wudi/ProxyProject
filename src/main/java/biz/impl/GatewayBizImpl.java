@@ -32,4 +32,8 @@ public class GatewayBizImpl implements GatewayBiz{
     public int updateGateway(Gateway gateway) {
         return gatewayDao.updateGateway(gateway);
     }
+
+    public int updateGatewayGateway_remarks(Gateway gateway) {
+        return gatewayDao.updateGatewayGateway_remarks(gateway);
+    }
 }

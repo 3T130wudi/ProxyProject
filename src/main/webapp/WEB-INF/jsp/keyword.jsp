@@ -12,9 +12,7 @@
             </tr>
             </thead>
             <tbody >
-            <tr ><td> <input type="hidden" name="id" value="${id}"/> </td></tr>
-            <tr><td> 搜索客户</td><td><input type="text" name="name" id="kehu"/></td></tr>
-            <tr><td> 客户名称</td><td><input type="text" id="xinming" name="xinming" readonly="readonly"/></td></tr>
+            <tr><td> 客户名称</td><td><input type="text" id="xinming" name="xinming"/></td></tr>
             <tr><td> 关键字</td><td><input type="text" name="keyword"/></td></tr>
             <tr><td> 服务类型 </td><td><select name="service_Type_id">
                         <option value="0">不上传苹果商城</option>

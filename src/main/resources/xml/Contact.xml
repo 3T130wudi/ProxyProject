@@ -58,4 +58,7 @@
             and enterprise_name=#{enterprise_name}
         </if>
     </select>
+    <select id="Contact" resultMap="ContactMap">
+        SELECT *,c.id as cid,e.id as eid,g.id as gid FROM contact c,enterprise e,gateway g where c.enterprise_id=e.id and e.gateway_id=g.id and c.id=#{id}
+    </select>
 </mapper>

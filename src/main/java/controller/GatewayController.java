@@ -49,7 +49,7 @@ public class GatewayController {
         return "gateway";
     }
 
-    @RequestMapping("insertAgentCustomer")
+    @RequestMapping("UpdateGateway")
     public String insertKeyword(HttpServletRequest request, Model model, @RequestBody Contact contact,
                                 @RequestBody Gateway gateway, @RequestBody Enterprise enterprise, @RequestBody AgentCustomer agentCustomer) {
         if (gateway.getId() > 0) {

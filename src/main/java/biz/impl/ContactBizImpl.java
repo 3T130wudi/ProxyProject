@@ -27,4 +27,8 @@ public class ContactBizImpl implements ContactBiz {
     public List<Contact> ContactList(String contact_name,String enterprise_name) {
         return contactDao.ContactList(contact_name,enterprise_name);
     }
+
+    public Contact Contact(int id) {
+        return contactDao.Contact(id);
+    }
 }

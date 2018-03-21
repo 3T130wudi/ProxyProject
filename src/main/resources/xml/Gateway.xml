@@ -80,4 +80,7 @@
         gateway_address=#{gateway_address},
         gateway_remarks=#{gateway_remarks} where id=#{id}
     </update>
+    <update id="updateGatewayGateway_remarks">
+        UPDATE gateway set gateway_remarks=#{gateway_remarks} where id=#{id}
+    </update>
 </mapper>

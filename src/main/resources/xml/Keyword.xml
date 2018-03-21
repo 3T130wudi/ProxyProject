@@ -50,10 +50,10 @@
         </collection>
     </resultMap>
     <insert id="insertKeyword">
-        INSERT INTO keywords
+        INSERT INTO keywords(id,keyword,user_id,service_Type_id,price,verifier,user_mode,Application,agent_id,keywordDate,keywordsOverdue,APP_id)
         VALUES(DEFAULT,#{keyword},#{user_id.id},#{service_Type_id},
         #{price},#{verifier},#{user_mode},#{Application},#{agent_id.id},#{keywordDate},
-        #{keywordsOverdue},#{APP_id.id},#{ageLimit})
+        #{keywordsOverdue},#{APP_id.id})
     </insert>
     <select id="keywordList" resultMap="keyword">
         SELECT * FROM keywords k,APP a,Users u,AgentCustomer ac where k.user_id=u.id and a.id=k.APP_id and  k.agent_id=ac.id

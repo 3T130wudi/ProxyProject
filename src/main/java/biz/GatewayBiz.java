@@ -12,4 +12,5 @@ public interface GatewayBiz {
     int GatewayInsert(Gateway gateway);
     Gateway GatewaySelect(String phone);
     int updateGateway(Gateway gateway);
+    int updateGatewayGateway_remarks(Gateway gateway);
 }
