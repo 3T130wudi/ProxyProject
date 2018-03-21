@@ -34,7 +34,7 @@ public class financeBizImpl implements financeBiz {
         return financeDao.insertjuct(finance);
 
     }
-
+//
 
     public boolean deletefinance(int financeId) {
         return financeDao.deletefinance(financeId)>0;

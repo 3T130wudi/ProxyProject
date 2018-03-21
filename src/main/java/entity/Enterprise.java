@@ -9,7 +9,7 @@ public class Enterprise {
     private Gateway gateway_id;
     private keyword keyword_name;
 
-
+    //
     public String getEnterprise_names() {
         return enterprise_names;
     }

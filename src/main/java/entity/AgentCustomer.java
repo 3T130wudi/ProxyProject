@@ -9,7 +9,7 @@ public class AgentCustomer {
     private Date date;
     private String type;
     private int state;
-
+    //
     @Override
     public String toString() {
         return "AgentCustomer{" +
