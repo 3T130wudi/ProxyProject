@@ -24,7 +24,7 @@ public class GatewayBizImpl implements GatewayBiz {
     public int GatewayInsert(Gateway gateway) {
         return gatewayDao.GatewayInsert(gateway);
     }
-
+//
 
 
     public Gateway GatewaySelect(String phone) {

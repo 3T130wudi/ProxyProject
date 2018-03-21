@@ -10,4 +10,4 @@ public interface EnterpriseDao {
     Enterprise selectEnterprise(@Param("name") String name);
     int updateEnterprise(Enterprise enterprise);
     List<Enterprise> EnterpriseList(@Param("name") String name);
-}
+}//

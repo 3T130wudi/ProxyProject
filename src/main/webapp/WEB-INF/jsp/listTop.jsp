@@ -76,7 +76,7 @@
                         </ul>
                     </li>
                 </c:if>
-
+                //
                 <!--显示门户管理-->
                 <c:if test="${user.role.authorityList.authority_gateway != null}">
                     <li class="sub-menu">
