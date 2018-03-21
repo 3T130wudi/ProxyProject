@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.UsersMimaoDao">
+
+    <select id="selectMb" resultType="UsersMimao">
+        SELECT * FROM usersMimao WHERE userId=#{userId}
+    </select>
+    <select id="selectlist" resultType="UsersMimao">
+        SELECT * FROM usersMimao WHERE userId=#{userId}
+         <if test="daAn_one !=null and daAn_one!=''">
+             AND daAn_one=#{daAn_one}
+         </if>
+        <if test="daAn_two !=null and daAn_two!=''">
+           AND daAn_two=#{daAn_two}
+        </if>
+        <if test="daAn_there !=null and daAn_there!=''">
+         AND   daAn_there=#{daAn_there}
+        </if>
+    </select>
+
+</mapper>

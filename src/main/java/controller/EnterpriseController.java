@@ -3,8 +3,12 @@ package controller;
 
 import biz.EnterpriseBiz;
 import biz.GatewayBiz;
+
+import entity.Enterprise;
+import entity.Pager;
 import entity.Users;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -32,10 +36,15 @@ public class EnterpriseController {
 
 
     @RequestMapping("enterpriseMenList")
-    public String enterpriseMenList(org.springframework.ui.Model model, @RequestParam(value = "name", required = false) String name, HttpServletRequest request) {
+    public String enterpriseMenList(Model model, @RequestParam(value = "name", required = false) String name,@RequestParam(required = false,defaultValue = "1") int pageNo, HttpServletRequest request) {
         HttpSession session = request.getSession();
         Users users=(Users) session.getAttribute("user");
-        model.addAttribute("enterpris", enterpriseBiz.EnterpriseList(name));
+        if (pageNo<=0){
+            pageNo=1;
+        }
+        Pager<Enterprise> ente= enterpriseBiz.EnterpriseList(name,3,pageNo);
+        model.addAttribute("enterpris",ente);
+
         return "enterpriseMen";
     }
 }

@@ -14,5 +14,6 @@ public interface UsersBiz {
     boolean addUser(Users users);
     boolean deleteUser(Users users);
     boolean updateUser(Users users);
+    boolean updatePassword(Users users);
     Users selectOne(Users users);
 }

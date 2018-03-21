@@ -59,23 +59,23 @@ INSERT  INTO `agentcustomer`(`id`,`user_id`,`contact_id`,`date`,`type`,`state`) 
 DROP TABLE IF EXISTS `app`;
 
 CREATE TABLE `app` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `APP_name` varchar(50) NOT NULL,
-  `APP_id` varchar(32) NOT NULL,
-  `APP_pwd` varchar(50) NOT NULL,
-  `APP_price` float(10,2) DEFAULT NULL,
-  `user_id` int(11) NOT NULL,
-  `APPDate` date NOT NULL,
-  `APP_service_type` varchar(50) NOT NULL,
-  `Application` int(11) NOT NULL,
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `APP_name` VARCHAR(50) NOT NULL,
+  `APP_id` VARCHAR(32) NOT NULL,
+  `APP_pwd` VARCHAR(50) NOT NULL,
+  `APP_price` FLOAT(10,2) DEFAULT NULL,
+  `user_id` INT(11) NOT NULL,
+  `APPDate` DATE NOT NULL,
+  `APP_service_type` VARCHAR(50) NOT NULL,
+  `Application` INT(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `app_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=INNODB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 /*Data for the table `app` */
 
-insert  into `app`(`id`,`APP_name`,`APP_id`,`APP_pwd`,`APP_price`,`user_id`,`APPDate`,`APP_service_type`,`Application`) values
+INSERT  INTO `app`(`id`,`APP_name`,`APP_id`,`APP_pwd`,`APP_price`,`user_id`,`APPDate`,`APP_service_type`,`Application`) VALUES
 (-1,'null','null','null',0.00,1,'2018-02-13','null',-1),
 (1,'aaa','zhangsan','zhangsan',3000.00,1,'2020-12-30','不传苹果商城',0),
 (2,'bbb','lisi','lisi',3500.00,2,'2021-12-30','传苹果商城',0),
@@ -504,6 +504,44 @@ INSERT  INTO `users`(`id`,`userId`,`NAME`,`PASSWORD`,`roleId`,`isDelete`,`type`,
 (5,'tianqi','田七','885a7428d5262ac73ff7b2f53ee4a730',5,0,'启用','2018-03-01',NULL),
 (6,'wangba','王八','aa64750af6583f0f77f121e31d6cca7b',6,0,'启用','2018-03-01',NULL),
 (7,'jiumei','九妹','40873c6fcf93bf193b44183f0ef51126',7,0,'启用','2018-03-01',NULL);
+
+/*Table structure for table `usersMimao` */
+
+DROP TABLE IF EXISTS `usersMimao`;
+
+DROP TABLE usersMimao
+CREATE TABLE `usersMimao` (
+  `userId`  VARCHAR(20) NOT NULL,
+  `wenTi_one` VARCHAR(200) NOT NULL,
+  `wenTi_two` VARCHAR(200) NOT NULL,
+  `wenTi_there` VARCHAR(200) NOT NULL,
+  `daAn_one` VARCHAR(200) NOT NULL,
+  `daAn_two` VARCHAR(200) NOT NULL,
+  `daAn_there` VARCHAR(200) NOT NULL
+) ENGINE=INNODB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+
+/*Data for the table `usersMimao` */
+
+INSERT  INTO `usersMimao`(`userId`,`wenTi_one`,`wenTi_two`,`wenTi_there`,`daAn_one`,`daAn_two`,`daAn_there`) VALUES
+('zhangsan','你爸爸叫什么','你妈妈叫什么','你配偶叫什么','老张','老李','老王'),
+('lisi','你爸爸叫什么','你妈妈叫什么','你配偶叫什么','老李','老李','老王'),
+('wangwu','你爸爸叫什么','你妈妈叫什么','你配偶叫什么','老王','老李','老王'),
+('zhaoliu','你爸爸叫什么','你妈妈叫什么','你配偶叫什么','老赵','老李','老王'),
+('tianqi','你爸爸叫什么','你妈妈叫什么','你配偶叫什么','老田','老李','老王'),
+('wangba','你爸爸叫什么','你妈妈叫什么','你配偶叫什么','老王','老李','老王'),
+('jiumei','你爸爸叫什么','你妈妈叫什么','你配偶叫什么','老九','老李','老王');
+/*Table structure for table `rizhi` */
+
+DROP TABLE IF EXISTS `rizhi`;
+
+DROP TABLE rizhi
+CREATE TABLE `rizhi` (
+  `id` INT(11)  AUTO_INCREMENT,
+  `username` VARCHAR(200) NOT NULL,
+  `shuomin` VARCHAR(200) NOT NULL,
+  `datetime` DATE,
+  PRIMARY KEY (`id`)
+) ENGINE=INNODB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

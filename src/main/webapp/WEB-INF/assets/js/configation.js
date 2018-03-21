@@ -279,7 +279,17 @@ function checkForm3(frm) {
 };
 
 
-
+function aaaa(aa) {
+    var flag = true;
+    $("#aa input[type='password']").each(function(i, obj) {
+        if(obj.value == "") {
+            alert('密码不能为空');
+            flag = false;
+            return false;
+        }
+    });
+    return flag;
+};
 
 
 function servicecheckForm(frm) {

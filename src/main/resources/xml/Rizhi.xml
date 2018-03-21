@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.RizhiDao">
+
+    <select id="selectRizhi" resultType="Rizhi">
+        SELECT * from rizhi  limit #{offset},#{pageSize}
+    </select>
+
+    <select id="queryRoleCount" resultType="_int">
+        select count(1) from rizhi
+    </select>
+
+    <insert id="addrizhi">
+        INSERT INTO rizhi(username,shuomin, datetime) VALUE (#{username},#{shuomin},now())
+    </insert>
+
+</mapper>

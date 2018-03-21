@@ -14,6 +14,7 @@ public interface UsersDao {
     int deleteUser(Users users);
     int updateUser(Users users);
     Users selectOne(Users users);
+    int updatePassword(Users users);
 
     /**
      * 查询总行数

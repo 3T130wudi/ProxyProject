@@ -46,6 +46,10 @@ public class UsersBizImpl implements UsersBiz {
         return usersDao.updateUser(users)>0;
     }
 
+    public boolean updatePassword(Users users) {
+        return usersDao.updatePassword(users)>0;
+    }
+
     public Users selectOne(Users users) {
         return usersDao.selectOne(users);
     }

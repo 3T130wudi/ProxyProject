@@ -47,7 +47,7 @@
     </div>
     <div class="top-menu">
         <ul class="nav pull-right top-menu">
-            <li><a class="logout" href="/romoveset">退出</a></li>
+            <li><a class="logout" href="/romoveSession">退出</a></li>
         </ul>
     </div>
 </header>
@@ -70,7 +70,6 @@
                             <li><a  href="GatewayList">${user.role.authorityList.agwnt_2}</a></li>
                             <li><a  href="FinancialStatementsList">${user.role.authorityList.agwnt_3}</a></li>
                             <li><a  href="keywordList">${user.role.authorityList.agwnt_4}</a></li>
-                            <li><a  href="personalDataUpdate.html">${user.role.authorityList.agwnt_5}</a></li>
                         </ul>
                     </li>
                 </c:if>
@@ -107,11 +106,10 @@
                             <span>${user.role.authorityList.authority_system}</span>
                         </a>
                         <ul class="sub">
-                            <li><a  href="commissionList.html">${user.role.authorityList.system_1}</a></li>
                             <li><a  href="/selectList">${user.role.authorityList.system_2}</a></li>
                             <li><a  href="/showSystem">${user.role.authorityList.system_3}</a></li>
                             <li><a  href="/showUserList">${user.role.authorityList.system_4}</a></li>
-                            <li><a  href="personalDataUpdate.html">${user.role.authorityList.system_5}</a></li>
+                            <li><a  href="/showRizhi">日志管理</a></li>
                         </ul>
                     </li>
                 </c:if>

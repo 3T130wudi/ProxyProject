@@ -3,6 +3,7 @@ package biz.impl;
 import biz.EnterpriseBiz;
 import dao.EnterpriseDao;
 import entity.Enterprise;
+import entity.Pager;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -25,7 +26,14 @@ public class EnterpriseBizImpl implements EnterpriseBiz {
         return enterpriseDao.updateEnterprise(enterprise);
     }
 
-    public List<Enterprise> EnterpriseList(String name) {
-        return enterpriseDao.EnterpriseList(name);
+    public Pager<Enterprise> EnterpriseList(String name, int offset, int pageSize) {
+        Pager<Enterprise> pager = new Pager<Enterprise>();
+        pager.setPageNo(offset);
+        pager.setPageSize(pageSize);
+        pager.setTotalRows(enterpriseDao.queryEnterprise());
+        pager.setTotalPage((pager.getTotalRows()+pageSize-1)/pageSize);
+        pager.setDatas(enterpriseDao.EnterpriseList(name,(offset-1)*pageSize,pageSize));
+        return pager;
     }
+
 }

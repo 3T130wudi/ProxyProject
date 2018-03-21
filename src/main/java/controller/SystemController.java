@@ -1,10 +1,12 @@
 package controller;
 
+import biz.RizhiBiz;
 import biz.RoleBiz;
 import biz.AuthoritylistBiz;
 import entity.AuthorityList;
 import entity.Pager;
 import entity.Role;
+import entity.Users;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,11 +15,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.annotation.Resource;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Controller("SystemController")
 public class SystemController {
     @Resource(name = "roleBiz")
     private RoleBiz roleBiz;
+
+    @Resource(name = "rizhiBiz")
+    private RizhiBiz rizhiBiz;
 
     @Resource(name = "authoritylistBiz")
     private AuthoritylistBiz authoritylistBiz;
@@ -46,6 +52,9 @@ public class SystemController {
     @RequestMapping("/addRole")
     public String addRole(Model m, Role role,HttpServletRequest request){
         if (roleBiz.addRole(role)){
+            HttpSession session = request.getSession(true);
+            Users u= (Users) session.getAttribute("user");
+            rizhiBiz.addrizhi(u.getName(),"新增了一个角色");
             return this.selectList(m,1);
         }else {
             return this.selectList(m,1);
@@ -59,8 +68,11 @@ public class SystemController {
      * @return
      */
     @RequestMapping("/updateRole")
-    public String updateRole(Model m, Role role){
+    public String updateRole(Model m, Role role,HttpServletRequest request){
         if (roleBiz.updateRole(role)){
+            HttpSession session = request.getSession(true);
+            Users u= (Users) session.getAttribute("user");
+            rizhiBiz.addrizhi(u.getName(),"修改了一个角色");
             return this.selectList(m,1);
         }else {
             return this.selectList(m,1);
@@ -74,8 +86,11 @@ public class SystemController {
      * @return
      */
     @RequestMapping("/deleteRole")
-    public String deleteRole(Model m, Role role){
+    public String deleteRole(Model m, Role role,HttpServletRequest request){
         if (roleBiz.deleteRole(role)){
+            HttpSession session = request.getSession(true);
+            Users u= (Users) session.getAttribute("user");
+            rizhiBiz.addrizhi(u.getName(),"删除了一个角色");
             return this.selectList(m,1);
         }else {
             return this.selectList(m,1);
