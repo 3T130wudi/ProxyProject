@@ -59,23 +59,23 @@ INSERT  INTO `agentcustomer`(`id`,`user_id`,`contact_id`,`date`,`type`,`state`) 
 DROP TABLE IF EXISTS `app`;
 
 CREATE TABLE `app` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `APP_name` VARCHAR(50) NOT NULL,
-  `APP_id` VARCHAR(32) NOT NULL,
-  `APP_pwd` VARCHAR(50) NOT NULL,
-  `APP_price` FLOAT(10,2) DEFAULT NULL,
-  `user_id` INT(11) NOT NULL,
-  `APPDate` DATE NOT NULL,`users`
-  `APP_service_type` VARCHAR(50) NOT NULL,
-  `Application` INT(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `APP_name` varchar(50) NOT NULL,
+  `APP_id` varchar(32) NOT NULL,
+  `APP_pwd` varchar(50) NOT NULL,
+  `APP_price` float(10,2) DEFAULT NULL,
+  `user_id` int(11) NOT NULL,
+  `APPDate` date NOT NULL,
+  `APP_service_type` varchar(50) NOT NULL,
+  `Application` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `app_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=INNODB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 /*Data for the table `app` */
 
-INSERT  INTO `app`(`id`,`APP_name`,`APP_id`,`APP_pwd`,`APP_price`,`user_id`,`APPDate`,`APP_service_type`,`Application`) VALUES
+insert  into `app`(`id`,`APP_name`,`APP_id`,`APP_pwd`,`APP_price`,`user_id`,`APPDate`,`APP_service_type`,`Application`) values
 (-1,'null','null','null',0.00,1,'2018-02-13','null',-1),
 (1,'aaa','zhangsan','zhangsan',3000.00,1,'2020-12-30','不传苹果商城',0),
 (2,'bbb','lisi','lisi',3500.00,2,'2021-12-30','传苹果商城',0),
