@@ -3,6 +3,7 @@ package biz.impl;
 import biz.CustomerBiz;
 import dao.CustomerDao;
 import entity.Customer;
+import entity.Pager;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -13,8 +14,14 @@ public class CustomerBizImpl implements CustomerBiz{
     @Resource
     private CustomerDao customerDao;
 
-    public List<Customer> selectcurrency() {
-        return customerDao.selectcurrency();
+    public Pager<Customer> selectcurrency(int pageNo, int pageSize) {
+        Pager<Customer> pager=new Pager<Customer>();
+        pager.setPageNo(pageNo);
+        pager.setPageSize(pageSize);
+        pager.setTotalRows(customerDao.countselectcurre());
+         pager.setTotalPage((pager.getTotalRows()+pageSize-1)/pageSize);
+        pager.setDatas(customerDao.selectcurrency((pageNo-1)*pageSize,pageSize));
+        return pager;
     }
 
     public boolean insertcurrrency(Customer customer) {

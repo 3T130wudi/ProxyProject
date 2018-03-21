@@ -72,6 +72,7 @@
                             <li><a  href="GatewayList">${user.role.authorityList.agwnt_2}</a></li>
                             <li><a  href="FinancialStatementsList">${user.role.authorityList.agwnt_3}</a></li>
                             <li><a  href="keywordList">${user.role.authorityList.agwnt_4}</a></li>
+                            <li><a  href="personalDataUpdate.html">${user.role.authorityList.agwnt_5}</a></li>
                         </ul>
                     </li>
                 </c:if>
@@ -84,7 +85,7 @@
                             <span>${user.role.authorityList.authority_gateway}</span>
                         </a>
                         <ul class="sub">
-                            <li><a  href="/ALLContact">${user.role.authorityList.gateway_1}</a></li>
+                            <li><a  href="enterpriseMenList">${user.role.authorityList.gateway_1}</a></li>
                         </ul>
                     </li>
                 </c:if>

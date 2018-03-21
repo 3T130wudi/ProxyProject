@@ -65,7 +65,7 @@ CREATE TABLE `app` (
   `APP_pwd` VARCHAR(50) NOT NULL,
   `APP_price` FLOAT(10,2) DEFAULT NULL,
   `user_id` INT(11) NOT NULL,
-  `APPDate` DATE NOT NULL,
+  `APPDate` DATE NOT NULL,`users`
   `APP_service_type` VARCHAR(50) NOT NULL,
   `Application` INT(11) NOT NULL,
   PRIMARY KEY (`id`),
@@ -227,14 +227,16 @@ CREATE TABLE `customer` (
   `customer_type` VARCHAR(50) NOT NULL,
   `customer_enable` VARCHAR(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`customer_id`)
-) ENGINE=INNODB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=INNODB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 /*Data for the table `customer` */
 
 INSERT  INTO `customer`(`customer_id`,`customer_type`,`customer_enable`) VALUES
 (1,'个人','0'),
 (2,'企业','0'),
-(3,'政府','0');
+(3,'政府','0'),
+(4,'群众','0'),
+(5,'其他','0');
 
 /*Table structure for table `discount` */
 
@@ -247,7 +249,7 @@ CREATE TABLE `discount` (
   `discount_actual` INT(11) NOT NULL,
   `discount_enable` INT(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`discount_id`)
-) ENGINE=INNODB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=INNODB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 /*Data for the table `discount` */
 
@@ -262,6 +264,7 @@ DROP TABLE IF EXISTS `enterprise`;
 CREATE TABLE `enterprise` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `enterprise_name` VARCHAR(50) NOT NULL,
+  `enterprise_names` VARCHAR(50) NOT NULL,
   `enterprise_type` VARCHAR(50) NOT NULL,
   `enterprise_home` VARCHAR(500) DEFAULT NULL,
   `enterprise_state` INT(11) NOT NULL,
@@ -273,12 +276,12 @@ CREATE TABLE `enterprise` (
 
 /*Data for the table `enterprise` */
 
-INSERT  INTO `enterprise`(`id`,`enterprise_name`,`enterprise_type`,`enterprise_home`,`enterprise_state`,`gateway_id`) VALUES
-(1,'通泰实业有限公司','个人','tongtai.com',0,1),
-(2,'万力可集团','个人','wanlike.com',0,2),
-(3,'伟翔实业有限公司','个人','weixiang.com',1,3),
-(4,'节艾特有限公司','个人','jieaite.com',1,4),
-(5,'捷达有限公司','个人','jieda.com',1,5);
+INSERT  INTO `enterprise`(`id`,`enterprise_name`,`enterprise_names`,`enterprise_type`,`enterprise_home`,`enterprise_state`,`gateway_id`) VALUES
+(1,'通泰实业有限公司','韩璐','个人','tongtai.com',0,1),
+(2,'万力可集团','个人','124','wanlike.com',0,2),
+(3,'伟翔实业有限公司','liuw','个人','weixiang.com',1,3),
+(4,'节艾特有限公司','啥','个人','jieaite.com',1,4),
+(5,'捷达有限公司','五武帝','个人','jieda.com',1,5);
 
 /*Table structure for table `finance` */
 
@@ -289,13 +292,22 @@ CREATE TABLE `finance` (
   `finance_type` VARCHAR(50) NOT NULL,
   `finance_enable` INT(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`finance_id`)
-) ENGINE=INNODB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=INNODB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8;
 
 /*Data for the table `finance` */
 
 INSERT  INTO `finance`(`finance_id`,`finance_type`,`finance_enable`) VALUES
-(1,'财务打款',0),
-(3,'asdasd',0);
+(53,'代理款',0),
+(54,'转账',0),
+(55,'财务打款',0),
+(56,'冻结',0),
+(57,'扣费',0),
+(58,'代理款冲抵',0),
+(59,'消费',0),
+(60,'退费',0),
+(61,'返款',0),
+(62,'罚款',0),
+(63,'代理款预录',0);
 
 /*Table structure for table `financialstatements` */
 
@@ -408,15 +420,15 @@ INSERT  INTO `keywords`(`id`,`keyword`,`user_id`,`service_Type_id`,`price`,`veri
 DROP TABLE IF EXISTS `life`;
 
 CREATE TABLE `life` (
-  `life_id` INT(11) NOT NULL AUTO_INCREMENT,
-  `life_name` VARCHAR(50) NOT NULL,
-  `life_numer` INT(11) DEFAULT NULL,
+  `life_id` int(11) NOT NULL AUTO_INCREMENT,
+  `life_name` varchar(50) NOT NULL,
+  `life_numer` int(11) DEFAULT NULL,
   PRIMARY KEY (`life_id`)
-) ENGINE=INNODB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 /*Data for the table `life` */
 
-INSERT  INTO `life`(`life_id`,`life_name`,`life_numer`) VALUES
+insert  into `life`(`life_id`,`life_name`,`life_numer`) values
 (1,'服务年限',3);
 
 /*Table structure for table `role` */
@@ -424,19 +436,19 @@ INSERT  INTO `life`(`life_id`,`life_name`,`life_numer`) VALUES
 DROP TABLE IF EXISTS `role`;
 
 CREATE TABLE `role` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `NAME` VARCHAR(20) NOT NULL,
-  `uthorityId` INT(11) NOT NULL,
-  `type` VARCHAR(10) NOT NULL,
-  `fristDate` DATE DEFAULT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `NAME` varchar(20) NOT NULL,
+  `uthorityId` int(11) NOT NULL,
+  `type` varchar(10) NOT NULL,
+  `fristDate` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `uthorityId` (`uthorityId`),
   CONSTRAINT `role_ibfk_1` FOREIGN KEY (`uthorityId`) REFERENCES `authoritylist` (`id`)
-) ENGINE=INNODB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 /*Data for the table `role` */
 
-INSERT  INTO `role`(`id`,`NAME`,`uthorityId`,`type`,`fristDate`) VALUES
+insert  into `role`(`id`,`NAME`,`uthorityId`,`type`,`fristDate`) values
 (1,'系统管理员',1,'启用','2018-03-01'),
 (2,'代理商用户',2,'启用','2018-03-01'),
 (3,'财务用户',3,'启用','2018-03-01'),
@@ -450,44 +462,40 @@ INSERT  INTO `role`(`id`,`NAME`,`uthorityId`,`type`,`fristDate`) VALUES
 DROP TABLE IF EXISTS `service`;
 
 CREATE TABLE `service` (
-  `service_id` INT(11) NOT NULL AUTO_INCREMENT,
-  `service_type` VARCHAR(50) NOT NULL,
-  `service_tow` INT(11) NOT NULL,
-  `service_enable` INT(1) NOT NULL DEFAULT '0',
+  `service_id` int(11) NOT NULL AUTO_INCREMENT,
+  `service_type` varchar(50) NOT NULL,
+  `service_tow` int(11) NOT NULL,
+  `service_enable` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`service_id`)
-) ENGINE=INNODB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 
 /*Data for the table `service` */
 
-INSERT  INTO `service`(`service_id`,`service_type`,`service_tow`,`service_enable`) VALUES
+insert  into `service`(`service_id`,`service_type`,`service_tow`,`service_enable`) values
 (1,'上传苹果商城',26000,0),
-(2,'OPPO商城',18000,0),
-(3,'ddd',20000,1),
-(17,'aaa',2000,0),
-(18,'窦知容',0,1),
-(19,'x',2100,1);
+(2,'不上传苹果商城',18000,0);
 
 /*Table structure for table `users` */
 
 DROP TABLE IF EXISTS `users`;
 
 CREATE TABLE `users` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `userId` VARCHAR(20) NOT NULL,
-  `NAME` VARCHAR(20) NOT NULL,
-  `PASSWORD` VARCHAR(100) NOT NULL,
-  `roleId` INT(11) NOT NULL,
-  `isDelete` INT(1) NOT NULL,
-  `type` VARCHAR(10) NOT NULL,
-  `fristDate` DATE DEFAULT NULL,
-  `phone` VARCHAR(200) DEFAULT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userId` varchar(20) NOT NULL,
+  `NAME` varchar(20) NOT NULL,
+  `PASSWORD` varchar(100) NOT NULL,
+  `roleId` int(11) NOT NULL,
+  `isDelete` int(1) NOT NULL,
+  `type` varchar(10) NOT NULL,
+  `fristDate` date DEFAULT NULL,
+  `phone` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `roleId` (`roleId`)
-) ENGINE=INNODB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 /*Data for the table `users` */
 
-INSERT  INTO `users`(`id`,`userId`,`NAME`,`PASSWORD`,`roleId`,`isDelete`,`type`,`fristDate`,`phone`) VALUES
+insert  into `users`(`id`,`userId`,`NAME`,`PASSWORD`,`roleId`,`isDelete`,`type`,`fristDate`,`phone`) values
 (1,'zhangsan','张三','01d7f40760960e7bd9443513f22ab9af',1,0,'启用','2018-03-01',NULL),
 (2,'lisi','李四','dc3a8f1670d65bea69b7b65048a0ac40',2,0,'启用','2018-03-01',NULL),
 (3,'wangwu','王五','9f001e4166cf26bfbdd3b4f67d9ef617',3,0,'启用','2018-03-01',NULL),

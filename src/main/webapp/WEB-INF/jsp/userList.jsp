@@ -145,12 +145,14 @@
                     </c:forEach>
                     </tbody>
                 </table>
-                <a class="btn btn-primary" href="/showUserList?pageNo=1">首页</a>
-                <a class="btn btn-primary" href="/showUserList?pageNo=${userList.pageNo-1}">上一页</a>
-                <a class="btn btn-primary" href="/showUserList?pageNo=${userList.pageNo+1}">下一页</a>
-                <input type="hidden" id="totalPage" value="${userList.totalPage}">
-                <input type="hidden" id="pageNo" value="${userList.pageNo}">
-                <a class="btn btn-primary" href="/showUserList?pageNo=${userList.totalPage}">尾页</a>
+                <div style="margin-left: 185px">
+                <a class="btn btn-default" href="/showUserList?pageNo=1">首页</a>
+                <a class="btn btn-default" href="/showUserList?pageNo=${userList.pageNo-1}">上一页</a>
+                <c:if test="${userList.pageNo<userList.totalPage}">
+                <a class="btn btn-default" href="/showUserList?pageNo=${userList.pageNo+1}">下一页</a>
+                </c:if>
+                <a class="btn btn-default" href="/showUserList?pageNo=${userList.totalPage}">尾页</a>
+                </div>
             </tr>
             </thead>
         </table>

@@ -4,7 +4,11 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.DiscountDao">
     <select id="selectDiscount" resultType="entity.Discount">
-        SELECT * FROM `discount`
+        SELECT * FROM `discount` limit #{pageNo},#{pageSize}
+    </select>
+
+    <select id="countdiscountcurre" resultType="_int">
+        SELECT count(1) FROM `discount`
     </select>
 
     <select id="discountselect" resultType="entity.Discount">

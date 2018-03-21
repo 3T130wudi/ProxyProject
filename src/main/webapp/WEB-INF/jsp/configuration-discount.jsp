@@ -61,7 +61,7 @@
                     <td>是否启用<td/>
                     <td>操作<td/>
                 <tr/>
-                <c:forEach items="${discount}" var="d">
+                <c:forEach items="${pager.datas}" var="d">
 
                 <tr id="coifn">
                     <td>${d.discount_id}<td/>
@@ -69,16 +69,30 @@
                     <td>${d.discount_numer}<td/>
                     <td>${d.discount_actual}<td/>
                     <td>
-                        <c:if test="${d.discount_enable==0}">启用</c:if>
-                        <c:if test="${d.discount_enable==1}">不启用</c:if>
+                        <c:if test="${d.discount_enable==0}"><span style="color:Green">启用</span></c:if>
+                        <c:if test="${d.discount_enable==1}"><span style="color: red">不启用</span></c:if>
                     <td/>
-                    <td><a id="finanId" name="finanId"  onclick="soutselect(${d.discount_id})"  data-toggle="modal" data-target="#Myomoal">修改|</a><a id="configId" onclick="javascript:return deletedosount();" href="/deletedisount?discount_id=${d.discount_id}" name="configId"> 删除</a><td/>
+                    <td><a id="finanId" name="finanId" class="btn btn-default"  onclick="soutselect(${d.discount_id})"  data-toggle="modal" data-target="#Myomoal">修改</a><a class="btn btn-default" id="configId" onclick="javascript:return deletedosount();" href="/deletedisount?discount_id=${d.discount_id}" name="configId"> 删除</a><td/>
                 <tr/>
                 </c:forEach>
 
                 <table/>
 
         </form>
+
+    </div>
+    <div style="margin-left: 185px">
+        <a class="btn btn-default " href="/selectDiscount?pageNo=1">首页</a>&nbsp;&nbsp;
+
+        <a  class="btn btn-default" href="/selectDiscount?pageNo=${pager.pageNo-1}">上一页</a>&nbsp;&nbsp;
+
+        <a  class="btn btn-default " >第${pager.pageNo}/${pager.totalPage}页</a>&nbsp;&nbsp;
+
+        <c:if test="${pager.pageNo<pager.totalPage}">
+            <a class="btn btn-default  " href="/selectDiscount?pageNo=${pager.pageNo+1}">下一页</a>&nbsp;&nbsp;
+        </c:if>
+
+        <a class="btn btn-default  " href="/selectDiscount?pageNo=${pager.totalPage}">尾页</a>&nbsp;&nbsp;
     </div>
 
     <div class="containert">

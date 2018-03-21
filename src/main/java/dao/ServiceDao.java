@@ -7,7 +7,21 @@ import java.util.List;
 
 public interface ServiceDao {
 
-    List<Service> selectService();
+
+    /**
+     * 查询当前页数据
+     * @param pageNo
+     * @param pageSize
+     * @return
+     */
+    List<Service> selectService(@Param("pageNo") int pageNo, @Param("pageSize")int pageSize);
+
+    /**
+     * 查询总行数
+     * @return
+     */
+    int queryServiceCount();
+
 
     int insertselect(Service service);
 

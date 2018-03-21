@@ -4,7 +4,10 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.ServiceDao">
     <select id="selectService" resultType="entity.Service">
-        SELECT * FROM `service`
+        SELECT * FROM `service`limit #{pageNo},#{pageSize}
+    </select>
+    <select id="queryServiceCount" resultType="_int">
+        SELECT count(1)  FROM `service`
     </select>
 
     <insert id="insertselect">

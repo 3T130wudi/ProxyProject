@@ -2,6 +2,7 @@ package biz.impl;
 
 import biz.ServiceBiz;
 import dao.ServiceDao;
+import entity.Pager;
 import entity.Service;
 
 import javax.annotation.Resource;
@@ -12,8 +13,14 @@ public class ServiceBizImpl implements ServiceBiz{
     @Resource
     private ServiceDao serviceDao;
 
-    public List<Service> selectService() {
-        return serviceDao.selectService();
+    public Pager<Service> selectService(int pageNo, int pageSize) {
+        Pager<Service> pager=new Pager<Service>();
+        pager.setPageNo(pageNo);
+        pager.setPageSize(pageSize);
+        pager.setTotalRows(serviceDao.queryServiceCount());
+        pager.setTotalPage(((pager.getTotalRows())+pageSize-1)/pageSize);
+        pager.setDatas(serviceDao.selectService((pageNo-1)*pageSize,pageSize));
+        return pager;
     }
 
     public boolean insertselect(Service service) {

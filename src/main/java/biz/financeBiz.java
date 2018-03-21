@@ -1,6 +1,8 @@
 package biz;
 
+import entity.Pager;
 import entity.finance;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -17,6 +19,11 @@ public interface financeBiz {
 
     boolean deletefinance(int financeId);
     finance selectfnance(int id);
+
+    Pager<finance> queryfinance(int pageNo, int pageSize);
+
+
+
 
 
 

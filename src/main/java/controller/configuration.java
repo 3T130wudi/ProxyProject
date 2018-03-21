@@ -37,11 +37,7 @@ public class configuration {
     private DiscountBiz discountBiz;
 
     //财务类型集合查询
-    @RequestMapping("/Financeselect")
-    public  String financeselect(Model m){
-        m.addAttribute("finance",financeBiz.financeselect());
-        return "configuration";
-    }
+
 
     //财务类型判断重复增加
     @RequestMapping("/insertjudgment")
@@ -77,14 +73,14 @@ public class configuration {
         if (finance_type != null && finance_type != "") {
             for (finance f:fian) {
                 if(f.getFinance_type().equals(finance_type)){
-                       return financeselect(m);
+                       return queryfinance(m,1);
                 }
 
             }
             financeBiz.insertfinance(finance);
         }
 
-        return financeselect(m);
+        return queryfinance(m,1);
     }
 
 
@@ -97,7 +93,7 @@ public class configuration {
         if(config){
 
         }
-        return financeselect(m);
+        return queryfinance(m,1);
 
     }
     //财务类型ajax查看
@@ -125,16 +121,33 @@ public class configuration {
         finance.setFinance_id(finance_id);
         int fnan= financeBiz.updatafinance(finance);
         if(fnan>0) {
-           return financeselect(m);
+           return queryfinance(m,1);
         }
-        return financeselect(m);
+        return queryfinance(m,1);
         }
+    //财务类型分页
+    @RequestMapping("/queryfinance")
+    private  String queryfinance(Model m,@RequestParam(required = false,defaultValue = "1") int pageNo){
+
+        if(pageNo<=0){
+            pageNo=1;
+        }
+       Pager<finance> Pager= financeBiz.queryfinance(pageNo,5);
+        m.addAttribute("pager",Pager);
+        m.addAttribute("finance",financeBiz.financeselect());
+        return "configuration";
+
+    }
 
 
     //服务类型集合查询
     @RequestMapping("/selectService")
-    private String selectService(Model m){
-        m.addAttribute("service",serviceBiz.selectService());
+    private String selectService(Model m,@RequestParam(required = false,defaultValue = "1") int pageNo){
+        if(pageNo<=0){
+            pageNo=1;
+        }
+        Pager<Service> pager=serviceBiz.selectService(pageNo,5);
+        m.addAttribute("pager",pager);
         return "configuration-service";
     }
     //服务类型ajax比较重复的值
@@ -157,6 +170,8 @@ public class configuration {
     }
 
 
+
+
     //服务类型增加
     @RequestMapping("/insertselect")
     private  String insertselect(Model m, Service service,HttpServletRequest req){
@@ -164,12 +179,12 @@ public class configuration {
         List<Service> ser=serviceBiz.selectname(service);
         for (Service x:ser) {
             if(x.getService_type().equals(servicetype)){
-                return selectService(m);
+                return selectService(m,1);
             }
 
         }
         serviceBiz.insertselect(service);
-        return selectService(m);
+        return selectService(m,1);
     }
     //服务类型ajax修改查看
     @RequestMapping("/serviceselect")
@@ -194,9 +209,9 @@ public class configuration {
 
         service.setService_id(service_id);
         if(serviceBiz.updateservice(service)){
-            return selectService(m);
+            return selectService(m,1);
         }
-        return selectService(m);
+        return selectService(m,1);
     }
 
 
@@ -233,11 +248,14 @@ public class configuration {
        return selectapplication(m,application);
     }
 
-    //客户类型集合查询
+    //客户类型集合查询带分页
     @RequestMapping("/selectcurrency")
-    private String selectcurrency(Model m){
-
-        m.addAttribute("currency",customerBiz.selectcurrency());
+    private String selectcurrency(Model m,@RequestParam(required = false,defaultValue = "1") int pageNo){
+        if(pageNo<=0){
+            pageNo=1;
+        }
+        Pager<Customer> pager=customerBiz.selectcurrency(pageNo,5);
+        m.addAttribute("pager",pager);
         return "configuration-customer";
 
     }
@@ -268,12 +286,12 @@ public class configuration {
             for (Customer c : cust) {
 
                 if (c.getCustomer_type().equals(customer_type)) {
-                    return selectcurrency(m);
+                    return selectcurrency(m,1);
                 }
             }
             customerBiz.insertcurrrency(customer);
         }
-        return selectcurrency(m);
+        return selectcurrency(m,1);
 
     }
     //客户类型删除
@@ -282,7 +300,7 @@ public class configuration {
         if(customerBiz.deletecustomer(customer_id)){
 
         }
-        return selectcurrency(m);
+        return selectcurrency(m,1);
     }
     //客户类型修改查看
     @RequestMapping("/customerselect")
@@ -307,7 +325,7 @@ public class configuration {
         if(customerBiz.updatecustomer(customer)){
 
         }
-       return selectcurrency(m);
+       return selectcurrency(m,1);
     }
 
 
@@ -391,10 +409,14 @@ public class configuration {
 
 
 
-    //优惠类型集合查看
+    //优惠类型集合查看带分页
     @RequestMapping("/selectDiscount")
-    private String selectDiscount(Model m){
-        m.addAttribute("discount",discountBiz.selectDiscount());
+    private String selectDiscount(Model m,@RequestParam(required = false,defaultValue = "1") int pageNo){
+        if(pageNo<=0){
+            pageNo=1;
+        }
+        Pager<Discount> pager=discountBiz.selectDiscount(pageNo,5);
+        m.addAttribute("pager",pager);
         return "configuration-discount";
 
     }
@@ -424,19 +446,19 @@ public class configuration {
         List<Discount> discountselect = discountBiz.discountselect(discount);
             for (Discount d: discountselect) {
                 if(d.getDiscount_type().equals(discount_type)){
-                    return selectDiscount(m);
+                    return selectDiscount(m,1);
                 }
             }
         if(discountBiz.insertdicount(discount)){
         }
 
-        return selectDiscount(m);
+        return selectDiscount(m,1);
     }
     //优惠类型删除
     @RequestMapping("/deletedisount")
     private  String deletedisount(Model m,@RequestParam("discount_id") int discount_id){
         discountBiz.deletedisount(discount_id);
-        return selectDiscount(m);
+        return selectDiscount(m,1);
 
     }
 
@@ -460,7 +482,7 @@ public class configuration {
     private String updatedisount(Model m,Discount discount,@RequestParam("discount_id") int discount_id){
         discount.setDiscount_id(discount_id);
         discountBiz.updatedisount(discount);
-        return selectDiscount(m);
+        return selectDiscount(m,1);
     }
 
 

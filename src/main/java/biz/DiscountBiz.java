@@ -1,11 +1,14 @@
 package biz;
 
 import entity.Discount;
+import entity.Pager;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 public interface DiscountBiz {
-    List<Discount> selectDiscount();
+
+    Pager<Discount> selectDiscount(int pageNo, int pageSize);
 
     List<Discount> discountselect(Discount discount);
 

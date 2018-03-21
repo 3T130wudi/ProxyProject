@@ -49,7 +49,6 @@
         </div>
 
 
-        <form action="/Financeselect" method="post">
             <table class="table table-striped table-advance table-hover">
 
                 <tr >
@@ -58,14 +57,14 @@
                     <td>是否启用<td/>
                     <td>操作<td/>
                 <tr/>
-                <c:forEach items="${finance}" var="f">
+                <c:forEach items="${pager.datas }" var="f">
 
                 <tr id="coifn">
                     <td>${f.finance_id}<td/>
                     <td>${f.finance_type}<td/>
                     <td>
-                        <c:if test="${f.finance_enable==0}">启用</c:if>
-                        <c:if test="${f.finance_enable==1}">不启用</c:if>
+                        <c:if test="${f.finance_enable==0}"><span style="color:Green">启用</span></c:if>
+                        <c:if test="${f.finance_enable==1}"><span style="color: red">不启用</span></c:if>
                     <td/>
                     <td><a id="finanId" name="finanId" onclick="
                     $.ajax({
@@ -86,18 +85,32 @@
                         alert('455555');
                         }
                         });
-                          "  data-toggle="modal" data-target="#Myomoal">修改|</a><a id="configId" href="/deletefinance?configId=${f.finance_id}" onclick="javascript:return del();" name="configId"> 删除</a><td/>
+                          "  data-toggle="modal" class="btn btn-default" data-target="#Myomoal">修改</a><a  id="configId" class="btn btn-default" href="/deletefinance?configId=${f.finance_id}" onclick="javascript:return del();" name="configId"> 删除</a><td/>
                 <tr/>
 
                 </c:forEach>
 
                 <table/>
 
-        </form>
-    </div>
+
+
+
+        <div style="margin-left: 185px">
+            <a class="btn btn-default " href="/queryfinance?pageNo=1">首页</a>&nbsp;&nbsp;
+
+            <a  class="btn btn-default" href="/queryfinance?pageNo=${pager.pageNo-1}">上一页</a>&nbsp;&nbsp;
+
+            <a  class="btn btn-default " >第${pager.pageNo}/${pager.totalPage}页</a>&nbsp;&nbsp;
+
+            <c:if test="${pager.pageNo<pager.totalPage}">
+            <a class="btn btn-default  " href="/queryfinance?pageNo=${pager.pageNo+1}">下一页</a>&nbsp;&nbsp;
+            </c:if>
+
+            <a class="btn btn-default  " href="/queryfinance?pageNo=${pager.totalPage}">尾页</a>&nbsp;&nbsp;
+        </div>
+
 
     <div class="containert">
-
 
         <div class="modal fade" id="Myomoal">
             <div class="modal-dialog">
@@ -112,7 +125,7 @@
                         <div class="modal-body">
 
                             <input type="hidden" id="finance_id" name="finance_id" class="finance_id">
-                            类型名称：<input id="fine" name="finance_type" type="text"><br/>
+                            类型名称：<input id="fine"  name="finance_type" type="text"><br/>
                             <p></p>
                             是否启用：<select id="finance_enable" name="finance_enable">
                             <option value="0">启用</option>
