@@ -47,7 +47,7 @@
     </div>
     <div class="top-menu">
         <ul class="nav pull-right top-menu">
-            <li><a class="logout" href="/romoveset">退出</a></li>
+            <li><a class="logout" href="/romoveSession">退出</a></li>
         </ul>
     </div>
 </header>

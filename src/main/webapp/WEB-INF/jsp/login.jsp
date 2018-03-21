@@ -23,7 +23,6 @@
   <body>
 	  <div id="login-page">
 	  	<div class="container">
-	  	
 		      <form method="post" class="form-login" action="/login" onsubmit="return checkForm3();" id="frm" >
 		        <h2 class="form-login-heading">现在登录</h2>
 		        <div class="login-wrap">
@@ -33,19 +32,41 @@
 		            <label class="checkbox">
 		                <span class="pull-right">
 		                    <a data-toggle="modal" href="login.jsp#myModal">忘记密码?</a>
-		
 		                </span>
 		            </label>
-		            <button id="button1"  class="btn btn-theme btn-block" onclick="selec()"  href="basic_table.html" type="submit"><i class="fa fa-lock"></i>登录</button>
+		            <button id="button1"  class="btn btn-theme btn-block"  href="basic_table.html" type="submit"><i class="fa fa-lock"></i>登录</button>
 		            <hr>
 		            <div class="registration">
-						还没有帐户？<br/>
-		                <a class="" href="#">
-						创建一个帐户
+					版权xxxxxxxxx
 		                </a>
 		            </div>
 		        </div>
 			  </form>
+
+			<div class="container">
+				<!-- 模态框 -->
+				<div class="modal fade" id="myModa">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h4 class="modal-title">修改密码</h4>
+							</div>
+							<form action="/updateUser" method="post" >
+								<!-- 模态框主体 -->
+								<div class="modal-body">
+								请输入用户名：<input onblur="" id="userId" name="userId" type="text" value=""><br/>
+								</div>
+								<!-- 模态框底部 -->
+								<div class="modal-footer">
+									<button type="submit" class="btn btn-secondary" >确定</button>
+									<button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+
 			<!-- Modal -->
 		          <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
 		              <div class="modal-dialog">
@@ -72,8 +93,7 @@
     <!-- js placed at the end of the document so the pages load faster -->
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
-	  <script src="js/configation.js"></script>
-	  <script src="js/configuration.js"></script>
+
     <script type="text/javascript" src="js/jquery.backstretch.min.js"></script>
     <script>
         $.backstretch("assets/img/", {speed: 500});
