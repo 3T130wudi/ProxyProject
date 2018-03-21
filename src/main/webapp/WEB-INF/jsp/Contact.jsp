@@ -32,7 +32,7 @@
                         证件类型<select name="gateway_type" readonly="readonly">
                         <option value="国内身份证"<c:if test="${c.enterprise_id.gateway_id.gateway_type=='国内身份证'}">selected="selected"</c:if>>国内身份证</option>
                         <option value="国外身份证"<c:if test="${c.enterprise_id.gateway_id.gateway_type=='国外身份证'}">selected="selected"</c:if>>国外身份证</option>
-                        <option value="其他证件"<c:if test="${c.enterprise_id.gateway_id.gateway_type=='其他证件'}">selected="selected"</c:if>>其他证件</option></select>
+                         <option value="其他证件"<c:if test="${c.enterprise_id.gateway_id.gateway_type=='其他证件'}">selected="selected"</c:if>>其他证件</option></select>
                         证件号码<input type="text" name="gateway_certificates" value="${c.enterprise_id.gateway_id.gateway_certificates}" readonly="readonly"/><br/>
                         国家<input type="text" name="gateway_country" value="${c.enterprise_id.gateway_id.gateway_country}" readonly="readonly">省/市 <input type="text" name="gateway_region" value="${c.enterprise_id.gateway_id.gateway_region}" readonly="readonly"><br/>
                         公司传真<input type="text" name="gateway_fax" value="${c.enterprise_id.gateway_id.gateway_fax}" readonly="readonly">市/县 <input type="text" name="gateway_city" value="${c.enterprise_id.gateway_id.gateway_city}" readonly="readonly"><br/>
