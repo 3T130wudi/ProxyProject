@@ -493,8 +493,9 @@ CREATE TABLE `users` (
   KEY `roleId` (`roleId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
-/*Data for the table `users` */
 
+/*Data for the table `users` */
+/*Data for the table `users` */
 insert  into `users`(`id`,`userId`,`NAME`,`PASSWORD`,`roleId`,`isDelete`,`type`,`fristDate`,`phone`) values
 (1,'zhangsan','张三','01d7f40760960e7bd9443513f22ab9af',1,0,'启用','2018-03-01',NULL),
 (2,'lisi','李四','dc3a8f1670d65bea69b7b65048a0ac40',2,0,'启用','2018-03-01',NULL),
