@@ -17,14 +17,13 @@ public class Gateway {
     private String gateway_address;
     private String gateway_remarks;
 
+
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
-
     public String getGateway_representative() {
         return gateway_representative;
     }

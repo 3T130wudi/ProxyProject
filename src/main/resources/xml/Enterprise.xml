@@ -16,4 +16,60 @@
         enterprise_home=#{enterprise_home},
         enterprise_state=#{enterprise_state} WHERE id=#{id}
     </update>
+    
+        <resultMap id="AgentCustomer2" type="entity.AgentCustomer">
+            <result property="id" column="aid"/>
+            <result property="date" column="date"/>
+            <result property="type" column="type"/>
+            <result property="state" column="state"/>
+            <association property="user_id" javaType="entity.Users">
+                <result property="id" column="uid"/>
+                <result property="userId" column="userId"/>
+                <result property="name" column="name"/>
+                <result property="password" column="password"/>
+            </association>
+            <association property="contact_id" javaType="entity.Contact">
+                <result property="id" column="cid"/>
+                <result property="contact_name" column="contact_name"/>
+                <result property="contact_phone" column="contact_phone"/>
+                <result property="contact_fax" column="contact_fax"/>
+                <result property="contact_mobile" column="contact_mobile"/>
+                <result property="contact_email" column="contact_email"/>
+                <result property="contact_post" column="contact_post"/>
+                <association property="enterprise_id" javaType="entity.Enterprise">
+                    <result property="id" column="eid"/>
+                    <result property="enterprise_name" column="enterprise_name"/>
+                    <result property="enterprise_names" column="enterprise_names"/>
+                    <result property="enterprise_type" column="enterprise_type"/>
+                    <result property="enterprise_home" column="enterprise_home"/>
+                    <result property="enterprise_state" column="enterprise_state"/>
+                    <association property="gateway_id" javaType="entity.Gateway">
+                        <result property="id" column="gid"/>
+                        <result property="gateway_representative" column="gateway_representative"/>
+                        <result property="gateway_type" column="gateway_type"/>
+                        <result property="gateway_certificates" column="gateway_certificates"/>
+                        <result property="gateway_phone" column="gateway_phone"/>
+                        <result property="gateway_fax" column="gateway_fax"/>
+                        <result property="gateway_date" column="gateway_date"/>
+                        <result property="gateway_country" column="gateway_country"/>
+                        <result property="gateway_region" column="gateway_region"/>
+                        <result property="gateway_city" column="gateway_city"/>
+                        <result property="gateway_area" column="gateway_area"/>
+                        <result property="gateway_address" column="gateway_address"/>
+                        <result property="gateway_remarks" column="gateway_remarks"/>
+                    </association>
+            </association>
+            </association>
+
+        </resultMap>
+        <select id="EnterpriseList" resultMap="AgentCustomer2">
+            SELECT *,g.id AS gid,a.id AS aid,c.id AS cid,e.id AS eid,u.id AS uid,k.user_id AS kid
+            FROM Gateway g,Enterprise e,Contact c,AgentCustomer a,Users u,keywords k
+            WHERE a.contact_id=c.id AND c.enterprise_id=e.id AND e.gateway_id=g.id AND a.user_id=u.id AND k.user_id=u.id
+            <if test="name!=null and name!=''">
+              and u.name LIKE concat ('%',#{name},'%')
+            </if>
+        </select>
+
+
 </mapper>

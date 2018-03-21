@@ -34,6 +34,8 @@ public class AgentCustomer {
         return user_id;
     }
 
+
+
     public void setUser_id(Users user_id) {
         this.user_id = user_id;
     }

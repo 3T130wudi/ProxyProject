@@ -1,12 +1,30 @@
 package entity;
-
 public class Enterprise {
     private int id;
     private String enterprise_name;
+    private String enterprise_names;
     private String enterprise_type;
     private String enterprise_home;
     private String enterprise_state;
     private Gateway gateway_id;
+    private keyword keyword_name;
+
+
+    public String getEnterprise_names() {
+        return enterprise_names;
+    }
+
+    public void setEnterprise_names(String enterprise_names) {
+        this.enterprise_names = enterprise_names;
+    }
+
+    public keyword getKeyword_name() {
+        return keyword_name;
+    }
+
+    public void setKeyword_name(keyword keyword_name) {
+        this.keyword_name = keyword_name;
+    }
 
     public int getId() {
         return id;
