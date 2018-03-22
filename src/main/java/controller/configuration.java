@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URLDecoder;
@@ -35,6 +36,8 @@ public class configuration {
     private CertificatesBiz certificatesBiz;
     @Resource
     private DiscountBiz discountBiz;
+    @Resource
+    private RizhiBiz  rizhiBiz;
 
     //财务类型集合查询
 
@@ -77,6 +80,9 @@ public class configuration {
                 }
 
             }
+            HttpSession session = req.getSession(true);
+            Users u= (Users) session.getAttribute("user");
+            rizhiBiz.addrizhi(u.getName(),"新增一个财务类型");
             financeBiz.insertfinance(finance);
         }
 
@@ -87,8 +93,12 @@ public class configuration {
 
     //财务类型删除
     @RequestMapping("/deletefinance")
-    public String deletefinance(Model m,@RequestParam("configId") int configId,HttpServletResponse resp) throws IOException {
+    public String deletefinance(Model m,@RequestParam("configId") int configId,HttpServletResponse resp,HttpServletRequest req) throws IOException {
         boolean config=financeBiz.deletefinance(configId);
+        HttpSession session = req.getSession(true);
+        Users u= (Users) session.getAttribute("user");
+        rizhiBiz.addrizhi(u.getName(),"删除了一个财务类型");
+
         PrintWriter out = resp.getWriter();
         if(config){
 
@@ -121,6 +131,9 @@ public class configuration {
         finance.setFinance_id(finance_id);
         int fnan= financeBiz.updatafinance(finance);
         if(fnan>0) {
+            HttpSession session = req.getSession(true);
+            Users u= (Users) session.getAttribute("user");
+            rizhiBiz.addrizhi(u.getName(),"修改了一个财务类型");
            return queryfinance(m,1);
         }
         return queryfinance(m,1);

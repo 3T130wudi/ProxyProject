@@ -121,7 +121,7 @@
                             <span>${user.role.authorityList.authority_configuration}</span>
                         </a>
                         <ul class="sub">
-                            <li><a  href="Financeselect">${user.role.authorityList.configuration_1}</a></li>
+                            <li><a  href="/queryfinance">${user.role.authorityList.configuration_1}</a></li>
                             <li><a  href="/selectService">${user.role.authorityList.configuration_2}</a></li>
                             <li><a  href="/selectlife">${user.role.authorityList.configuration_3}</a></li>
                             <li><a  href="/selectapplication">${user.role.authorityList.configuration_4}</a></li>

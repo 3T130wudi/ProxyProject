@@ -74,7 +74,6 @@
     <div style="margin-left: 185px">
         <a class="btn btn-default" href="/enterpriseMenList?pageNo=1">首页</a>
         <a class="btn btn-default" href="/enterpriseMenList?pageNo=${enterpris.pageNo-1}">上一页</a>
-        <a  class="btn btn-default " >第${enterpris.pageNo}/${enterpris.totalPage}页</a>&nbsp;&nbsp;
         <c:if test="${enterpris.pageNo<enterpris.totalPage}">
             <a class="btn btn-default  " href="/enterpriseMenList?pageNo=${enterpris.pageNo+1}">下一页</a>&nbsp;&nbsp;
         </c:if>
